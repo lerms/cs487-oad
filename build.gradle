@@ -1,7 +1,5 @@
 import java.awt.Desktop
 
-version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
@@ -43,4 +41,5 @@ task runTest{
 
 dependencies {
     compile group: 'junit', name: 'junit', version: '4.11'
+    compile 'com.google.code.gson:gson:2.+'
 }

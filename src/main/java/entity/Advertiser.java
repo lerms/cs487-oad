@@ -7,11 +7,9 @@ package com.cs487oad.backend.entity;
  */
 public class Advertiser {
 
-    private String description= new String("");
+
+    private String description = new String("");
     private String webLink = new String("");
-
-
-
 
 
 

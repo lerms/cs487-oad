@@ -1,6 +1,4 @@
-package com.cs487oad.backend.entity;
-
-
+package entity;
 
 /**
  * Created by Jlarrieux on 9/19/2016.

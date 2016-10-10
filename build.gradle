@@ -51,9 +51,11 @@ task runTest{
 dependencies {
     compile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.code.gson:gson:2.+'
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+
 
 
 

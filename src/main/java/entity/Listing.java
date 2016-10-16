@@ -4,8 +4,6 @@ import org.springframework.data.annotation.Id;
 import util.CONSTANTS;
 
 import java.time.LocalDate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 /**
@@ -13,11 +11,10 @@ import java.util.stream.Stream;
  */
 public class Listing {
 
-<<<<<<< HEAD
-    private String name,description, city;
-    private final int currencyMultiplier = 100;
-    private int price = 0;
-=======
+
+    private String  city;
+
+
     private final int currencyMultiplier = 100;
 
     @Id
@@ -30,24 +27,18 @@ public class Listing {
     private String website;
     private String featureType;
     private double price;
->>>>>>> 94428ce7b9bb273279e902ca53156cfc2acc50f9
+
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
     private LocalDate endDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
 
 
-<<<<<<< HEAD
-
-    public double getPrice() {
-        return (double) price / currencyMultiplier;
-    }
 
 
 
-    public void setPrice(double price) {
-        int intermediate = (int) (price * currencyMultiplier);
-        System.out.print(intermediate);
-        this.price = (int) (price * currencyMultiplier);
-=======
+
+
+
+
     public Listing() {}
 
     public Listing(String name, String address, String phone, String description,
@@ -68,7 +59,7 @@ public class Listing {
 
     public void setPrice(double price){
         this.price = price * currencyMultiplier;
->>>>>>> 94428ce7b9bb273279e902ca53156cfc2acc50f9
+
     }
 
 
@@ -95,7 +86,7 @@ public class Listing {
         this.endDate = endDate;
     }
 
-<<<<<<< HEAD
+
 
 
     public void setName(String name) {
@@ -130,10 +121,11 @@ public class Listing {
 
     public String getCity() {
         return city;
-=======
+    }
+
     public String toString() {
         return String.format("Listing[\nname=%s\naddress=%s\nphone=%s\ndescription=%s\ncategory=%s\nwebsite=%s\nfeatureType=%s]",
                 name, address, phone, description, category, website, featureType);
->>>>>>> 94428ce7b9bb273279e902ca53156cfc2acc50f9
+
     }
 }

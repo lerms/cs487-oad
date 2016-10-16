@@ -1,8 +1,8 @@
-package com.cs487oad.backend.interactors;
+package interactors;
 
 
 
-import com.cs487oad.backend.entity.Listing;
+import entity.Listing;
 
 import java.util.ArrayList;
 import java.util.List;

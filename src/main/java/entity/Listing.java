@@ -1,8 +1,10 @@
-package com.cs487oad.backend.entity;
+package entity;
 
 
 
-import com.cs487oad.backend.util.CONSTANTS;
+
+
+import util.CONSTANTS;
 
 import java.time.LocalDate;
 
@@ -16,6 +18,13 @@ public class Listing {
     private final int currencyMultiplier=100;
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
     private LocalDate endDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
+    private String name;
+    private String address;
+    private String description;
+    private String category;
+    private String website;
+    private String featureType;
+    private String phoneNumber;
 
     public double getPrice() {
         return (double) price/currencyMultiplier;
@@ -49,5 +58,101 @@ public class Listing {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+
+
+    public int getCurrencyMultiplier() {
+        return currencyMultiplier;
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    public String getAddress() {
+        return address;
+    }
+
+
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+
+    public String getCategory() {
+        return category;
+    }
+
+
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+
+
+    public String getWebsite() {
+        return website;
+    }
+
+
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+
+
+    public String getFeatureType() {
+        return featureType;
+    }
+
+
+
+    public void setFeatureType(String featureType) {
+        this.featureType = featureType;
+    }
+
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

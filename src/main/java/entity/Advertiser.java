@@ -1,4 +1,4 @@
-package com.cs487oad.backend.entity;
+package entity;
 
 
 

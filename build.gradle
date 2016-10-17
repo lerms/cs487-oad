@@ -17,8 +17,10 @@ apply plugin: 'spring-boot'
 repositories {
     mavenCentral()
 }
-
-
+jar{
+    baseName="OAD"
+    version = "0.0.1"
+}
 jacocoTestReport {
     reports {
         xml.enabled false

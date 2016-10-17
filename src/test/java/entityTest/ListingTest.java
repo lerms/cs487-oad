@@ -1,11 +1,12 @@
-package com.cs487oad.test.java;
+package entityTest;
 
 
 
-import com.cs487oad.backend.entity.Listing;
-import com.cs487oad.backend.util.CONSTANTS;
+
+import entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
+import util.CONSTANTS;
 
 import java.time.LocalDate;
 

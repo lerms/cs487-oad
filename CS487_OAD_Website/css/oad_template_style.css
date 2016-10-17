@@ -62,6 +62,189 @@ img, object, embed, video {
     display: none;
 }
 
+body {
+	background-color: #18283B;	
+}
+
+#banner {
+	width: 100%;
+	height: 60px;
+	display: block;
+	background-color: #2B4459;
+}
+#title {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	display: block;
+	float: left;
+	padding-left: 50px;
+	color: #FFF;
+	font-family: "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	font-size: 25px;
+}
+
+#gradient_hr {
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #00AA8A; /*FOR BROWSERS THAT DO NOT SUPPORT GRADIENTS*/
+	background: linear-gradient(to right, #00AA8A, #FC859D);
+	border: 0;
+	height: 2px;
+}
+
+/*
+*
+* FIND NEAR ME
+*
+*/
+#search {
+	width: 100%;
+	display: block;
+	background-color: #18283A;	
+	padding: 5px 10px;
+	margin-right: 0;
+}
+#search *{
+	padding: 5px 10px;	
+}
+#find_near_me {
+	color: #FFF;
+	margin-top: 5px;
+	margin-bottom: 10px;	
+	font-family: "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+#find_wrapper {
+	margin-top: 0;
+	display: none;
+}
+.find_search {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	border-radius: 5px;
+}
+.find_drop {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	border-radius: 5px;
+}
+.find_text {
+	color: #FFF;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+#search_button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	width: 120px;
+	border: none;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	color: #FFF;
+	background-color: #FF5A83;
+	
+}
+
+/*
+*
+* LISTINGS
+*
+*/
+
+.category_name {
+	display: block;
+	width: 100%;
+	background-color: #FFF;	
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 30px;
+	border-bottom: 2px solid #939DA8;
+}
+.subcategory_name {
+	display: block;
+	width: 100%;
+	margin-left: 5px;
+	background-color: #EEF2F5;
+	padding-left: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 2px solid #939DA8;
+}
+.listing_count {
+	display: inline-block;
+	margin-left: 5px;
+	color: #00AA8A;
+}
+.listing {
+	display:block;
+	width: 100%;
+	margin-left: 10px;
+	margin-right: 20px;
+	background-color: #FFF;
+	padding-left: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	border-bottom: 2px solid #939DA8;
+}
+.listing_name {
+	font-size: 15px;
+	font-weight: bold;
+}
+.listing_rule {
+	width: 220px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.listing_phone {
+	color: #00AA8A;
+}
+.listing_description {
+	margin-top: 10px;
+	width: 220px;
+	color: #7A7A7A;	
+}
+.listing_links {
+	margin-top: 5px;	
+}
+.listing_map {
+	display: inline-block;
+	width: 100px;
+	background-color: #00AA8A;
+	color: #FFF;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-align: center;
+}
+.listing_website {
+	display: inline-block;
+	width: 100px;
+	background-color: #00AA8A;
+	color: #FFF;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	margin-left: 5px;
+	text-align: center;
+}
+
+
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {

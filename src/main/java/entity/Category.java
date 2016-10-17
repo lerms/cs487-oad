@@ -2,7 +2,7 @@ package entity;
 
 
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 
 
@@ -11,19 +11,25 @@ import java.util.ArrayList;
  */
 public class Category {
 
-    ArrayList<SubCategory> categories= new ArrayList<>();
     String name;
+    HashMap<String, SubCategory> Subcategory = new HashMap<>();
+//    private ImmutableMap<String, SubCategory> Subcategory ;
+    Arrayl
+
 
     public Category(String name){
         this.name = name;
     }
 
-    public void add(SubCategory c){
-        categories.add(c);
-    }
+    public void add(String catName , Listing l){
+        SubCategory sub;
+        if(Subcategory.containsKey(catName)) {
+            sub =  Subcategory.get(catName);
 
-    public int getSize(){
-        return categories.size();
+        }else{
+            sub = new SubCategory(catName);
+        }
+        sub.add(l);
     }
 
     public String getName(){
@@ -32,6 +38,10 @@ public class Category {
 
     public void print(){
 
+    }
+
+    public HashMap<String, SubCategory> getSubcategoryMap(){
+        return Subcategory;
     }
 
 }

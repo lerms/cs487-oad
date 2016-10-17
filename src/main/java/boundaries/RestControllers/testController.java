@@ -5,8 +5,8 @@ package boundaries.RestControllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entity.Category;
+import entity.CategorySerialize;
 import entity.Listing;
-import entity.SubCategory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,17 +41,15 @@ public class testController {
 
     @GetMapping(value = "/listing", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getListings(){
-        SubCategory s = new SubCategory("Steak");
-        s.add(buildListing());
-        SubCategory s2 = new SubCategory("Pizza");
-        s.add(buildListing2());
 
         Category c = new Category("Restaurant");
-        c.add(s);
-        c.add(s2);
-        Gson gson = new GsonBuilder().create();
-        String jsonString = gson.toJson(c);
-        return jsonString;
+        c.add("Steak", buildListing());
+        c.add("Pizza", buildListing2());
+
+        HashMap<String, Category>  categories = new HashMap<>();
+        categories.put("categories", c);
+        Gson gson = new GsonBuilder().registerTypeAdapter(Category.class,new CategorySerialize()).create();
+        return gson.toJson(c);
 
     }
 
@@ -83,7 +81,7 @@ public class testController {
         l.setDescription("Pizza in 15 minutes or your money back ");
         l.setCategory("Pizza");
         l.setWebsite("www.dominoes.fall");
-        l.setFeatureType("category");
+        l.setFeatureType("regular");
 
         return l;
     }

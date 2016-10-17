@@ -14,6 +14,8 @@ import java.time.LocalDate;
  * Created by Jlarrieux on 9/19/2016.
  */
 public class Listing {
+
+    private String title = "listing";
     private int price=0;
     private final int currencyMultiplier=100;
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);

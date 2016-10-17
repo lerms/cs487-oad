@@ -19,7 +19,7 @@ repositories {
 }
 jar{
     baseName="OAD"
-    version = "0.0.1"
+    version = "0.0.2GIT STA"
 }
 jacocoTestReport {
     reports {
@@ -56,6 +56,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile 'org.mod4j.com.google:collect:0.+'
 
 
 

@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface ListingRepository extends MongoRepository<Listing, String> {
 
-    public List<Listing> findByName(String name);
+    List<Listing> findByName(String name);
 
 }

@@ -1,9 +1,6 @@
-package com.cs487oad.test.java;
-
-
-
-import com.cs487oad.backend.entity.Listing;
-import com.cs487oad.backend.interactors.ListingInteractor;
+package interactor;
+import entity.Listing;
+import interactors.ListingInteractor;
 import org.junit.Before;
 import org.junit.Test;
 

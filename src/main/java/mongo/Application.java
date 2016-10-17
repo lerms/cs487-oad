@@ -1,6 +1,8 @@
 package mongo;
 
+import entity.Advertiser;
 import entity.Listing;
+import mongo.repositories.AdvertiserRepository;
 import mongo.repositories.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +19,9 @@ import java.util.List;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    private ListingRepository repository;
+    private ListingRepository listingRepository;
+    @Autowired
+    private AdvertiserRepository advertiserRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -25,13 +29,21 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        repository.save(new Listing("Morton's", "123 South Ave, Chicago IL",
+        listingRepository.deleteAll();
+        listingRepository.save(new Listing("Morton's", "123 South Ave, Chicago IL",
                 "(318) 265-1865",
                 "Casual fare restaurant with best pizza in town.",
                 "Restaurants",
                 "mortons.com",
                 "category", 2000.0));
-        List<Listing> found = repository.findByName("Morton's");
+        listingRepository.save(new Listing("John's", "123 South Ave, Chicago IL",
+                "(318) 265-1865",
+                "Casual fare restaurant with best pizza in town.",
+                "Restaurants",
+                "mortons.com",
+                "category", 2000.0));
+        advertiserRepository.save(new Advertiser());
+        List<Listing> found = listingRepository.findByName("Morton's");
         System.out.println(found);
     }
 }

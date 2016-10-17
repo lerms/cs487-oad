@@ -1,11 +1,8 @@
-package com.cs487oad.test.java;
+package entity;
 
-
-
-import com.cs487oad.backend.entity.Listing;
-import com.cs487oad.backend.util.CONSTANTS;
 import org.junit.Before;
 import org.junit.Test;
+import util.CONSTANTS;
 
 import java.time.LocalDate;
 
@@ -34,9 +31,7 @@ public class ListingTest {
 
     @Test
     public void testListingPriceIsZero() {
-
         assertTrue(listing.getPrice()==0);
-
     }
 
 
@@ -68,16 +63,42 @@ public class ListingTest {
     @Test
     public void testEndDate() {
         assertTrue(CONSTANTS.DEFAULT_DATE.equals(listing.getEndDate()));
-
     }
 
 
 
     @Test
     public void testEndDateIsSet() {
-
         listing.setEndDate(NOW);
         assertTrue(NOW.equals(listing.getEndDate()));
+    }
+
+
+
+    @Test
+    public void testListingNameIsSet() {
+        String test = "test";
+        listing.setName(test);
+        assertTrue(listing.getName().equals(test));
+    }
+
+
+
+    @Test
+    public void testListingDescriptionIsSet() {
+        String s = "this is a great listing";
+        listing.setDescription(s);
+        assertTrue(listing.getDescription().equals(s));
+    }
+
+
+
+    @Test
+    public void testListingCityIsSet() {
+        String chicago = "Chicago";
+        listing.setCity(chicago);
+        assertTrue(listing.getCity().equals(chicago));
+
     }
 
 

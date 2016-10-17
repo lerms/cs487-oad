@@ -1,3 +1,4 @@
+
 package boundaries.RestControllers;
 
 
@@ -18,13 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class test2 {
 
 
-    @RequestMapping("/")
-    String home(){
-        return  "hello world";
-    }
-
-
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(test2.class, args);
     }
+
+
+
+    @RequestMapping("/")
+    String home() {
+        return "hello world";
+    }
 }
+

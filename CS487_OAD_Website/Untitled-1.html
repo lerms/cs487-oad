@@ -3,33 +3,34 @@
 <html class="">
 <!--<![endif]-->
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Untitled Document</title>
-
-<link href="boilerplate.css" rel="stylesheet" type="text/css">
-<link href="css/oad_template_style.css" rel="stylesheet" type="text/css">
-
-<script src="respond.min.js"></script>
-<script src="js/jquery-3.1.1.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ad Directory</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link href="boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="css/oad_template_style.css" rel="stylesheet" type="text/css">
+	<script src="respond.min.js"></script>
+	<script src="js/jquery-3.1.1.js"></script>
 </head>
 
 <body>
-	<div id="banner"><p id="title"><b>Ad</b> Directory</p></div>
+	<div id="banner"><img id="logo" src="images/ad_directory_icon.png"><p id="title"><b>Ad</b> Directory</p></div>
     <hr id="gradient_hr">
     <div id="search">
-    	<div id="find_near_me">Find Near Me</div>
+    	<div id="find_top_wrapper">
+    		<div id="find_near_me">Find Near Me</div>
+        	<img id="arrow" src="images/down_button.png">
+        </div>
         <div id="find_wrapper">
-    	<input type="search" placeholder="Type in your search..." class="find_search">
-        <p class="find_text">in</p>
-        <select name="city" class="find_drop"><option selected disabled>Select your location...</option></select>
-        <p class="find_text">near</p>
-        <select name="neighborhood" class="find_drop"><option selected disabled>Select neighborhood...</option></select>
-        <br>
-        <input type="submit" value="SEARCH" id="search_button">
+            <input type="search" placeholder="Type in your search..." class="find_search">
+            <p class="find_text">in</p>
+            <select name="city" class="find_drop"><option selected disabled>Select your location...</option></select>
+            <p class="find_text">near</p>
+            <select name="neighborhood" class="find_drop"><option selected disabled>Select neighborhood...</option></select>
+            <br>
+            <input type="submit" value="SEARCH" id="search_button">
         </div>
     </div>
-    
 	<div id="categories"></div>
 </body>
 

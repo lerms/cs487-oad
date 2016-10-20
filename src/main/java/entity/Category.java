@@ -1,31 +1,47 @@
 package entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 /**
  * Created by alexanderlerma on 10/17/16.
  */
+@Document
 public class Category {
     @Id
-    public String id;
-    public String name;
-    public List<Listing> listings;
-    public Set<String> subcategoryIds;
+    private ObjectId id;
+    private String name;
+    private ObjectId parent;
+    private String slug;
+    private List<Category> ancestors;
 
-    public void addSubcategory(Category sub) {
-        subcategoryIds.add(sub.id);
+
+    public Category(String name, ObjectId parent, String slug, List<Category> ancestors) {
+        this.name = name;
+        this.parent = parent;
+        this.slug = slug;
+        this.ancestors = ancestors;
     }
 
-    public void addListing(Listing listing) {
-        listing.setCategory(id);
-        listings.add(listing);
+    public Category(String name, ObjectId parent, String slug) {
+        this(name, parent, slug, new ArrayList<>());
     }
 
-    public Set<String> getSubcategories() {
-        return new HashSet<>(subcategoryIds);
+    public void addAncestorCategory(Category category) {
+        if (category != null)
+            ancestors.add(category);
+    }
+
+    public List<Category> getAncestors() {
+        return new ArrayList<>(ancestors);
+    }
+
+    public ObjectId getId() {
+        return id;
     }
 }

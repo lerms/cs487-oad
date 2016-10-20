@@ -12,17 +12,18 @@ import java.util.List;
  * Created by alexanderlerma on 10/16/16.
  */
 @RestController
+@RequestMapping("/advertiser")
 public class AdvertiserController {
 
     @Autowired
     public AdvertiserRepository advertisers;
 
-    @RequestMapping(value="/advertiser", method= RequestMethod.GET)
+    @GetMapping("/")
     public List<Advertiser> getAllAdvertisers() {
         return advertisers.findAll();
     }
 
-    @RequestMapping(value="/advertiser/{description}", method=RequestMethod.GET)
+    @RequestMapping(value = "/{description}", method = RequestMethod.GET)
     public List<Advertiser> getAdvertiserByDescription(@PathVariable("description") String description) {
 
         return advertisers.findByDescription(description);

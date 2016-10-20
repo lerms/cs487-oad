@@ -1,5 +1,7 @@
 package entity;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import util.CONSTANTS;
 
 import java.time.LocalDate;
@@ -8,23 +10,21 @@ import java.util.Objects;
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
+@Document
 public class Listing {
-
-
-    private String  city;
-
 
     private final int currencyMultiplier = 100;
 
     @Id
     private String id;
-    private String categoryId;
+    private ObjectId categoryId;
     private String name;
     private String address;
     private String phone;
     private String description;
     private String website;
     private String featureType;
+    private String  city;
     private double price;
 
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
@@ -34,16 +34,20 @@ public class Listing {
 
     public Listing() {}
 
-    public Listing(String name, String address, String phone, String description,
-                   String category, String website, String featureType, double price) {
+    public Listing(ObjectId categoryId, String name, String address, String phone, String description,
+                   String website, String featureType, String city,
+                   double price, LocalDate startDate, LocalDate endDate) {
+        this.categoryId = categoryId;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.description = description;
-        this.categoryId = category;
         this.website = website;
         this.featureType = featureType;
+        this.city = city;
         setPrice(price);
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public double getPrice() {
@@ -131,11 +135,11 @@ public class Listing {
         return description;
     }
 
-    public String getCategoryId() {
+    public ObjectId getCategoryId() {
         return categoryId;
     }
 
-    public void setCategory(String categoryId) {
+    public void setCategory(ObjectId categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -168,7 +172,7 @@ public class Listing {
                 Objects.equals(website, listing.website) &&
                 Objects.equals(featureType, listing.featureType) &&
                 Objects.equals(startDate, listing.startDate) &&
-                Objects.equals(endDate, listing.endDate);
+                Objects.equals(endDate, listing.endDate) ;
     }
 
     @Override

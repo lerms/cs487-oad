@@ -1,10 +1,12 @@
 package entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
+@Document
 public class Advertiser {
 
 

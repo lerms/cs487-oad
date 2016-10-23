@@ -21,12 +21,12 @@ public class CategorySerialize implements JsonSerializer<Category> {
         JsonArray array  = new JsonArray();
 //        array.add(object);
 
-        for(String s: src.getSubcategoryMap().keySet()){
-            JsonObject obj = new JsonObject();
-            obj.addProperty("s1","test");
-            obj.addProperty(s, src.getSubcategoryMap().get(s).toString());
-            array.add(obj);
-        }
+//        for(String s: src.getSubcategoryMap().keySet()){
+//            JsonObject obj = new JsonObject();
+//            obj.addProperty("s1","test");
+//            obj.addProperty(s, src.getSubcategoryMap().get(s).toString());
+//            array.add(obj);
+//        }
 
 
         return array;

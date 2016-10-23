@@ -44,8 +44,8 @@ public class testController {
     public @ResponseBody String getListings(){
 
         Category c = new Category("Restaurant");
-        c.add("Steak", buildListing());
-        c.add("Pizza", buildListing2());
+//        c.add("Steak", buildListing());
+//        c.add("Pizza", buildListing2());
 
         HashMap<String, Category>  categories = new HashMap<>();
         categories.put("categories", c);

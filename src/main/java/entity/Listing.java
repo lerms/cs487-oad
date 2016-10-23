@@ -23,10 +23,11 @@ public class Listing {
     private String name;
     private String address;
     private String description;
-    private String category;
+    private Category category;
     private String website;
     private String featureType;
     private String phoneNumber;
+
 
     public double getPrice() {
         return (double) price/currencyMultiplier;
@@ -109,14 +110,14 @@ public class Listing {
 
 
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
 
 
     public void setCategory(String category) {
-        this.category = category;
+        this.category = new Category(category);
     }
 
 
@@ -156,10 +157,14 @@ public class Listing {
     }
 
 
+    public void setSubCategories(){
+//        category.a
+    }
+
 
     @Override
     public String toString() {
         return getName()+", "+getDescription()+", "+getPrice()+", "+getAddress()+", "+getPhoneNumber()+", "+
-                getCategory()+", "+getFeatureType()+", "+getStartDate().toString()+", "+getEndDate().toString()+", "+getWebsite();
+                getCategory().getName()+", "+getFeatureType()+", "+getStartDate().toString()+", "+getEndDate().toString()+", "+getWebsite();
     }
 }

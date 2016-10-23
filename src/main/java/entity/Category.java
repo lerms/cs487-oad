@@ -14,7 +14,7 @@ public class Category {
     String name;
     HashMap<String, SubCategory> Subcategory = new HashMap<>();
 //    private ImmutableMap<String, SubCategory> Subcategory ;
-    Arrayl
+
 
 
     public Category(String name){

@@ -7,6 +7,7 @@ import entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
 import util.CONSTANTS;
+import util.FUNCTIONS;
 
 import java.time.LocalDate;
 
@@ -79,6 +80,47 @@ public class ListingTest {
 
         listing.setEndDate(NOW);
         assertTrue(NOW.equals(listing.getEndDate()));
+    }
+
+
+
+    @Test
+    public void testToString() {
+        listing = new Listing();
+        String s= decorateListing();
+        FUNCTIONS.printToDebug(String.format("\n%s\n%s",s,listing.toString()));
+        assertTrue(listing.toString().equals(s));
+
+
+    }
+
+    private String decorateListing(){
+        String name = "NAME";
+        listing.setName(name);
+        String address = "123 state street, chicago Il";
+        listing.setAddress(address);
+        String category = "Restaurant";
+        listing.setCategory(category);
+        String description = "This is a great restaurant";
+        listing.setDescription(description);
+        LocalDate startDate = LocalDate.of(2016,11,06);
+        LocalDate endDate = LocalDate.of(2019,11,06);
+        listing.setEndDate(endDate);
+        listing.setStartDate(startDate);
+
+        String fe = "fe";
+        listing.setFeatureType(fe);
+        String phoneNumber = "11-11";
+        listing.setPhoneNumber(phoneNumber);
+        double price = 10.55;
+        listing.setPrice(price);
+        String website = "www.red.com";
+        listing.setWebsite(website);
+
+
+
+        return name+", "+description+", " +price+", "+address+", "+phoneNumber+", "+
+                category+", "+fe+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
     }
 
 

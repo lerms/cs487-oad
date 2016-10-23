@@ -3,9 +3,7 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context-Jersey" removed="false">
-          <dependency>spring_boot_boundaries.RestControllers.test2</dependency>
-          <file>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.ext/jersey-spring3/2.23.2/e4b2030dccde4aae0816dabffa93e3ba57c28dfb/jersey-spring3-2.23.2.jar!/jersey-spring-applicationContext.xml</file>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/../../src/main/java/boundaries/RestControllers/test2.java</file>
         </fileset>
       </configuration>

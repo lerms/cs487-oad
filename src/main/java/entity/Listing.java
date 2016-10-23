@@ -64,9 +64,6 @@ public class Listing {
 
 
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
 
 
@@ -156,5 +153,13 @@ public class Listing {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return getName()+", "+getDescription()+", "+getPrice()+", "+getAddress()+", "+getPhoneNumber()+", "+
+                getCategory()+", "+getFeatureType()+", "+getStartDate().toString()+", "+getEndDate().toString()+", "+getWebsite();
     }
 }

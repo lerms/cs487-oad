@@ -21,6 +21,8 @@ jar{
     baseName="OAD"
     version = "0.0.2GIT STA"
 }
+
+
 jacocoTestReport {
     reports {
         xml.enabled false
@@ -31,12 +33,15 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com/cs487oad/test/java/**'])
+                    exclude: ['boundaries/RestControllers/**',
+                    'boundaries/**',
+                    'Configuration/**'])
         })
     }
 
 
 }
+
 
 
 task runTest{

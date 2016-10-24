@@ -1,9 +1,9 @@
-package com.cs487oad.test.java;
+package entityTest;
 
 
 
 
-import com.cs487oad.backend.entity.Advertiser;
+import entity.Advertiser;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class AdvertiserTest {
 
-    com.cs487oad.backend.entity.Advertiser advertiser;
+    Advertiser advertiser;
 
 
 

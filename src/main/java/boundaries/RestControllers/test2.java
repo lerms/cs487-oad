@@ -20,7 +20,7 @@ public class test2 {
 
     @RequestMapping("/")
     String home(){
-        return  "hello world";
+        return  "<p>hello world</p><p>Salut au monde</p><p>Hola Mundo</p><p>Allo a tout moun</p><p>Wha gwaan to di world</p>";
     }
 
 

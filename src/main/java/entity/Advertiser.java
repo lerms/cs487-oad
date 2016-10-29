@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Advertiser {
 
-
     @Id
     private String id;
     private String description;

@@ -3,11 +3,9 @@ import java.awt.Desktop
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
-
     }
 }
 
@@ -18,6 +16,10 @@ apply plugin: 'spring-boot'
 
 repositories {
     mavenCentral()
+}
+jar{
+    baseName="OAD"
+    version = "0.0.2GIT STA"
 }
 
 
@@ -31,7 +33,9 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com/csf87oad/test/java/**'])
+                    exclude: ['boundaries/RestControllers/**',
+                    'boundaries/**',
+                    'Configuration/**'])
         })
     }
 
@@ -59,6 +63,8 @@ dependencies {
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile 'org.apache.commons:commons-lang3:3.4'
     testCompile "org.mockito:mockito-core:1.+"
+    compile 'org.mod4j.com.google:collect:0.+'
+
 
 
 }

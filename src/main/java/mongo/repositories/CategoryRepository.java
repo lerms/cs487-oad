@@ -11,4 +11,6 @@ import java.util.List;
 public interface CategoryRepository extends MongoRepository<Category, String> {
     List<Category> findByName(String name);
     List<Category> findBySlug(String slug);
+    String deleteBySlug(String slug);
+
 }

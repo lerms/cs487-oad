@@ -1,0 +1,59 @@
+<!doctype html>
+<!--[if gt IE 8]><!-->
+<html class="">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- TemplateBeginEditable name="doctitle" -->
+	<title>Ad Directory</title>
+	<!-- TemplateEndEditable -->
+	<link rel="shortcut icon" href="../images/favicon.ico">
+	<link href="../boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="../css/oad_template_style.css" rel="stylesheet" type="text/css">
+	<script src="../respond.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<!-- TemplateBeginEditable name="head" -->
+	<!-- TemplateEndEditable -->
+</head>
+
+<body>
+	<div id="banner"><img id="logo" src="../images/ad_directory_icon.png"><p id="title"><b>Ad</b> Directory</p></div>
+    <hr id="gradient_hr">
+    <div id="left_menu">
+        <div id="search">
+            <div id="find_top_wrapper">
+                <div id="find_near_me">Find Near Me</div>
+                <img id="arrow" src="../images/down_button.png">
+            </div>
+            <div id="find_wrapper">
+                <input type="search" placeholder="Type in your search..." class="find_search">
+                <p class="find_text">in</p>
+                <select name="city" class="find_drop"><option selected disabled>Select your location...</option></select>
+                <p class="find_text">near</p>
+                <select name="neighborhood" class="find_drop"><option selected disabled>Select neighborhood...</option></select>
+                <br>
+                <input type="submit" value="SEARCH" id="search_button">
+            </div>
+        </div>
+        <div id="featured_list"></div>
+        <div id="about">
+        	<div id="about_title">About Us</div>
+            <div id="about_text">
+            	<p>perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+                sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                sit amet</p>
+			</div>
+        </div>
+    </div>
+    <div id="home_featured_listing"></div>
+	<div id="categories"></div>
+</body>
+
+<script src="../js/oad_menu_display.js"></script>
+<script src="../js/oad_load_object.js"></script> <!-- IMPORTANT!!! KEEP SCRIPT AT END OF HTML -->
+</html>

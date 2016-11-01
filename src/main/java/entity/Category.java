@@ -1,10 +1,10 @@
 package entity;
 
-<<<<<<< HEAD
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +13,15 @@ import java.util.List;
  * Created by alexanderlerma on 10/17/16.
  */
 @Document
-public class Category {
+public class Category implements Serializable{
     @Id
     private ObjectId id;
     private String name;
     private ObjectId parent;
     private String slug;
     private List<Category> ancestors;
+
+    public Category() {}
 
 
     public Category(String name, ObjectId parent, String slug, List<Category> ancestors) {
@@ -45,47 +47,5 @@ public class Category {
     public ObjectId getId() {
         return id;
     }
-=======
 
-
-/**
- * Created by Jlarrieux on 10/17/2016.
- */
-public class Category {
-
-    String name;
-//    HashMap<String, SubCategory> Subcategory = new HashMap<>();
-//    private ImmutableMap<String, SubCategory> Subcategory ;
-
-
-
-
-    public Category(String name){
-        this.name = name;
-    }
-
-//    public void add(String subCaterogryName ){
-//        SubCategory sub;
-//        if(Subcategory.containsKey(subCaterogryName)) {
-//            sub =  Subcategory.get(subCaterogryName);
-//
-//        }else{
-//            sub = new SubCategory(subCaterogryName);
-//        }
-//        sub.add(l);
-//    }
-
-    public String getName(){
-        return  name;
-    }
-
-    public void print(){
-
-    }
-
-//    public HashMap<String, SubCategory> getSubcategoryMap(){
-//        return Subcategory;
-//    }
-
->>>>>>> origin/developer
 }

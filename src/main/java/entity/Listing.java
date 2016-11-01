@@ -1,9 +1,13 @@
-package com.cs487oad.backend.entity;
+package entity;
 
 
 
-import com.cs487oad.backend.util.CONSTANTS;
+import util.CONSTANTS;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -11,7 +15,7 @@ import java.util.Objects;
  * Created by Jlarrieux on 9/19/2016.
  */
 @Document
-public class Listing {
+public class Listing implements Serializable{
 
     private final int currencyMultiplier = 100;
 
@@ -24,11 +28,9 @@ public class Listing {
     private String description;
     private String website;
     private String featureType;
-    private String  city;
-    private double price;
-    private Category category;
+    private String city;
     private String phoneNumber;
-    private int price=0;
+    private int price;
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
     private LocalDate endDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
 
@@ -56,11 +58,12 @@ public class Listing {
     }
 
     public double getPrice() {
-        return price/currencyMultiplier;
+        return (double) price / currencyMultiplier;
     }
 
     public void setPrice(double price){
-        this.price = price * currencyMultiplier;
+        int intermediate = (int) (price * currencyMultiplier);
+        this.price = intermediate;
 
     }
 
@@ -89,88 +92,6 @@ public class Listing {
     }
 
 
-
-
-
-
-    public int getCurrencyMultiplier() {
-        return currencyMultiplier;
-    }
-
-
-
-    public String getName() {
-        return name;
-    }
-
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-
-    public String getAddress() {
-        return address;
-    }
-
-
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
-
-    public String getDescription() {
-        return description;
-    }
-
-
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-
-    public Category getCategory() {
-        return category;
-    }
-
-
-
-    public void setCategory(String category) {
-        this.category = new Category(category);
-    }
-
-
-
-    public String getWebsite() {
-        return website;
-    }
-
-
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-
-
-    public String getFeatureType() {
-        return featureType;
-    }
-
-
-
-    public void setFeatureType(String featureType) {
-        this.featureType = featureType;
-    }
-
-
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -181,18 +102,6 @@ public class Listing {
         this.phoneNumber = phoneNumber;
     }
 
-
-    public void setSubCategories(){
-//        category.a
-    }
-
-
-    @Override
-    public String toString() {
-        return getName()+", "+getDescription()+", "+getPrice()+", "+getAddress()+", "+getPhoneNumber()+", "+
-                getCategory().getName()+", "+getFeatureType()+", "+getStartDate().toString()+", "+getEndDate().toString()+", "+getWebsite();
-    }
-}
 
     public void setCity(String city) {
         this.city = city;

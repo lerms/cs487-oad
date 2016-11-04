@@ -33,9 +33,9 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['boundaries/RestControllers/**',
-                    'boundaries/**',
-                    'Configuration/**'])
+                    exclude: ['com.cs487.oad.boundaries/RestControllers/**',
+                    'com.cs487.oad.boundaries/**',
+                    'com.cs487.oad.configuration/**'])
         })
     }
 

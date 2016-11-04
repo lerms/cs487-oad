@@ -3,8 +3,8 @@ package interactorTest;
 
 
 import Interactors.CategoryInteractor;
-import entity.Category;
-import entity.SubCategory;
+import com.cs487.oad.entity.Category;
+import com.cs487.oad.entity.SubCategory;
 import org.junit.Before;
 import org.junit.Test;
 

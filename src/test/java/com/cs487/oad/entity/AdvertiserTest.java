@@ -1,12 +1,7 @@
-package entityTest;
+package com.cs487.oad.entity;
 
-
-
-
-import com.cs487.oad.entity.Advertiser;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertTrue;
 
 

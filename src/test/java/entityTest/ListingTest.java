@@ -3,11 +3,11 @@ package entityTest;
 
 
 
-import entity.Listing;
+import com.cs487.oad.entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
-import util.CONSTANTS;
-import util.FUNCTIONS;
+import com.cs487.oad.util.CONSTANTS;
+import com.cs487.oad.util.FUNCTIONS;
 
 import java.time.LocalDate;
 

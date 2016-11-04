@@ -1,6 +1,6 @@
 package interactor;
-import entity.Listing;
-import interactors.ListingInteractor;
+import com.cs487.oad.entity.Listing;
+import com.cs487.oad.interactors.ListingInteractor;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -3,7 +3,7 @@ package interactorTest;
 
 
 import Interactors.ListingInteractor;
-import entity.Listing;
+import com.cs487.oad.entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -18,9 +18,9 @@
     <content type="html">&lt;div class="paragraph"&gt;
 &lt;p&gt;On behalf of the community, I am pleased to announce the release of Spring LDAP 2.2.0.RC1.&lt;/p&gt;
 &lt;/div&gt;
-&lt;h1 id="what-s-new-in-spring-ldap-2-2" class="sect0"&gt;&lt;a class="anchor" href="#what-s-new-in-spring-ldap-2-2"&gt;&lt;/a&gt;What’s New in Spring LDAP 2.2&lt;/h1&gt;
+&lt;h1 id="what-s-new-in-spring-ldap-2-2" class="sect0"&gt;&lt;a class="anchor" href="#what-s-new-in-spring-ldap-2-2"&gt;&lt;/a&gt;Whatï¿½s New in Spring LDAP 2.2&lt;/h1&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;You can find highlights of what&amp;#8217;s new in the &lt;a href="http://docs.spring.io/spring-ldap/docs/2.2.0.RC1/reference/#what-s-new-in-2-2"&gt;What’s New in Spring LDAP 2.2&lt;/a&gt; section of the reference.&lt;/p&gt;
+&lt;p&gt;You can find highlights of what&amp;#8217;s new in the &lt;a href="http://docs.spring.io/spring-ldap/docs/2.2.0.RC1/reference/#what-s-new-in-2-2"&gt;Whatï¿½s New in Spring LDAP 2.2&lt;/a&gt; section of the reference.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h1 id="contributions" class="sect0"&gt;&lt;a class="anchor" href="#contributions"&gt;&lt;/a&gt;Contributions&lt;/h1&gt;
 &lt;div class="paragraph"&gt;
@@ -146,7 +146,7 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
     </author>
     <id>tag:spring.io,2016-09-29:2641</id>
     <updated>2016-09-29T08:43:19Z</updated>
-    <content type="html">&lt;p&gt;We’re pleased to announce a first milestone release of &lt;a href="http://projects.spring.io/spring-statemachine"&gt;Spring Statemachine 1.2.0.M1&lt;/a&gt;. Artifacts are available from &lt;a href="http://repo.spring.io/libs-milestone/org/springframework/statemachine/"&gt;Spring Repository&lt;/a&gt;.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Weï¿½re pleased to announce a first milestone release of &lt;a href="http://projects.spring.io/spring-statemachine"&gt;Spring Statemachine 1.2.0.M1&lt;/a&gt;. Artifacts are available from &lt;a href="http://repo.spring.io/libs-milestone/org/springframework/statemachine/"&gt;Spring Repository&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;What we got into this first milestone:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Usual bug fixes and small enhancements&lt;/li&gt;
@@ -157,7 +157,7 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
 &lt;/ul&gt;
 &lt;p&gt;There has been a support for complex state hierarchy from a day one but trouble was that everything had to be defined in a same state configuration. New submachine support adds a feature where a state can be associated with other machine which allows some level of re-use and makes configuration more clean.&lt;/p&gt;
 &lt;p&gt;States can now have their own actions which are executed while being on a state. Execution happens after entry actions and before exit actions and can be cancelled if state exit happens before action completes.&lt;/p&gt;
-&lt;p&gt;Common topic among enhacement requests has been to add ways to keep machine state configuration externally from a static configuration defined either via JavaConfig or imported UML sources. Base support for this has been out there starting from 1.1.0 release but its use has been relatively awkward. For this we added a new abstraction via Spring Data Repositories and first implementation supports JPA and there is a &lt;a href="http://docs.spring.io/spring-statemachine/docs/1.2.0.M1/reference/htmlsingle/#statemachine-examples-datajpa"&gt;JPA sample&lt;/a&gt; using embedded H2 database. Work we got into this first milestone is very basic(i.e. substates are not supported) but plan is to make it fully compatible with rest of a framework and add more OOB repository implementations(i.e. mongo/redis) in coming milestone releases.&lt;/p&gt;
+&lt;p&gt;Common topic among enhacement requests has been to add ways to keep machine state configuration externally from a static configuration defined either via JavaConfig or imported UML sources. Base support for this has been out there starting from 1.1.0 release but its use has been relatively awkward. For this we added a new abstraction via Spring Data Repositories and first implementation supports JPA and there is a &lt;a href="http://docs.spring.io/spring-statemachine/docs/1.2.0.M1/reference/htmlsingle/#statemachine-examples-datajpa"&gt;JPA sample&lt;/a&gt; using embedded H2 database. Work we got into this first milestone is very basic(i.e. substates are not supported) but plan is to make it fully compatible with rest of a framework and add more OOB repository implementations(i.e. com.cs487.oad.mongo/redis) in coming milestone releases.&lt;/p&gt;
 &lt;p&gt;Full changes as usual are available from &lt;a href="https://github.com/spring-projects/spring-statemachine/blob/master/docs/src/info/changelog.txt"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Thank you for all who have contributed in any way either via Stack Overflow, GitHub Issues or other channels. Driving force for changes really has been a community and requests from it.&lt;/p&gt;</content>
   </entry>
@@ -188,7 +188,7 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
   &lt;li&gt;in the run up to Spring Cloud Camden, Marius Bogoevici just &lt;a href="https://spring.io/blog/2016/09/23/spring-cloud-stream-brooklyn-release-is-available"&gt;announced Spring Cloud Stream Brooklyn, which makes it easy to build messaging-based microservcies&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Data ninja Janne Valkealahti just &lt;a href="https://spring.io/blog/2016/09/22/spring-cloud-data-flow-for-apache-yarn-1-0-2-released"&gt;announced Spring Cloud Data Flow for Apache YARN 1.0.2&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Platform lead Andy Wilkinson&amp;rsquo;s &lt;a href="https://spring.io/blog/2016/09/22/spring-io-platform-athens-release"&gt;just announced Spring IO Platform Athens&lt;/a&gt; and &lt;a href="https://spring.io/blog/2016/09/22/spring-io-platform-2-0-8-release"&gt;Spring IO Platform 2.0.8&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Boot ninja Stéphane Nicoll &lt;a href="https://spring.io/blog/2016/09/21/spring-boot-1-4-1-and-1-3-8-available-now"&gt;just announced Spring Boot 1.4.1. and 1.3.8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Boot ninja Stï¿½phane Nicoll &lt;a href="https://spring.io/blog/2016/09/21/spring-boot-1-4-1-and-1-3-8-available-now"&gt;just announced Spring Boot 1.4.1. and 1.3.8&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Atomist founder and Spring founder Rod Johnson has an interesting post up on &lt;a href="https://medium.com/the-composition/software-that-writes-and-evolves-software-953578a6fc36#.1fb657dhh"&gt;how his company&amp;rsquo;s technology can be used to automate code edits&lt;/a&gt; to facilitate upgrading codebases. His example, of course, is in terms of Spring Cloud and - in particular - Hystrix.&lt;/li&gt;
 &lt;/ul&gt;</content>
   </entry>
@@ -326,72 +326,163 @@ The current &lt;code&gt;1.2&lt;/code&gt; version will be still supported, but ju
     </author>
     <id>tag:spring.io,2016-09-19:2621</id>
     <updated>2016-09-27T08:00:00Z</updated>
-    <content type="html">&lt;p&gt;After more &lt;a href="https://spring.io/blog/2016/02/16/reactor-2-5-a-second-generation-reactive-foundation-for-the-jvm"&gt;than a year of work&lt;/a&gt;, &lt;a href="https://spring.io/blog/2016/03/11/reactor-core-3-0-becomes-a-unified-reactive-foundation-on-java-8"&gt;multiple milestones&lt;/a&gt; and fine tuning based on much feedback, I have the pleasure of announcing Reactor 3 General Availability. You will find Reactor Core 3.0.2.RELEASE on Maven Central.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://gitter.im/reactor/reactor?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"&gt;&lt;img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/reactor/reactor" /&gt;&lt;/a&gt; &lt;a href="http://mvnrepository.com/artifact/io.projectreactor/reactor-core"&gt;&lt;img src="https://maven-badges.herokuapp.com/maven-central/io.projectreactor/reactor-core/badge.svg?style=plastic" alt="Reactor Core" /&gt;&lt;/a&gt; &lt;/p&gt;&lt;h2&gt;&lt;a href="#what-is-reactor-3" class="anchor" name="what-is-reactor-3"&gt;&lt;/a&gt;What is Reactor 3 ?&lt;/h2&gt;
-&lt;p&gt;Reactor 3 provides a powerful and efficient &lt;a href="http://reactive-streams.org"&gt;reactive&lt;/a&gt; programming model for Java 8 based applications. The model builds upon the experience of both &lt;em&gt;Reactor 2&lt;/em&gt; and &lt;em&gt;RxJava 1&lt;/em&gt; and introduces a fluent way to compose asynchronous backpressure-ready event processing. &lt;a href="https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1"&gt;Spring Framework 5 uses Reactor 3&lt;/a&gt; to build and eventually expose a &lt;a href="https://spring.io/blog/2016/09/22/new-in-spring-5-functional-web-framework"&gt;complete reactive story&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;Its design relies on an extensible execution model that favors event processing colocation. Typically, Reactor will be jumping threads between event flow stages only when explicitly asked so. For instance, in-memory operations such as list access or payload transformation do not usually require a thread boundary. If the operation producer or receiver might take time, users are expected to operate their flow with &lt;code&gt;Flux#publishOn&lt;/code&gt; / &lt;code&gt;Mono#publishOn&lt;/code&gt; or &lt;code&gt;Flux#subscribeOn&lt;/code&gt; / &lt;code&gt;Mono#subscribeOn&lt;/code&gt; and choose a &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/scheduler/Schedulers.html"&gt;Scheduler&lt;/a&gt; to run on. Alternatively, if a user is combining the results of many &lt;code&gt;Publisher&lt;/code&gt; as with &lt;em&gt;merge&lt;/em&gt; or &lt;em&gt;concat&lt;/em&gt;, Reactor will implicitly deal in a thread-safe way with various potential thread boundaries. In effect a flow stage hosted by a &lt;code&gt;Publisher&lt;/code&gt; might be traversed by a producing and a receiving thread at least.&lt;/p&gt;
-&lt;p&gt;All of this is implemented in compliance with the behaviors defined by the &lt;a href="https://github.com/reactive-streams/reactive-streams-jvm"&gt;Reactive Streams specification&lt;/a&gt;. Reactor works at making the spec a commodity for library writers or Spring developers with pre-made operators you would apply in a streaming and/or asynchronous scenario.&lt;/p&gt;&lt;h2&gt;&lt;a href="#mono-and-flux" class="anchor" name="mono-and-flux"&gt;&lt;/a&gt;Mono and Flux&lt;/h2&gt;
-&lt;p&gt;A flow definition is what Reactor calls a chain of &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Flux.html"&gt;Flux&lt;/a&gt; or &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Mono.html"&gt;Mono&lt;/a&gt; depending on the volume flowing into the defined stream. These types implement Reactive Streams &lt;code&gt;Publisher&lt;/code&gt; at every stage and can be passed around generically. Why &lt;em&gt;two&lt;/em&gt; reactive types then ? Because the cardinality matters to Reactor. A &lt;code&gt;Flux&lt;/code&gt; will observe 0 to N items and eventually terminate successfully or not. A &lt;code&gt;Mono&lt;/code&gt; will observe 0 or 1 item, with &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt; hinting at most 0 item.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s look at the following blocking API :&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;interface BlockingUserRepository {&#xD;
-     User get(String id);&#xD;
-     List&amp;lt;User&amp;gt; findAll();&#xD;
-     void save(User data) throws RepositoryException;&#xD;
-     List&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Using plain Reactive Streams &lt;code&gt;Publisher&lt;/code&gt;, we would get the following contract :&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;interface ReactiveUserRepository {&#xD;
-     Publisher&amp;lt;User&amp;gt; get(String id);&#xD;
-     Publisher&amp;lt;User&amp;gt; findAll();&#xD;
-     Publisher&amp;lt;Void&amp;gt; save(Publisher&amp;lt;? extends User&amp;gt; source);&#xD;
-     Publisher&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;But with Reactor we can keep semantic evidence of the intended cardinality :&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;interface ReactorUserRepository {&#xD;
-     Mono&amp;lt;User&amp;gt; get(String id);&#xD;
-     Flux&amp;lt;User&amp;gt; findAll();&#xD;
-     Mono&amp;lt;Void&amp;gt; save(Publisher&amp;lt;? extends User&amp;gt; source);&#xD;
-     Flux&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Since both &lt;code&gt;Mono&lt;/code&gt; and &lt;code&gt;Flux&lt;/code&gt; implement &lt;code&gt;Publisher&lt;/code&gt; we can easily pass any reference of them as &lt;em&gt;Reactive data source&lt;/em&gt; while returning explicit semantics with &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt; fluent API :&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;// ReactorUserRepository userRepository;&#xD;
-&#xD;
-userRepository.save(Mono.fromCallable(() -&amp;gt; new User(&amp;quot;thomas&amp;quot;)))&#xD;
-              .doOnSuccess(res -&amp;gt; success())&#xD;
-              .subscribe();&#xD;
-&#xD;
-userRepository.save(Flux.just(new User(&amp;quot;bob&amp;quot;), new User(&amp;quot;robert&amp;quot;)))&#xD;
-              .doOnSuccess(res -&amp;gt; success())&#xD;
-              .subscribe();
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Keep in mind that &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Mono&lt;/code&gt; are meant for data producers that might take time. To manage reentrance and thread safety, operators must sometimes add some overhead in the executed flow. Still, efficiency is a core focus and we are getting regular reports from our engine contributor David Karnok. Reactor 3 is currenly one of the most &lt;a href="https://github.com/akarnokd/akarnokd-misc/issues/2"&gt;efficient&lt;/a&gt; reactive library on the JVM. In addition to these directly related benchmarks, we now benefit from RxJava 2 community feedback as well since it conceptually derives from the same smith and forge: &lt;a href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next ?&lt;/h2&gt;
-&lt;p&gt;We are working on 3.0.3 for the next immediate weeks and we keep in sync with the latest needs from Spring 5, CloudFoundry and latest research from Reactive Streams Commons.&lt;/p&gt;
-&lt;p&gt;In priority we will address:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-  &lt;p&gt;New Testing support: Reactor 3 was scheduled with testing support, however initial feedbacks raised a few user experience issues. We are now working on delivering that missing bit. Meanwhile, users can easily duplicate the isolated &lt;a href="https://github.com/reactor/reactor-core/blob/master/src/test/java/reactor/test/TestSubscriber.java"&gt;TestSubscriber&lt;/a&gt; from our test for their needs.&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;Guidance: While Reactor 3 is becoming increasingly popular, we are still working with a lot of human interaction internally or externally, power user with Rx knowledge and the &lt;a href="https://github.com/reactor/lite-rx-api-hands-on"&gt;quick tutorial&lt;/a&gt; contributed by &lt;a href="https://twitter.com/sdeleuze"&gt;Sebastien Deleuze&lt;/a&gt;. You will find more resources at the end of this post but we have started establishing some end-to-end scenarios that we find concrete, valuable and will help shaping an official reference reactor guide.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;h2&gt;&lt;a href="#reactor-ipc" class="anchor" name="reactor-ipc"&gt;&lt;/a&gt;Reactor IPC&lt;/h2&gt;
-&lt;p&gt;IPC stands for Inter-Process Communication and Reactor IPC is an ongoing initiative to answer the question &amp;ldquo;how to get away from the JVM in a Reactive Streams fashion&amp;rdquo;. We are working on an initial set of implementations with &lt;a href="https://github.com/reactor/reactor-kafka"&gt;Reactor Kafka&lt;/a&gt;, &lt;a href="https://github.com/reactor/reactor-aeron"&gt;Reactor Aeron&lt;/a&gt; &amp;amp; &lt;a href="https://github.com/reactor/reactor-netty"&gt;Reactor Netty&lt;/a&gt;. In fact a lot of things is going on right now with contract redesign and Reactor Kafka/Netty work that support some of the new Spring reactive stories. The intent of the IPC umbrella is not to create new web or messaging frameworks but reactive drivers applications or libraries alike can build on. They transform a given runtime input/output in &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Mono&lt;/code&gt; or &lt;code&gt;Subscriber&lt;/code&gt;, propagating reactive backpressure up to the IO access layer. Expect a lot of news about these initiatives over the coming months.&lt;/p&gt;&lt;h2&gt;&lt;a href="#credits" class="anchor" name="credits"&gt;&lt;/a&gt;Credits&lt;/h2&gt;
-&lt;p&gt;Let&amp;rsquo;s take some time to credit the people behind this release. &lt;a href="http://twitter.com/akarnokd"&gt;David Karnok&lt;/a&gt; is the main architect of the new Reactor engine and leads &lt;a href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt; research effort. Spring, Eclipse STS and CloudFoundry Client teams were instrumental in contributing design improvements and feedbacks as well. Beyond Pivotal, MuleSoft has been massively helpful and proactive about the latest development.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://reactivex.io"&gt;RxJava 1&lt;/a&gt; brought mainstream Reactive to the JVM and its complete functional Rx algebra has become an industrial-standard which we align with. It inspired the game-changing specification we implement with &lt;a href="http://reactive-streams.org"&gt;Reactive Streams&lt;/a&gt; and brought together JVM key players such as Netflix, Oracle, Pivotal, Typesafe, Red Hat and many more.&lt;/p&gt;&lt;h2&gt;&lt;a href="#resources" class="anchor" name="resources"&gt;&lt;/a&gt;Resources&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="http://www.slideshare.net/StphaneMaldini/reactor-30-a-reactive-foundation-for-java-8-and-spring"&gt;Reactor 3 overview&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/reactor/lite-rx-api-hands-on"&gt;Hands-On&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2016/04/19/understanding-reactive-types"&gt;Understanding Reactive Types&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/sdeleuze/spring-reactive-playground"&gt;Reactor + Spring 5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/viniciusccarvalho/spring-cloud-stream-ema-processor"&gt;Reactor + Spring Cloud Stream&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/team/dsyer"&gt;Dave Syer&lt;/a&gt; reactive series &lt;a href="https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape"&gt;part I&lt;/a&gt;, &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;part II&lt;/a&gt; &amp;amp; &lt;a href="https://spring.io/blog/2016/07/20/notes-on-reactive-programming-part-iii-a-simple-http-server-application"&gt;part III&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Implementor Use Case : &lt;a href="https://github.com/cloudfoundry/cf-java-client"&gt;CloudFoundry Java Client&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="http://projectreactor.io"&gt;Public site&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="http://github.com/reactor"&gt;Github Org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Stay tuned for more reactive stories ! The Reactor journey at Pivotal is only getting started, after much effort and research these past years we are excited to deliver a new experience. Our value proposition is directly correlated to Spring OSS, we have a unique opportunity to deliver reactive pipelines in an end-to-end fashion across all Spring portfolio. &lt;/p&gt;
-&lt;p&gt;To conclude, Spring and Reactor are praising our community, you, for the enormous support, encouragements and feedbacks. The feedback loop we have established for years is more than a nice pragmatic collaboration, it&amp;rsquo;s what we all need to transform our industry step by step.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;After more &lt;a
+        href="https://spring.io/blog/2016/02/16/reactor-2-5-a-second-generation-reactive-foundation-for-the-jvm"&gt;than
+        a year of work&lt;/a&gt;, &lt;a
+        href="https://spring.io/blog/2016/03/11/reactor-core-3-0-becomes-a-unified-reactive-foundation-on-java-8"&gt;multiple
+        milestones&lt;/a&gt; and fine tuning based on much feedback, I have the pleasure of announcing Reactor 3 General
+        Availability. You will find Reactor Core 3.0.2.RELEASE on Maven Central.&lt;/p&gt;
+        &lt;p&gt;&lt;a href="https://gitter.im/reactor/reactor?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"&gt;&lt;img
+        src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/reactor/reactor" /&gt;&lt;/a&gt;
+        &lt;a href="http://mvnrepository.com/artifact/io.projectreactor/reactor-core"&gt;&lt;img
+        src="https://maven-badges.herokuapp.com/maven-central/io.projectreactor/reactor-core/badge.svg?style=plastic"
+        alt="Reactor Core" /&gt;&lt;/a&gt; &lt;/p&gt;&lt;h2&gt;&lt;a href="#what-is-reactor-3" class="anchor"
+        name="what-is-reactor-3"&gt;&lt;/a&gt;What is Reactor 3 ?&lt;/h2&gt;
+        &lt;p&gt;Reactor 3 provides a powerful and efficient &lt;a href="http://reactive-streams.org"&gt;reactive&lt;/a&gt;
+        programming model for Java 8 based applications. The model builds upon the experience of both &lt;em&gt;Reactor
+        2&lt;/em&gt; and &lt;em&gt;RxJava 1&lt;/em&gt; and introduces a fluent way to compose asynchronous
+        backpressure-ready event processing. &lt;a
+        href="https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1"&gt;Spring Framework 5 uses
+        Reactor 3&lt;/a&gt; to build and eventually expose a &lt;a
+        href="https://spring.io/blog/2016/09/22/new-in-spring-5-functional-web-framework"&gt;complete reactive story&lt;/a&gt;.
+        &lt;/p&gt;
+        &lt;p&gt;Its design relies on an extensible execution model that favors event processing colocation. Typically,
+        Reactor will be jumping threads between event flow stages only when explicitly asked so. For instance, in-memory
+        operations such as list access or payload transformation do not usually require a thread boundary. If the
+        operation producer or receiver might take time, users are expected to operate their flow with &lt;code&gt;Flux#publishOn&lt;/code&gt;
+        / &lt;code&gt;Mono#publishOn&lt;/code&gt; or &lt;code&gt;Flux#subscribeOn&lt;/code&gt; / &lt;code&gt;Mono#subscribeOn&lt;/code&gt;
+        and choose a &lt;a href="http://projectreactor.io/core/docs/api/reactor/core/scheduler/Schedulers.html"&gt;Scheduler&lt;/a&gt;
+        to run on. Alternatively, if a user is combining the results of many &lt;code&gt;Publisher&lt;/code&gt; as with
+        &lt;em&gt;merge&lt;/em&gt; or &lt;em&gt;concat&lt;/em&gt;, Reactor will implicitly deal in a thread-safe way
+        with various potential thread com.cs487.oad.boundaries. In effect a flow stage hosted by a &lt;code&gt;Publisher&lt;/code&gt;
+        might be traversed by a producing and a receiving thread at least.&lt;/p&gt;
+        &lt;p&gt;All of this is implemented in compliance with the behaviors defined by the &lt;a
+        href="https://github.com/reactive-streams/reactive-streams-jvm"&gt;Reactive Streams specification&lt;/a&gt;.
+        Reactor works at making the spec a commodity for library writers or Spring developers with pre-made operators
+        you would apply in a streaming and/or asynchronous scenario.&lt;/p&gt;&lt;h2&gt;&lt;a href="#mono-and-flux"
+        class="anchor" name="mono-and-flux"&gt;&lt;/a&gt;Mono and Flux&lt;/h2&gt;
+        &lt;p&gt;A flow definition is what Reactor calls a chain of &lt;a
+        href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Flux.html"&gt;Flux&lt;/a&gt; or &lt;a
+        href="http://projectreactor.io/core/docs/api/reactor/core/publisher/Mono.html"&gt;Mono&lt;/a&gt; depending on
+        the volume flowing into the defined stream. These types implement Reactive Streams &lt;code&gt;Publisher&lt;/code&gt;
+        at every stage and can be passed around generically. Why &lt;em&gt;two&lt;/em&gt; reactive types then ? Because
+        the cardinality matters to Reactor. A &lt;code&gt;Flux&lt;/code&gt; will observe 0 to N items and eventually
+        terminate successfully or not. A &lt;code&gt;Mono&lt;/code&gt; will observe 0 or 1 item, with &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt;
+        hinting at most 0 item.&lt;/p&gt;
+        &lt;p&gt;Let&amp;rsquo;s look at the following blocking API :&lt;/p&gt;
+        &lt;pre&gt;&lt;code class="prettyprint java"&gt;interface BlockingUserRepository {&#xD;
+        User get(String id);&#xD;
+        List&amp;lt;User&amp;gt; findAll();&#xD;
+        void save(User data) throws RepositoryException;&#xD;
+        List&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
+        }
+        &lt;/code&gt;&lt;/pre&gt;
+        &lt;p&gt;Using plain Reactive Streams &lt;code&gt;Publisher&lt;/code&gt;, we would get the following contract :&lt;/p&gt;
+        &lt;pre&gt;&lt;code class="prettyprint java"&gt;interface ReactiveUserRepository {&#xD;
+        Publisher&amp;lt;User&amp;gt; get(String id);&#xD;
+        Publisher&amp;lt;User&amp;gt; findAll();&#xD;
+        Publisher&amp;lt;Void&amp;gt; save(Publisher&amp;lt;? extends User&amp;gt; source);&#xD;
+        Publisher&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
+        }
+        &lt;/code&gt;&lt;/pre&gt;
+        &lt;p&gt;But with Reactor we can keep semantic evidence of the intended cardinality :&lt;/p&gt;
+        &lt;pre&gt;&lt;code class="prettyprint java"&gt;interface ReactorUserRepository {&#xD;
+        Mono&amp;lt;User&amp;gt; get(String id);&#xD;
+        Flux&amp;lt;User&amp;gt; findAll();&#xD;
+        Mono&amp;lt;Void&amp;gt; save(Publisher&amp;lt;? extends User&amp;gt; source);&#xD;
+        Flux&amp;lt;User&amp;gt; findAllByUsernameLike(String s);&#xD;
+        }
+        &lt;/code&gt;&lt;/pre&gt;
+        &lt;p&gt;Since both &lt;code&gt;Mono&lt;/code&gt; and &lt;code&gt;Flux&lt;/code&gt; implement &lt;code&gt;Publisher&lt;/code&gt;
+        we can easily pass any reference of them as &lt;em&gt;Reactive data source&lt;/em&gt; while returning explicit
+        semantics with &lt;code&gt;Mono&amp;lt;Void&amp;gt;&lt;/code&gt; fluent API :&lt;/p&gt;
+        &lt;pre&gt;&lt;code class="prettyprint java"&gt;// ReactorUserRepository userRepository;&#xD;
+        &#xD;
+        userRepository.save(Mono.fromCallable(() -&amp;gt; new User(&amp;quot;thomas&amp;quot;)))&#xD;
+        .doOnSuccess(res -&amp;gt; success())&#xD;
+        .subscribe();&#xD;
+        &#xD;
+        userRepository.save(Flux.just(new User(&amp;quot;bob&amp;quot;), new User(&amp;quot;robert&amp;quot;)))&#xD;
+        .doOnSuccess(res -&amp;gt; success())&#xD;
+        .subscribe();
+        &lt;/code&gt;&lt;/pre&gt;
+        &lt;p&gt;Keep in mind that &lt;code&gt;Flux&lt;/code&gt; and &lt;code&gt;Mono&lt;/code&gt; are meant for data
+        producers that might take time. To manage reentrance and thread safety, operators must sometimes add some
+        overhead in the executed flow. Still, efficiency is a core focus and we are getting regular reports from our
+        engine contributor David Karnok. Reactor 3 is currenly one of the most &lt;a
+        href="https://github.com/akarnokd/akarnokd-misc/issues/2"&gt;efficient&lt;/a&gt; reactive library on the JVM. In
+        addition to these directly related benchmarks, we now benefit from RxJava 2 community feedback as well since it
+        conceptually derives from the same smith and forge: &lt;a
+        href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a
+        href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next ?&lt;/h2&gt;
+        &lt;p&gt;We are working on 3.0.3 for the next immediate weeks and we keep in sync with the latest needs from
+        Spring 5, CloudFoundry and latest research from Reactive Streams Commons.&lt;/p&gt;
+        &lt;p&gt;In priority we will address:&lt;/p&gt;
+        &lt;ul&gt;
+        &lt;li&gt;
+        &lt;p&gt;New Testing support: Reactor 3 was scheduled with testing support, however initial feedbacks raised a
+        few user experience issues. We are now working on delivering that missing bit. Meanwhile, users can easily
+        duplicate the isolated &lt;a
+        href="https://github.com/reactor/reactor-core/blob/master/src/test/java/reactor/test/TestSubscriber.java"&gt;TestSubscriber&lt;/a&gt;
+        from our test for their needs.&lt;/p&gt;&lt;/li&gt;
+        &lt;li&gt;
+        &lt;p&gt;Guidance: While Reactor 3 is becoming increasingly popular, we are still working with a lot of human
+        interaction internally or externally, power user with Rx knowledge and the &lt;a
+        href="https://github.com/reactor/lite-rx-api-hands-on"&gt;quick tutorial&lt;/a&gt; contributed by &lt;a
+        href="https://twitter.com/sdeleuze"&gt;Sebastien Deleuze&lt;/a&gt;. You will find more resources at the end of
+        this post but we have started establishing some end-to-end scenarios that we find concrete, valuable and will
+        help shaping an official reference reactor guide.&lt;/p&gt;&lt;/li&gt;
+        &lt;/ul&gt;&lt;h2&gt;&lt;a href="#reactor-ipc" class="anchor" name="reactor-ipc"&gt;&lt;/a&gt;Reactor IPC&lt;/h2&gt;
+        &lt;p&gt;IPC stands for Inter-Process Communication and Reactor IPC is an ongoing initiative to answer the
+        question &amp;ldquo;how to get away from the JVM in a Reactive Streams fashion&amp;rdquo;. We are working on an
+        initial set of implementations with &lt;a href="https://github.com/reactor/reactor-kafka"&gt;Reactor Kafka&lt;/a&gt;,
+        &lt;a href="https://github.com/reactor/reactor-aeron"&gt;Reactor Aeron&lt;/a&gt; &amp;amp; &lt;a
+        href="https://github.com/reactor/reactor-netty"&gt;Reactor Netty&lt;/a&gt;. In fact a lot of things is going on
+        right now with contract redesign and Reactor Kafka/Netty work that support some of the new Spring reactive
+        stories. The intent of the IPC umbrella is not to create new web or messaging frameworks but reactive drivers
+        applications or libraries alike can build on. They transform a given runtime input/output in &lt;code&gt;Flux&lt;/code&gt;
+        and &lt;code&gt;Mono&lt;/code&gt; or &lt;code&gt;Subscriber&lt;/code&gt;, propagating reactive backpressure up
+        to the IO access layer. Expect a lot of news about these initiatives over the coming months.&lt;/p&gt;&lt;h2&gt;&lt;a
+        href="#credits" class="anchor" name="credits"&gt;&lt;/a&gt;Credits&lt;/h2&gt;
+        &lt;p&gt;Let&amp;rsquo;s take some time to credit the people behind this release. &lt;a
+        href="http://twitter.com/akarnokd"&gt;David Karnok&lt;/a&gt; is the main architect of the new Reactor engine and
+        leads &lt;a href="http://github.com/reactor/reactive-streams-commons"&gt;Reactive Streams Commons&lt;/a&gt;
+        research effort. Spring, Eclipse STS and CloudFoundry Client teams were instrumental in contributing design
+        improvements and feedbacks as well. Beyond Pivotal, MuleSoft has been massively helpful and proactive about the
+        latest development.&lt;/p&gt;
+        &lt;p&gt;&lt;a href="http://reactivex.io"&gt;RxJava 1&lt;/a&gt; brought mainstream Reactive to the JVM and its
+        complete functional Rx algebra has become an industrial-standard which we align with. It inspired the
+        game-changing specification we implement with &lt;a href="http://reactive-streams.org"&gt;Reactive Streams&lt;/a&gt;
+        and brought together JVM key players such as Netflix, Oracle, Pivotal, Typesafe, Red Hat and many more.&lt;/p&gt;&lt;h2&gt;&lt;a
+        href="#resources" class="anchor" name="resources"&gt;&lt;/a&gt;Resources&lt;/h2&gt;
+        &lt;ul&gt;
+        &lt;li&gt;&lt;a
+        href="http://www.slideshare.net/StphaneMaldini/reactor-30-a-reactive-foundation-for-java-8-and-spring"&gt;Reactor
+        3 overview&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://github.com/reactor/lite-rx-api-hands-on"&gt;Hands-On&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://spring.io/blog/2016/04/19/understanding-reactive-types"&gt;Understanding Reactive
+        Types&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://github.com/sdeleuze/spring-reactive-playground"&gt;Reactor + Spring 5&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://github.com/viniciusccarvalho/spring-cloud-stream-ema-processor"&gt;Reactor +
+        Spring Cloud Stream&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="https://spring.io/team/dsyer"&gt;Dave Syer&lt;/a&gt; reactive series &lt;a
+        href="https://spring.io/blog/2016/06/07/notes-on-reactive-programming-part-i-the-reactive-landscape"&gt;part I&lt;/a&gt;,
+        &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;part
+        II&lt;/a&gt; &amp;amp; &lt;a
+        href="https://spring.io/blog/2016/07/20/notes-on-reactive-programming-part-iii-a-simple-http-server-application"&gt;part
+        III&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Implementor Use Case : &lt;a href="https://github.com/cloudfoundry/cf-java-client"&gt;CloudFoundry
+        Java Client&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="http://projectreactor.io"&gt;Public site&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="http://github.com/reactor"&gt;Github Org&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;Stay tuned for more reactive stories ! The Reactor journey at Pivotal is only getting started, after
+        much effort and research these past years we are excited to deliver a new experience. Our value proposition is
+        directly correlated to Spring OSS, we have a unique opportunity to deliver reactive pipelines in an end-to-end
+        fashion across all Spring portfolio. &lt;/p&gt;
+        &lt;p&gt;To conclude, Spring and Reactor are praising our community, you, for the enormous support,
+        encouragements and feedbacks. The feedback loop we have established for years is more than a nice pragmatic
+        collaboration, it&amp;rsquo;s what we all need to transform our industry step by step.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring Cloud Camden.RELEASE and Brixton.SR6 are available</title>
@@ -532,11 +623,11 @@ dependencies {&#xD;
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; A great way to start using this new release is to follow the &lt;a href="http://cloud.spring.io/spring-cloud-dataflow/#spring-cloud-data-flow-server-implementations"&gt;release matrix&lt;/a&gt; on the project page, which includes the download coordinates and the links to the reference guide.&lt;/p&gt;
 &lt;p&gt;Changes since the previous 1.0 RC2 release:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Adds configuration support for “authorization token” for secured access to Marathon and Chronos REST APIs on an OAuth enabled DC/OS cluster&lt;/li&gt;
+  &lt;li&gt;Adds configuration support for ï¿½authorization tokenï¿½ for secured access to Marathon and Chronos REST APIs on an OAuth enabled DC/OS cluster&lt;/li&gt;
   &lt;li&gt;Builds upon Spring Cloud Data Flow 1.0.1.RELEASE and Spring Cloud Deployer for Apache Mesos 1.0.4.RELEASE&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;To get started using Spring Cloud Data Flow for Apache Mesos &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-mesos/docs/1.0.0.RELEASE/reference/htmlsingle/#_getting_started"&gt;follow the steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;&lt;h2&gt;&lt;a href="#upcoming-webinar" class="anchor" name="upcoming-webinar"&gt;&lt;/a&gt;Upcoming webinar&lt;/h2&gt;
-&lt;p&gt;Tune-in to “&lt;a href="https://spring.io/blog/2016/09/13/webinar-data-microservices-in-the-cloud"&gt;Data Microservices in the Cloud&lt;/a&gt;” webinar scheduled on 9/29/2016 to learn more about Spring Cloud Data Flow and the latest improvements.&lt;/p&gt;</content>
+&lt;p&gt;Tune-in to ï¿½&lt;a href="https://spring.io/blog/2016/09/13/webinar-data-microservices-in-the-cloud"&gt;Data Microservices in the Cloud&lt;/a&gt;ï¿½ webinar scheduled on 9/29/2016 to learn more about Spring Cloud Data Flow and the latest improvements.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring Cloud Contract 1.0.0.RELEASE is available</title>
@@ -559,7 +650,7 @@ dependencies {&#xD;
 &lt;p&gt;It&amp;rsquo;s a tool that enables Consumer Driven Contract (CDC) development of JVM-based applications. It is shipped with Contract Definition Language (DSL). Contract definitions are used to produce following resources:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;JSON stub definitions to be used by WireMock when doing integration testing on the consumer side. (Test code must still be written by hand, test data is produced by Spring Cloud Contract Verifier).&lt;/li&gt;
-  &lt;li&gt;Messaging routes if you’re using one. We’re integrating with Spring Integration, Spring Cloud Stream and Apache Camel. You can however set your own integrations if you want to&lt;/li&gt;
+  &lt;li&gt;Messaging routes if youï¿½re using one. Weï¿½re integrating with Spring Integration, Spring Cloud Stream and Apache Camel. You can however set your own integrations if you want to&lt;/li&gt;
   &lt;li&gt;Acceptance tests (in JUnit or Spock) used to verify if server-side implementation of the API is compliant with the contract (producer tests). Tests are generated by Spring Cloud Contract Verifier.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Spring Cloud Contract Verifier moves TDD to the level of software architecture.&lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-cloud-contract-wiremock" class="anchor" name="spring-cloud-contract-wiremock"&gt;&lt;/a&gt;Spring Cloud Contract WireMock&lt;/h2&gt;
@@ -580,9 +671,9 @@ dependencies {&#xD;
     <content type="html">&lt;div class="paragraph"&gt;
 &lt;p&gt;On behalf of the community, I am pleased to announce the release of Spring Security 4.2.0.M1.&lt;/p&gt;
 &lt;/div&gt;
-&lt;h1 id="what-s-new-in-spring-security-4-2" class="sect0"&gt;&lt;a class="anchor" href="#what-s-new-in-spring-security-4-2"&gt;&lt;/a&gt;What’s New in Spring Security 4.2&lt;/h1&gt;
+&lt;h1 id="what-s-new-in-spring-security-4-2" class="sect0"&gt;&lt;a class="anchor" href="#what-s-new-in-spring-security-4-2"&gt;&lt;/a&gt;Whatï¿½s New in Spring Security 4.2&lt;/h1&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;You can find highlights of what&amp;#8217;s new in the &lt;a href="http://docs.spring.io/spring-security/site/docs/4.2.x/reference/htmlsingle/#new"&gt;What’s New in Spring Security 4.2&lt;/a&gt; section of the reference. This release closes out 50+ issues which can be found in the &lt;a href="https://github.com/spring-projects/spring-security/milestone/86?closed=1"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can find highlights of what&amp;#8217;s new in the &lt;a href="http://docs.spring.io/spring-security/site/docs/4.2.x/reference/htmlsingle/#new"&gt;Whatï¿½s New in Spring Security 4.2&lt;/a&gt; section of the reference. This release closes out 50+ issues which can be found in the &lt;a href="https://github.com/spring-projects/spring-security/milestone/86?closed=1"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h1 id="contributions" class="sect0"&gt;&lt;a class="anchor" href="#contributions"&gt;&lt;/a&gt;Contributions&lt;/h1&gt;
 &lt;div class="paragraph"&gt;
@@ -625,11 +716,11 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
   &lt;li&gt;Schema Registry support;&lt;/li&gt;
   &lt;li&gt;Reactive API support;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Since the release candidate &lt;a href="https://spring.io/blog/2016/09/08/spring-cloud-stream-brooklyn-rc1-is-available"&gt;a couple weeks back&lt;/a&gt;, we’ve added a few improvements that we believe will help with the usability of the framework. They are:&lt;/p&gt;
+&lt;p&gt;Since the release candidate &lt;a href="https://spring.io/blog/2016/09/08/spring-cloud-stream-brooklyn-rc1-is-available"&gt;a couple weeks back&lt;/a&gt;, weï¿½ve added a few improvements that we believe will help with the usability of the framework. They are:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring Cloud Stream applications display channel metrics by default - necessary dependencies are pre-included for convenience;&lt;/li&gt;
   &lt;li&gt;Added support for displaying metrics for internal channels in aggregate applications;&lt;/li&gt;
-  &lt;li&gt;Broker dependencies are not a requirement anymore for the Kafka binder, if applications don’t need to control topic creation and configuration;&lt;/li&gt;
+  &lt;li&gt;Broker dependencies are not a requirement anymore for the Kafka binder, if applications donï¿½t need to control topic creation and configuration;&lt;/li&gt;
   &lt;li&gt;Adds support for configuring SASL/Kerberos programmatically for the Kafka binder, without requiring an external JAAS configuration file;&lt;/li&gt;
   &lt;li&gt;Various bug fixes and documentation enhancements;&lt;/li&gt;
 &lt;/ul&gt;
@@ -655,7 +746,7 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
 &lt;p&gt;Spring Cloud Data Flow for Apache YARN provides support for orchestrating long-running (streaming) and short-lived (task/batch) data microservices on Apache YARN.&lt;/p&gt;
 &lt;p&gt;Apart from usual minor fixes, we have worked on the following themes.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Builds upon Spring Cloud Data Flow’s 1.0.1.RELEASE&lt;/li&gt;
+  &lt;li&gt;Builds upon Spring Cloud Data Flowï¿½s 1.0.1.RELEASE&lt;/li&gt;
   &lt;li&gt;Support for Apache Ambari 2.4&lt;/li&gt;
   &lt;li&gt;Adds Apache Ambari installation of Spring Cloud Data Flow for HDP 2.5 stack&lt;/li&gt;
   &lt;li&gt;UX improvements around Apache Ambari configuration settings and quicklinks&lt;/li&gt;
@@ -683,7 +774,7 @@ Issues&lt;/a&gt;, or via the comments section. You can also ping me
     <id>tag:spring.io,2016-09-22:2630</id>
     <updated>2016-09-22T13:54:22Z</updated>
     <content type="html">&lt;p&gt;I am pleased to announce that &lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; Athens-RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#artifactdetails%7Cio.spring.platform%7Cplatform-bom%7CAthens-RELEASE%7Cpom"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This release adopts a new alphabetical versioning scheme similar to those already used by Spring Cloud and Spring Data. The theme for the Platform’s versions is world cities.&lt;/p&gt;
+&lt;p&gt;This release adopts a new alphabetical versioning scheme similar to those already used by Spring Cloud and Spring Data. The theme for the Platformï¿½s versions is world cities.&lt;/p&gt;
 &lt;p&gt;The Athens release upgrades the versions of several projects:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring AMQP 1.6&lt;/li&gt;
@@ -779,7 +870,7 @@ server.startAndAwait(adapter);
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As we saw in the example above, handler functions are fully reactive by building on top of Reactor: they accept &lt;code&gt;Flux&lt;/code&gt;, &lt;code&gt;Mono&lt;/code&gt;, or any other &lt;a href="http://www.reactive-streams.org"&gt;Reactive Streams&lt;/a&gt; &lt;code&gt;Publisher&lt;/code&gt; as response type.&lt;/p&gt;
 &lt;p&gt;It is important to note that &lt;code&gt;HandlerFunction&lt;/code&gt; itself is side-effect free, because it &lt;em&gt;returns&lt;/em&gt; the response, as opposed to taking it as a parameter (cf. &lt;code&gt;Servlet.service(ServletRequest,ServletResponse)&lt;/code&gt;, which essentially is a &lt;code&gt;BiConsumer&amp;lt;ServletRequest,ServletResponse&amp;gt;&lt;/code&gt;). Side-effect free functions have many benefits: they are easier to &lt;a href="http://programmers.stackexchange.com/questions/15269/why-are-side-effects-considered-evil-in-functional-programming"&gt;test, compose, and optimize&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#routerfunction" class="anchor" name="routerfunction"&gt;&lt;/a&gt;RouterFunction&lt;/h2&gt;
-&lt;p&gt;Incoming requests are routed to handler functions with a &lt;strong&gt;&lt;code&gt;RouterFunction&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/strong&gt; (i.e. &lt;code&gt;Function&amp;lt;Request, Optional&amp;lt;HandlerFunction&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;). A router function evaluates to a handler function if it matches; otherwise it returns an empty result. The &lt;code&gt;RouterFunction&lt;/code&gt; has a similar purpose as a &lt;code&gt;@RequestMapping&lt;/code&gt; annotation. However, there is an important distinction: with the annotation your route is limited to what can be expressed through the annotation values, and the processing of those is not trivial to override; with router functions the processing code is right in front of you: you can override or replace it quite easily.&lt;/p&gt;
+&lt;p&gt;Incoming requests are routed to handler functions with a &lt;strong&gt;&lt;code&gt;RouterFunction&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/strong&gt; (i.e. &lt;code&gt;Function&amp;lt;Request, Optional&amp;lt;HandlerFunction&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;). A router function evaluates to a handler function if it matches; otherwise it returns an empty result. The &lt;code&gt;RouterFunction&lt;/code&gt; has a similar purpose as a &lt;code&gt;@RequestMapping&lt;/code&gt; annotation. However, there is an important distinction: with the annotation your routeï¿½is limited to what can be expressed through the annotation values, and the processing of those is not trivial to override; with router functions the processing code is right in front of you: you can override or replace it quite easily.&lt;/p&gt;
 &lt;p&gt;Here is an example of a router function with an inlined handler function. It does look a bit verbose, but do not worry about that: we will find ways to make it shorter below.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;RouterFunction&amp;lt;String&amp;gt; helloWorldRoute = &#xD;
   request -&amp;gt; {&#xD;

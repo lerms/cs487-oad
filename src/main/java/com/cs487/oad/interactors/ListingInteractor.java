@@ -27,7 +27,7 @@ public class ListingInteractor {
 
 
     private static class ListingInteractorHolder{
-        public static final ListingInteractor INSTANCE = new ListingInteractor();
+        public static  ListingInteractor INSTANCE = new ListingInteractor();
     }
     public static ListingInteractor getInstance(){
         return ListingInteractorHolder.INSTANCE;

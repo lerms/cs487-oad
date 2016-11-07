@@ -3,12 +3,12 @@ package com.cs487.oad.boundaries.RestControllers;
 
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Listing;
+import com.cs487.oad.interactors.AdvertiserInteractor;
 import com.cs487.oad.interactors.CategoryInteractor;
 import com.cs487.oad.interactors.ListingInteractor;
 import com.google.gson.JsonObject;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-
 
 
 
@@ -33,7 +33,7 @@ public class AdminRestController extends AbstractRestController{
 
     private ListingInteractor listingInteractor = ListingInteractor.getInstance();
     private CategoryInteractor categoryInteractor = CategoryInteractor.getInstance();
-
+    private AdvertiserInteractor advertiserInteractor = AdvertiserInteractor.getInstance();
 
     @PutMapping(value = "/listing")
     public @ResponseBody String addListing(@RequestBody String json){
@@ -85,13 +85,26 @@ public class AdminRestController extends AbstractRestController{
     @PutMapping(value = "/advertiser")
     public @ResponseBody String addAvertiser(@RequestBody String json){
         JsonObject jsonObject = getJsonObjectFromString(json);
-        return null;
+        Advertiser advertiser = createAdvertiserFromJsonObject(jsonObject);
+        advertiserInteractor.add(advertiser);
+        return "Advertiser was Created "+ String.valueOf(advertiserInteractor.getSize());
 
     }
 
     private Advertiser createAdvertiserFromJsonObject(JsonObject object){
-        return new Advertiser(getStringFromJsonObject(object, NAME),getStringFromJsonObject(object, EMAIL));
 
+        Advertiser ad = new Advertiser(getStringFromJsonObject(object, NAME),getStringFromJsonObject(object, EMAIL));
+        ad.setPhoneNumber(getStringFromJsonObject(object,PHONE));
+        ad.setWebLink(getStringFromJsonObject(object,WEBSITE));
+
+        return ad;
+
+    }
+
+
+    @GetMapping(value = "/advertisers", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public @ResponseBody String getAdvertisers() {
+        return gson.toJson(advertiserInteractor.getAll());
     }
 
 }

@@ -41,17 +41,43 @@ public class AdvertiserTest {
 
 
     @Test
-    public void testWebLinkIsEmpty() {
+    public void testEmailIsEmpty() {
         assertTrue(advertiser.getEmail().equals(""));
     }
 
 
 
     @Test
-    public void testWebLinkIsSet() {
+    public void testEmailIsSet() {
         String link = "www.iit.edu";
         advertiser.setEmail(link);
         assertTrue(advertiser.getEmail().equals(link));
+
+    }
+
+
+
+    @Test
+    public void testPhoneNumber() {
+        advertiser.setPhoneNumber("999-999-9999");
+
+    }
+
+
+
+    @Test
+    public void testWebLinkIsEmpty() {
+        assertTrue(advertiser.getWebLink().equals(""));
+
+    }
+
+
+
+    @Test
+    public void testWebLinkIsSet() {
+        String link ="www.example.com";
+        advertiser.setWebLink(link);
+        assertTrue(advertiser.getWebLink().equals(link));
 
     }
 

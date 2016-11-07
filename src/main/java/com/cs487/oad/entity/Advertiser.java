@@ -13,6 +13,8 @@ public class Advertiser {
     private String id;
     private String description="";
     private String email="";
+    private String phoneNumber="";
+    private String webLink="";
 
     public Advertiser() {}
 
@@ -46,5 +48,21 @@ public class Advertiser {
     public String toString() {
         return String.format("Advertiser[\tid=%s\tdescription=%s\tweblink=%s]\n",
                 id, description, email);
+    }
+
+
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+
+    public Object getWebLink() {
+        return webLink;
+    }
+
+    public void setWebLink(String link){
+        this.webLink =link;
     }
 }

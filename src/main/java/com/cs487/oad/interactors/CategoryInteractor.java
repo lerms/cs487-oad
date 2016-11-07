@@ -23,7 +23,7 @@ public class CategoryInteractor {
     //see wikipedia: https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom
     //and this blog post for explanation http://blog.crazybob.org/2007/01/lazy-loading-singletons.html
     private static class CategoryHolder{
-        public static final CategoryInteractor INSTANCE = new CategoryInteractor();
+        public static CategoryInteractor INSTANCE = new CategoryInteractor();
     }
 
     public static CategoryInteractor getInstance(){

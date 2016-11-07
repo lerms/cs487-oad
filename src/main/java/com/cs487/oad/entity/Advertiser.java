@@ -11,14 +11,14 @@ public class Advertiser {
 
     @Id
     private String id;
-    private String description;
-    private String webLink;
+    private String description="";
+    private String email="";
 
     public Advertiser() {}
 
-    public Advertiser(String description, String webLink) {
+    public Advertiser(String description, String email) {
         this.description = description;
-        this.webLink = webLink;
+        this.email = email;
     }
 
     public String getDescription() {
@@ -33,18 +33,18 @@ public class Advertiser {
 
 
 
-    public String getWebLink() {
-        return webLink;
+    public String getEmail() {
+        return email;
     }
 
 
 
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String toString() {
         return String.format("Advertiser[\tid=%s\tdescription=%s\tweblink=%s]\n",
-                id, description, webLink);
+                id, description, email);
     }
 }

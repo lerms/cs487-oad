@@ -2,8 +2,9 @@ package interactorTest;
 
 
 
-import Interactors.ListingInteractor;
+
 import com.cs487.oad.entity.Listing;
+import com.cs487.oad.interactors.ListingInteractor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +23,7 @@ public class ListingInteractorTest {
 
     @Before
     public void setUp() {
-        listingInteractor = new ListingInteractor();
+        listingInteractor =ListingInteractor.getInstance();
     }
 
 

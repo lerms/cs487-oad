@@ -4,10 +4,9 @@ package entityTest;
 
 
 import com.cs487.oad.entity.Listing;
+import com.cs487.oad.util.CONSTANTS;
 import org.junit.Before;
 import org.junit.Test;
-import com.cs487.oad.util.CONSTANTS;
-import com.cs487.oad.util.FUNCTIONS;
 
 import java.time.LocalDate;
 
@@ -84,15 +83,7 @@ public class ListingTest {
 
 
 
-    @Test
-    public void testToString() {
-        listing = new Listing();
-        String s= decorateListing();
-        FUNCTIONS.printToDebug(String.format("\n%s\n%s",s,listing.toString()));
-        assertTrue(listing.toString().equals(s));
 
-
-    }
 
     private String decorateListing(){
         String name = "NAME";
@@ -100,7 +91,7 @@ public class ListingTest {
         String address = "123 state street, chicago Il";
         listing.setAddress(address);
         String category = "Restaurant";
-        listing.setCategory(category);
+//        listing.setCategory(category);
         String description = "This is a great restaurant";
         listing.setDescription(description);
         LocalDate startDate = LocalDate.of(2016,11,06);

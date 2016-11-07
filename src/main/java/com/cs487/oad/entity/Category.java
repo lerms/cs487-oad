@@ -64,4 +64,8 @@ public class Category implements Serializable {
         return parentId;
     }
 
+    public String getName(){
+        return name;
+    }
+
 }

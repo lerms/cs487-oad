@@ -1,3 +1,5 @@
+
+
 //TEST LISTING OBJECT
 function testListingObject(){
 	var testObject = { 
@@ -46,6 +48,14 @@ function testCategoryArray(){
 	}
 	
 	return categoryArray;
+}
+
+
+//TEST ADVERTISER OBJECT
+function testAdvertisersObject(){
+	var advertisers	= {
+			
+	}
 }
 
 //CREATE LISTING OBJECT
@@ -101,9 +111,13 @@ function createAdvertiserSubmit(){
 	
 	var advertiserObject = createAdvertiserObject(name, phone, website, email);
 	
-	$.put("http://localhost:8080/admin/advertisers", advertiserObject, function(result){
-		document.getElementById("create_advertiser_result").innerHTML = result;
-		console.log(result);
+	console.log(JSON.stringify(advertiserObject));
+	
+	$.ajax({
+    	type: "PUT",
+    	url:"http://localhost:8090/admin/advertiser",
+    	contentType: "application/json",
+    	data: JSON.stringify(advertiserObject)
 	});
 }
 
@@ -119,8 +133,11 @@ function createCategorySubmit(){
 	var name = document.getElementById("category_name_input").value;
 	var categoryObject = createCategoryObject(name, subcategories);
 	
-	$.put("http://localhost:8080/admin/categories", advertiserObject, function(result){
-		console.log(result);
+	$.ajax({
+    	type: "PUT",
+    	url:"http://localhost:8090/admin/categories",
+    	contentType: "application/json",
+    	data: JSON.stringify(categoryObject)
 	});
 	
 	subcategories = [];
@@ -148,8 +165,11 @@ function createListingSubmit(){
 	
 	var listingObject = createListingObject(name, advertiser, image, address, city, area, phone, description, website, startDate, endDate, featureType, category, subcategories);
 	
-	$.put("http://localhost:8080/listings", listingObject, function(result){
-		console.log(result);
+	$.ajax({
+    	type: "PUT",
+    	url:"http://localhost:8090/listings",
+    	contentType: "application/json",
+    	data: JSON.stringify(listingObject)
 	});
 }
 
@@ -216,26 +236,18 @@ function onLoad(){
 	
 	categoryArray = testCategoryArray();
 	populateListingCategories();
+	
+	//TEST CODE, REMOVE FOR FINAL
+	$.get("http://localhost:8090/admin/advertisers", function(data, status){
+        //createHTML(data);
+		console.log(JSON.stringify(data));
+    });
 
 	document.getElementById("admin_wrapper").style.display="block";
 }
 
 
 //AJAX PUT DEFINITION
-$.put = function(url, data, callback, type){
-	if ($.isFunction(data)){
-		type = type || callback,
-		callback = data,
-		data = {}	
-	}
-	
-	return $.ajax({
-		url: url,
-		type: 'PUT',
-		success: callback,
-		data: data,
-		contentType: type
-	});
-}
+
 
 window.onload = onLoad();

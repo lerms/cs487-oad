@@ -58,3 +58,7 @@ form p {
 .right_wrapper {
 	display: block;
 }
+
+#listing_advertiser{
+	width: 250px;	
+}

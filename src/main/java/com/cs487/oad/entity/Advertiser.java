@@ -7,10 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Created by Jlarrieux on 9/19/2016.
  */
 @Document(collection="advertiser")
-public class Advertiser {
+public class Advertiser extends OADEntity {
 
-    @Id
-    private String id;
     private String description;
     private String webLink;
 
@@ -25,19 +23,13 @@ public class Advertiser {
         return description;
     }
 
-
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-
-
     public String getWebLink() {
         return webLink;
     }
-
-
 
     public void setWebLink(String webLink) {
         this.webLink = webLink;

@@ -2,6 +2,9 @@ package com.cs487.oad.controllers;
 
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.repositories.AdvertiserRepository;
+import com.cs487.oad.services.OADService;
+import com.google.common.base.Preconditions;
+import org.apache.catalina.filters.RestCsrfPreventionFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,22 +18,22 @@ import java.util.List;
 @RequestMapping("/advertiser")
 public class AdvertiserController {
 
-    @Autowired
-    public AdvertiserRepository advertisers;
+    private OADService oadService;
+
+    public AdvertiserController(OADService oadService) {
+        this.oadService = oadService;
+    }
+
 
     @GetMapping("/")
     public List<Advertiser> getAllAdvertisers() {
-        return advertisers.findAll();
+        return oadService.findAdvertisers();
     }
 
-    @RequestMapping(value = "/{description}", method = RequestMethod.GET)
-    public List<Advertiser> getAdvertiserByDescription(@PathVariable("description") String description) {
-
-        return advertisers.findByDescription(description);
-    }
 
     @RequestMapping(value="/advertiser", method=RequestMethod.PUT)
-    public void putAdvertiser(@RequestParam("advertiser") Advertiser advertiser) {
-        advertisers.save(advertiser);
+    public void putAdvertiser(@RequestBody Advertiser advertiser) {
+        Preconditions.checkNotNull(advertiser);
+        oadService.saveAdvertiser(advertiser);
     }
 }

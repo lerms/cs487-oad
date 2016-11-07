@@ -3,25 +3,18 @@ package com.cs487.oad.entity;
 
 
 import com.cs487.oad.util.CONSTANTS;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
 @Document(collection="listing")
-public class Listing implements Serializable{
+public class Listing extends OADEntity {
 
     private final int currencyMultiplier = 100;
-
-    @Id
-    private String id;
-    private ObjectId categoryId;
+    private String categoryId;
     private String name;
     private String address;
     private String phone;
@@ -36,7 +29,7 @@ public class Listing implements Serializable{
 
     public Listing() {}
 
-    public Listing(ObjectId categoryId, String name, String address, String phone, String description,
+    public Listing(String categoryId, String name, String address, String phone, String description,
                    String website, String featureType, String city,
                    double price, LocalDate startDate, LocalDate endDate) {
         this.categoryId = categoryId;
@@ -150,11 +143,11 @@ public class Listing implements Serializable{
         return description;
     }
 
-    public ObjectId getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategory(ObjectId categoryId) {
+    public void setCategory(String categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -173,27 +166,7 @@ public class Listing implements Serializable{
     public void setFeatureType(String featureType) {
         this.featureType = featureType;
     }
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Listing listing = (Listing) o;
-        return Double.compare(listing.price, price) == 0 &&
-                Objects.equals(name, listing.name) &&
-                Objects.equals(address, listing.address) &&
-                Objects.equals(phone, listing.phone) &&
-                Objects.equals(description, listing.description) &&
-                Objects.equals(categoryId, listing.categoryId) &&
-                Objects.equals(website, listing.website) &&
-                Objects.equals(featureType, listing.featureType) &&
-                Objects.equals(startDate, listing.startDate) &&
-                Objects.equals(endDate, listing.endDate) ;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, address, phone, description, categoryId, website, featureType, price, startDate, endDate);
-    }
 
     public String toString() {
         return String.format("Listing[\tname=%s\taddress=%s\tphone=%s\tdescription=%s\tcategory=%s\twebsite=%s\tfeatureType=%s]\n",

@@ -1,0 +1,279 @@
+@charset "utf-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+img, object, embed, video {
+	max-width: 100%;
+}
+
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width:100%;
+}
+
+/*
+	Dreamweaver Fluid Grid Properties
+	----------------------------------
+	dw-num-cols-mobile:		4;
+	dw-num-cols-tablet:		8;
+	dw-num-cols-desktop:	12;
+	dw-gutter-percentage:	25;
+	
+	Inspiration from "Responsive Web Design" by Ethan Marcotte 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	and Golden Grid System by Joni Korpi
+	http://goldengridsystem.com/
+*/
+
+.fluid {
+	clear: both;
+	margin-left: 0;
+	width: 100%;
+	float: left;
+	display: block;
+}
+
+.fluidList {
+    list-style:none;
+    list-style-image:none;
+    margin:0;
+    padding:0;        
+}
+
+/* Mobile Layout: 480px and below. */
+  
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 86.45%;
+	padding-left: 2.275%;
+	padding-right: 2.275%;
+	clear: none;
+	float: none;
+}
+#div1 {
+}
+.zeroMargin_mobile {
+    margin-left: 0;
+}
+.hide_mobile {
+    display: none;
+}
+
+/*ADD CSS FOR ALL LAYOUTS HERE*/
+.body {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.43;
+	color: #333;	
+}
+
+.floating_header {
+	position: relative;
+	height: 48px;
+	border-top: 4px solid #17AA1C;
+	box-sizing: content-box;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header_logo {
+	margin-left: 20px;
+	margin-right: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	border-right: 1px solid rbga(191, 191, 191, 0.45);	
+}
+
+.header_left {
+	flex: 1;
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 0%;
+	min-width: 1px;
+	display: flex;
+	flex-direction: row;
+	align-items: center; 
+}
+
+.category_list {
+	position: relative;
+	display: block;
+	border-right: 1px solid rgba(191,191,191,0.45);
+	border-left: 1px solid rgba(191,191,191,0.45);
+	box-sizing: border-box;
+}
+
+.dropdown_button {
+	display: block;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 20px;
+	color: #333;
+	position: relative;
+	font-size: 13px;
+}
+.dropdown_button:hover {
+	background-color: #F4F4F4;	
+}
+
+.dropdown_main {
+	color: rgba(0,0,0,0.55);
+    display: block;
+    font-weight: 600;
+    padding: 14px 20px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+.dropdown_main .down_arrow{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.search_bar {
+	flex: 1;
+	mi-width: 1px;
+	height: 48px;
+	position: relative;	
+}
+.search_bar .search_input {
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.43;
+    color: #333;
+	border: none;
+    padding: 0 0 0 40px;
+    outline: 0;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: 0;
+    font-size: 15px;
+    padding-left: 60px;
+}
+.search_bar .search_btn {
+	display: block;
+	background: #17aa1c;
+    color: white;
+    padding: 10px;
+    border-radius: 2px;
+    top: 6px;
+    animation: none;
+    border: none;
+    font-size: 16px;
+    left: 10px;
+    position: absolute;
+}
+
+#searchbox {
+	height: 100%;
+	box-sizing: border-box;
+	display: block;
+	margin-top: 0em;	
+}
+
+.header_right {
+	display: flex;
+	align-items: center;
+	justify-content:flex-end;
+	box-sizing: border-box;
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.43;
+    color: #333;
+}
+.header_right a {
+	text-decoration: none;	
+}
+.header_right .login {
+	position: relative;
+    font-size: 13px;
+    border-left: 1px solid rgba(191,191,191,0.45);
+	display: block;
+    color: rgba(0,0,0,0.55);
+    display: block;
+    font-weight: 600;
+    padding: 14px 20px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+.header_right .login:hover {
+	background-color: #F4F4F4;	
+}
+.header_right .sign_up {
+	position: relative;
+    font-size: 13px;
+    border-left: 1px solid rgba(191,191,191,0.45);
+	display: block;
+    color: rgba(0,0,0,0.55);
+    display: block;
+    font-weight: 600;
+    padding: 14px 20px;
+    line-height: 20px;
+    white-space: nowrap;	
+}
+.header_right .sign_up:hover {
+	background-color: #F4F4F4;	
+}
+
+.header_bar {
+	background-color: #17aa1c;
+	color: #ffffff;
+	height: 137px;
+	position: relative;
+}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+
+.gridContainer {
+	width: 90.675%;
+	padding-left: 1.1625%;
+	padding-right: 1.1625%;
+	clear: none;
+	float: none;
+	margin-left: auto;
+}
+#div1 {
+}
+.zeroMargin_tablet {
+    margin-left: 0;
+}
+.hide_tablet {
+    display: none;
+}
+}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width: 769px) {
+
+.gridContainer {
+	width: 88.5%;
+	max-width: 1232px;
+	padding-left: 0.75%;
+	padding-right: 0.75%;
+	margin: auto;
+	clear: none;
+	float: none;
+	margin-left: auto;
+}
+#div1 {
+}
+.zeroMargin_desktop {
+    margin-left: 0;
+}
+.hide_desktop {
+    display: none;
+}
+}

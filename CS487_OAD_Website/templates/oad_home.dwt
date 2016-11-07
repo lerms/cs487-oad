@@ -9,7 +9,7 @@
 	<title>Ad Directory</title>
 	<!-- TemplateEndEditable -->
 	<link rel="shortcut icon" href="../images/favicon.ico">
-	<link href="../boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="../css/boilerplate.css" rel="stylesheet" type="text/css">
 	<link href="../css/oad_template_style.css" rel="stylesheet" type="text/css">
 	<script src="../respond.min.js"></script>
 	<script src="../js/jquery-3.1.1.js"></script>
@@ -53,7 +53,7 @@
     <div id="home_featured_listing"></div>
 	<div id="categories"></div>
 </body>
-
+<footer></footer>
 <script src="../js/oad_menu_display.js"></script>
 <script src="../js/oad_load_object.js"></script> <!-- IMPORTANT!!! KEEP SCRIPT AT END OF HTML -->
 </html>

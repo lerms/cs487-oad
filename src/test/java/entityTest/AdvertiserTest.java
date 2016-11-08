@@ -38,7 +38,7 @@ public class AdvertiserTest {
     public void testDescriptionIsSet() {
 
         String description = "this is a business selling interdimensional travels";
-        advertiser.setDescription(description);
+        advertiser.setName(description);
         assertTrue(advertiser.getName().equals(description));
 
     }

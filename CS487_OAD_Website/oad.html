@@ -5,12 +5,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- TemplateBeginEditable name="doctitle" -->
 	<title>Ad Directory</title>
+	<!-- TemplateEndEditable -->
 	<link rel="shortcut icon" href="images/favicon.ico">
-	<link href="boilerplate.css" rel="stylesheet" type="text/css">
+	<link href="css/boilerplate.css" rel="stylesheet" type="text/css">
 	<link href="css/oad_template_style.css" rel="stylesheet" type="text/css">
 	<script src="respond.min.js"></script>
 	<script src="js/jquery-3.1.1.js"></script>
+	<!-- TemplateBeginEditable name="head" -->
+	<!-- TemplateEndEditable -->
 </head>
 
 <body>
@@ -23,15 +27,11 @@
                 <img id="arrow" src="images/down_button.png">
             </div>
             <div id="find_wrapper">
-                <input type="search" placeholder="Type in your search..." class="find_search" id="listing_search">
+                <input type="search" placeholder="Type in your search..." class="find_search">
                 <p class="find_text">in</p>
-                <select name="city" class="find_drop" id="city_drop_list" onchange="populateFindNeighborhoodList(this.selectedIndex-1)">
-                	<option selected disabled>Select your location...</option>
-                </select>
+                <select name="city" class="find_drop"><option selected disabled>Select your location...</option></select>
                 <p class="find_text">near</p>
-                <select name="neighborhood" class="find_drop" id="neighborhood_drop_list">
-                	<option selected disabled>Select neighborhood...</option>
-                </select>
+                <select name="neighborhood" class="find_drop"><option selected disabled>Select neighborhood...</option></select>
                 <br>
                 <input type="submit" value="SEARCH" id="search_button">
             </div>
@@ -53,9 +53,7 @@
     <div id="home_featured_listing"></div>
 	<div id="categories"></div>
 </body>
-
+<footer></footer>
 <script src="js/oad_menu_display.js"></script>
-<script src="js/oad_load_object.js"></script>
-<script src="js/oad_find_listing.js"></script>
-<!-- IMPORTANT!!! KEEP SCRIPT AT END OF HTML -->
+<script src="js/oad_load_object.js"></script> <!-- IMPORTANT!!! KEEP SCRIPT AT END OF HTML -->
 </html>

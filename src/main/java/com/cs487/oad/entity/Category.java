@@ -1,5 +1,8 @@
 package com.cs487.oad.entity;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -13,8 +16,11 @@ import java.util.List;
 public class Category extends OADEntity {
 
     private String parentId;
+    @Indexed
     private String name;
+    @Indexed
     private String slug;
+    @DBRef
     private List<Category> ancestors;
 
     public Category() {}
@@ -71,6 +77,13 @@ public class Category extends OADEntity {
         return ancestorCopy;
     }
 
-
-
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("parentId", parentId)
+                .append("name", name)
+                .append("slug", slug)
+                .append("ancestors", ancestors)
+                .toString();
+    }
 }

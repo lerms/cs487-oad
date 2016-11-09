@@ -1,6 +1,7 @@
 package com.cs487.oad.entity;
 
-import org.springframework.data.annotation.Id;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -9,14 +10,54 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="advertiser")
 public class Advertiser extends OADEntity {
 
+    private String name;
+    private String phone;
+    private String website;
+    @Email
+    private String email;
     private String description;
-    private String webLink;
 
     public Advertiser() {}
 
-    public Advertiser(String description, String webLink) {
+    public Advertiser(String name, String phone, String website, String email, String description) {
+        this.name = name;
+        this.phone = phone;
+        this.website = website;
+        this.email = email;
         this.description = description;
-        this.webLink = webLink;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDescription() {
@@ -27,16 +68,14 @@ public class Advertiser extends OADEntity {
         this.description = description;
     }
 
-    public String getWebLink() {
-        return webLink;
-    }
-
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
-    }
-
+    @Override
     public String toString() {
-        return String.format("Advertiser[\tid=%s\tdescription=%s\tweblink=%s]\n",
-                id, description, webLink);
+        return new ToStringBuilder(this)
+                .append("name", name)
+                .append("phone", phone)
+                .append("website", website)
+                .append("email", email)
+                .append("description", description)
+                .toString();
     }
 }

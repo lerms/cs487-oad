@@ -47,7 +47,7 @@ public class AdvertiserTest {
 
     @Test
     public void testWebLinkIsEmpty() {
-        assertTrue(advertiser.getWebLink().equals(""));
+        assertTrue(advertiser.getWebsite().equals(""));
     }
 
 
@@ -55,8 +55,8 @@ public class AdvertiserTest {
     @Test
     public void testWebLinkIsSet() {
         String link = "www.iit.edu";
-        advertiser.setWebLink(link);
-        assertTrue(advertiser.getWebLink().equals(link));
+        advertiser.setWebsite(link);
+        assertTrue(advertiser.getWebsite().equals(link));
 
     }
 

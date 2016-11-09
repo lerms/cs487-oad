@@ -1,8 +1,9 @@
 package com.cs487.oad.entity;
 
 
-
 import com.cs487.oad.util.CONSTANTS;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -10,11 +11,12 @@ import java.time.LocalDate;
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
-@Document(collection="listing")
+@Document(collection = "listing")
 public class Listing extends OADEntity {
 
     private final int currencyMultiplier = 100;
-    private String categoryId;
+    @DBRef
+    private Category category;
     private String name;
     private String address;
     private String phone;
@@ -27,12 +29,13 @@ public class Listing extends OADEntity {
     private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
     private LocalDate endDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
 
-    public Listing() {}
+    public Listing() {
+    }
 
-    public Listing(String categoryId, String name, String address, String phone, String description,
-                   String website, String featureType, String city,
-                   double price, LocalDate startDate, LocalDate endDate) {
-        this.categoryId = categoryId;
+    public Listing(Category category, String name, String address, String phone,
+                   String description, String website, String featureType, String city, String phoneNumber,
+                   int price, LocalDate startDate, LocalDate endDate) {
+        this.category = category;
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -40,6 +43,7 @@ public class Listing extends OADEntity {
         this.website = website;
         this.featureType = featureType;
         this.city = city;
+        this.phoneNumber = phoneNumber;
         setPrice(price);
         this.startDate = startDate;
         this.endDate = endDate;
@@ -49,78 +53,26 @@ public class Listing extends OADEntity {
         return (double) price / currencyMultiplier;
     }
 
-    public void setPrice(double price){
+    public void setPrice(double price) {
         int intermediate = (int) (price * currencyMultiplier);
         this.price = intermediate;
-
     }
 
 
-
-    public LocalDate getStartDate() {
-        return startDate;
+    public Category getCategory() {
+        return category;
     }
 
-
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public int getCurrencyMultiplier() {
-        return currencyMultiplier;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
@@ -143,12 +95,8 @@ public class Listing extends OADEntity {
         return description;
     }
 
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategory(String categoryId) {
-        this.categoryId = categoryId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getWebsite() {
@@ -167,9 +115,53 @@ public class Listing extends OADEntity {
         this.featureType = featureType;
     }
 
+    public String getCity() {
+        return city;
+    }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
     public String toString() {
-        return String.format("Listing[\tname=%s\taddress=%s\tphone=%s\tdescription=%s\tcategory=%s\twebsite=%s\tfeatureType=%s]\n",
-                name, address, phone, description, categoryId, website, featureType);
+        return new ToStringBuilder(this)
+                .append("category", category)
+                .append("name", name)
+                .append("address", address)
+                .append("phone", phone)
+                .append("description", description)
+                .append("website", website)
+                .append("featureType", featureType)
+                .append("city", city)
+                .append("phoneNumber", phoneNumber)
+                .append("price", price)
+                .append("startDate", startDate)
+                .append("endDate", endDate)
+                .toString();
     }
 }

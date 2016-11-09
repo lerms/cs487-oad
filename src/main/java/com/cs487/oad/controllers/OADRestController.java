@@ -14,9 +14,9 @@ import org.springframework.stereotype.Controller;
 public abstract class OADRestController {
 
     protected final OADService oadService;
-    protected Gson gson;
+    private Gson gson;
 
-    public OADRestController(OADService oadService) {
+    protected OADRestController(OADService oadService) {
         this.oadService = oadService;
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
@@ -29,7 +29,6 @@ public abstract class OADRestController {
         JsonElement element = new JsonParser().parse(s);
         return element.getAsJsonObject();
     }
-
 
     protected String getStringFromJsonObject(JsonObject jsonObject, String key){
 

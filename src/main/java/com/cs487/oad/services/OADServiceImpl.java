@@ -6,13 +6,10 @@ import com.cs487.oad.entity.Listing;
 import com.cs487.oad.repositories.AdvertiserRepository;
 import com.cs487.oad.repositories.CategoryRepository;
 import com.cs487.oad.repositories.ListingRepository;
-import com.mongodb.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,14 +20,14 @@ import java.util.List;
  */
 @Service
 public class OADServiceImpl implements OADService {
-    private final MongoTemplate mongoTemplate;
+    private final MongoOperations mongoTemplate;
     private final CategoryRepository categoryRepository;
     private final AdvertiserRepository advertiserRepository;
     private final ListingRepository listingRepository;
 
     @Autowired
     public OADServiceImpl(CategoryRepository categoryRepository, AdvertiserRepository advertiserRepository,
-                          ListingRepository listingRepository, MongoTemplate mongoTemplate) {
+                          ListingRepository listingRepository, MongoOperations mongoTemplate) {
         this.categoryRepository = categoryRepository;
         this.advertiserRepository = advertiserRepository;
         this.listingRepository = listingRepository;
@@ -45,7 +42,7 @@ public class OADServiceImpl implements OADService {
 
     @Override
     public void saveCategory(Category category) {
-        categoryRepository.save(category);
+        categoryRepository.saveCategory(category);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class OADServiceImpl implements OADService {
 
     @Override
     public void deleteCategory(Category category) {
-        categoryRepository.delete(category);
+        categoryRepository.deleteCategory(category);
     }
 
     @Override
@@ -101,45 +98,10 @@ public class OADServiceImpl implements OADService {
     }
 
 
-    private void buildCategoryAncestors(String id, String parentId) {
-        Category child =  categoryRepository.findById(id);
-        Category parent = categoryRepository.findById(parentId);
-        List<Category> ancestors = new ArrayList<>();
-        ancestors.add(parent);
-        ancestors.addAll(parent.getAncestors());
-        child.setAncestors(ancestors);
-        saveCategory(child);
-    }
-
-    private void buildCategoryAncestorsFull(String id, String parentId) {
-        List<Category> ancestors = new ArrayList<>();
-        Category updateCategory = categoryRepository.findById(id);
-        Category parent;
-        while (parentId != null) {
-            parent = categoryRepository.findById(parentId);
-            parentId = parent.getParentId();
-            ancestors.add(parent);
-        }
-        updateCategory.setAncestors(ancestors);
-        saveCategory(updateCategory);
-    }
-
-    @Override
-    public Category createCategory(String name, String slug, String parent) {
-        Category category = new Category(name, parent, slug);
-        category = categoryRepository.insert(category);
-        if(parent != null)
-            buildCategoryAncestors(category.getId(), parent);
-            category = categoryRepository.findById(category.getId());
-        return category;
-    }
-
-    public Pair<Query, Update> customQueryUpdate(String queryField, String queryValue, String updateField, String updateValue) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where(queryField).is(queryValue));
-        Update update = new Update();
-        update.set(updateField, updateValue);
-        return Pair.of(query, update);
+    public void emptyCollectionsForTesting() {
+        advertiserRepository.deleteAll();
+        categoryRepository.deleteAll();
+        listingRepository.deleteAll();
     }
 
 }

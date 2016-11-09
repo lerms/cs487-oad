@@ -14,5 +14,7 @@ import java.util.List;
 public interface AdvertiserRepository extends MongoRepository<Advertiser, String> , QueryByExampleExecutor<Advertiser> {
 
     List<Advertiser> findByDescription(String name);
+    Advertiser findByEmail(String email);
+    Advertiser findByWebsite(String website);
 
 }

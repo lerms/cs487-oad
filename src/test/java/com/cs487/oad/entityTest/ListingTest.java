@@ -99,8 +99,9 @@ public class ListingTest {
         listing.setName(name);
         String address = "123 state street, chicago Il";
         listing.setAddress(address);
-        String category = "Restaurant";
-        listing.setCategory(category);
+        // just for now, need to edit how we initialize categories
+//        String category = "Restaurant";
+//        listing.setCategory(category);
         String description = "This is a great restaurant";
         listing.setDescription(description);
         LocalDate startDate = LocalDate.of(2016,11,06);
@@ -119,8 +120,7 @@ public class ListingTest {
 
 
 
-        return name+", "+description+", " +price+", "+address+", "+phoneNumber+", "+
-                category+", "+fe+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
+        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+fe+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
     }
 
 

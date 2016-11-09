@@ -10,13 +10,9 @@ import java.util.List;
  * Created by alexanderlerma on 10/19/16.
  */
 @Repository
-public interface CategoryRepository extends MongoRepository<Category, String> {
+public interface CategoryRepository extends MongoRepository<Category, String>, CustomCategoryRepository {
     Category findByName(String name);
     Category findById(String id);
     Category findBySlug(String slug);
     List<Category> findByParentId(String parentId);
-    String deleteBySlug(String slug);
-    String deleteByName(String name);
-
-
 }

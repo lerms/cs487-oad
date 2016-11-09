@@ -1,8 +1,11 @@
 package com.cs487.oad.controllers;
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Category;
+import com.cs487.oad.interactors.CategoryInteractor;
+import com.cs487.oad.interactors.ListingInteractor;
 import com.cs487.oad.services.OADService;
 import com.cs487.oad.entity.Listing;
+import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,50 +21,46 @@ import java.util.List;
 public class AdminRestController extends OADRestController {
 
 
-    public static final String NAME = "name";
-    public static final String DESCRIPTION = "description";
-    public static final String PRICE = "price";
-    public static final String ADDRESS = "address";
-    public static final String PHONE = "phone";
-    public static final String CATEGORY = "category";
-    public static final String FEATUR_TYPE = "featurType";
-    public static final String WEBSITE = "website";
-    public static final String SUBCATEGORIES = "subcategories";
-//
-//    private ListingInteractor listingInteractor = new ListingInteractor();
-//    private CategoryInteractor categoryInteractor = new CategoryInteractor();
+    private ListingInteractor listingInteractor = new ListingInteractor();
+    private CategoryInteractor categoryInteractor = new CategoryInteractor();
 
     public AdminRestController(OADService oadService) {
         super(oadService);
     }
 
     @GetMapping("/listing")
-    public List<Listing> getAllListings() {
-        return oadService.findListings();
+    public @ResponseBody List<Listing> getAllListings() {
+        return RepositoryUtils.checkFound(oadService.findListings());
     }
 
+    @GetMapping("/category")
+    public @ResponseBody List<Category> getAllCategories() {
+        return RepositoryUtils.checkFound(oadService.findCategories());
+    }
+
+    @GetMapping("/advertiser")
+    public List<Advertiser> getAllAdvertisers() {
+        return RepositoryUtils.checkFound(oadService.findAdvertisers());
+    }
 
     @PutMapping("/listing")
-    public @ResponseBody String putListing(@RequestBody String json){
-        Preconditions.checkNotNull(json);
-        Listing listing = gson.fromJson(json, Listing.class);
+    public @ResponseBody String putListing(@RequestBody Listing listing) {
+        Preconditions.checkNotNull(listing);
         oadService.saveListing(listing);
         return "Listing Has Been Created!";
     }
 
     @PutMapping("/category")
-    public @ResponseBody String putCategory(@RequestBody String json) {
-        Preconditions.checkNotNull(json);
-        Category category = gson.fromJson(json, Category.class);
-        Preconditions.checkNotNull(json);
+    public @ResponseBody String putCategory(@RequestBody Category category) {
+        Preconditions.checkNotNull(category);
         oadService.saveCategory(category);
-        return "Category Has Been Created!";
+        return "Listing Has Been Created!";
     }
 
+
     @PutMapping("/advertiser")
-    public @ResponseBody String putAdvertiser(@RequestBody String json) {
-        Preconditions.checkNotNull(json);
-        Advertiser advertiser = gson.fromJson(json, Advertiser.class);
+    public @ResponseBody String putAdvertiser(@RequestBody Advertiser advertiser) {
+        Preconditions.checkNotNull(advertiser);
         oadService.saveAdvertiser(advertiser);
         return "Advertiser Has Been Created";
     }

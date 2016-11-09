@@ -1,10 +1,5 @@
 package com.cs487.oad;
 
-import com.cs487.oad.entity.Category;
-import com.cs487.oad.services.OADService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -6,13 +6,10 @@ import com.cs487.oad.entity.Listing;
 import com.cs487.oad.repositories.AdvertiserRepository;
 import com.cs487.oad.repositories.CategoryRepository;
 import com.cs487.oad.repositories.ListingRepository;
+import com.cs487.oad.util.RepositoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,18 +17,16 @@ import java.util.List;
  */
 @Service
 public class OADServiceImpl implements OADService {
-    private final MongoOperations mongoTemplate;
     private final CategoryRepository categoryRepository;
     private final AdvertiserRepository advertiserRepository;
     private final ListingRepository listingRepository;
 
     @Autowired
     public OADServiceImpl(CategoryRepository categoryRepository, AdvertiserRepository advertiserRepository,
-                          ListingRepository listingRepository, MongoOperations mongoTemplate) {
+                          ListingRepository listingRepository) {
         this.categoryRepository = categoryRepository;
         this.advertiserRepository = advertiserRepository;
         this.listingRepository = listingRepository;
-        this.mongoTemplate = mongoTemplate;
     }
 
 
@@ -67,36 +62,58 @@ public class OADServiceImpl implements OADService {
     }
 
 
-    public void updateListing(Query query, Update update) {
-        mongoTemplate.updateFirst(query, update, Listing.class);
+    public void updateListingName(String id, String newName) {
+        Listing listing = RepositoryUtils.checkFound(listingRepository.findById(id));
+        listing.setName(newName);
+        listingRepository.save(listing);
     }
 
     @Override
-    public void updateCategory(Query query, Update update) {
-        mongoTemplate.updateFirst(query, update, Category.class);
+    public void updateCategoryName(String name, String newName) {
+        categoryRepository.updateName(name, newName);
     }
 
     @Override
-    public void updateAdvertiser(Query query, Update update) {
-        mongoTemplate.updateFirst(query, update, Advertiser.class);
-    }
-
-
-    @Override
-    public List<Listing> findListings() {
-        return listingRepository.findAll();
+    public void updateCategorySlug(String slug, String newSlug) {
+        categoryRepository.updateSlug(slug, newSlug);
     }
 
     @Override
-    public List<Category> findCategories() {
-        return categoryRepository.findAll();
+    public void updateCategoryAncestors(String id, List<Category> ancestors) {
+        categoryRepository.updateAncestors(id, ancestors);
     }
 
     @Override
-    public List<Advertiser> findAdvertisers() {
-        return advertiserRepository.findAll();
+    public void updateAdvertiserName(String email, String newName) {
+        Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByEmail(email));
+        advertiser.setName(newName);
+        advertiserRepository.save(advertiser);
     }
 
+    @Override
+    public List<Listing> findAllListings() {
+        return RepositoryUtils.checkFound(listingRepository.findAll());
+    }
+
+    @Override
+    public List<Category> findAllCategories() {
+        return RepositoryUtils.checkFound(categoryRepository.findAll());
+    }
+
+    @Override
+    public List<Advertiser> findAllAdvertisers() {
+        return RepositoryUtils.checkFound(advertiserRepository.findAll());
+    }
+
+    @Override
+    public Category findCategoryByName(String name) {
+        return RepositoryUtils.checkFound(categoryRepository.findByName(name));
+    }
+
+    @Override
+    public Category findCategoryBySlug(String slug) {
+        return RepositoryUtils.checkFound(categoryRepository.findByName(slug));
+    }
 
     public void emptyCollectionsForTesting() {
         advertiserRepository.deleteAll();

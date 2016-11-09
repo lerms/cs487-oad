@@ -3,8 +3,6 @@ package com.cs487.oad.services;
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Category;
 import com.cs487.oad.entity.Listing;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 
 
 import java.util.List;
@@ -21,11 +19,15 @@ public interface OADService {
     void deleteListing(Listing listing);
     void deleteCategory(Category category);
     void deleteAdvertiser(Advertiser advertiser);
-    void updateListing(Query query, Update update);
-    void updateCategory(Query query, Update update);
-    void updateAdvertiser(Query query, Update update);
-    List<Listing> findListings();
-    List<Category> findCategories();
-    List<Advertiser> findAdvertisers();
+    void updateListingName(String name, String newName);
+    void updateCategoryName(String name, String newName);
+    void updateCategorySlug(String slug, String newSlug);
+    void updateCategoryAncestors(String id, List<Category> ancestors);
+    void updateAdvertiserName(String name, String newName);
+    List<Listing> findAllListings();
+    List<Category> findAllCategories();
+    List<Advertiser> findAllAdvertisers();
+    Category findCategoryByName(String name);
+    Category findCategoryBySlug(String slug);
     void emptyCollectionsForTesting();
 }

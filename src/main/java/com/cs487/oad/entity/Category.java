@@ -16,9 +16,7 @@ import java.util.List;
 public class Category extends OADEntity {
 
     private String parentId;
-    @Indexed
     private String name;
-    @Indexed
     private String slug;
     @DBRef
     private List<Category> ancestors;

@@ -2,6 +2,7 @@ package com.cs487.oad.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -10,11 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="advertiser")
 public class Advertiser extends OADEntity {
 
+    @Email
+    @Indexed(unique = true)
+    private String email;
     private String name;
     private String phone;
     private String website;
-    @Email
-    private String email;
     private String description;
 
     public Advertiser() {}

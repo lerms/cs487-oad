@@ -4,13 +4,10 @@ package com.cs487.oad.controllers;
 
 import com.cs487.oad.services.OADService;
 import com.google.gson.*;
-import org.springframework.stereotype.Controller;
-
 
 /**
  * Created by Jeannius on 10/22/2016.
  */
-@Controller
 public abstract class OADRestController {
 
     protected final OADService oadService;

@@ -1,12 +1,11 @@
 package com.cs487.oad.controllers;
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Category;
-import com.cs487.oad.interactors.CategoryInteractor;
-import com.cs487.oad.interactors.ListingInteractor;
 import com.cs487.oad.services.OADService;
 import com.cs487.oad.entity.Listing;
 import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -20,27 +19,29 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminRestController extends OADRestController {
 
-
-    private ListingInteractor listingInteractor = new ListingInteractor();
-    private CategoryInteractor categoryInteractor = new CategoryInteractor();
-
+    @Autowired
     public AdminRestController(OADService oadService) {
         super(oadService);
     }
 
     @GetMapping("/listing")
     public @ResponseBody List<Listing> getAllListings() {
-        return RepositoryUtils.checkFound(oadService.findListings());
+        return RepositoryUtils.checkFound(oadService.findAllListings());
     }
 
     @GetMapping("/category")
     public @ResponseBody List<Category> getAllCategories() {
-        return RepositoryUtils.checkFound(oadService.findCategories());
+        return RepositoryUtils.checkFound(oadService.findAllCategories());
+    }
+
+    @GetMapping("/category/{slug}")
+    public @ResponseBody Category getAllCategories(@PathVariable String slug) {
+        return RepositoryUtils.checkFound(oadService.findCategoryBySlug(slug));
     }
 
     @GetMapping("/advertiser")
     public List<Advertiser> getAllAdvertisers() {
-        return RepositoryUtils.checkFound(oadService.findAdvertisers());
+        return RepositoryUtils.checkFound(oadService.findAllAdvertisers());
     }
 
     @PutMapping("/listing")
@@ -64,20 +65,4 @@ public class AdminRestController extends OADRestController {
         oadService.saveAdvertiser(advertiser);
         return "Advertiser Has Been Created";
     }
-
-
-
-//    private Listing createListingFromJsonObject(JsonObject object){
-//        Listing listing = new Listing();
-//        listing.setName(getStringFromJsonObject(object, NAME));
-//        listing.setDescription(getStringFromJsonObject(object, DESCRIPTION));
-//        listing.setPrice(getDoubleFromJsonObject(object, PRICE));
-//        listing.setAddress(getStringFromJsonObject(object, ADDRESS));
-//        listing.setPhoneNumber(getStringFromJsonObject(object, PHONE));
-//        listing.setCategory(getStringFromJsonObject(object, CATEGORY));
-//        listing.setFeatureType(getStringFromJsonObject(object, FEATUR_TYPE));
-//        listing.setWebsite(getStringFromJsonObject(object, WEBSITE));
-//        return listing;
-//    }
-//
 }

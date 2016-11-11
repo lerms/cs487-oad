@@ -29,7 +29,7 @@ public class AdvertiserTest {
 
     @Test
     public void testDescriptionIsEmpty() {
-        assertTrue(advertiser.getDescription().equals(""));
+        assertTrue(advertiser.getName().equals(""));
     }
 
 
@@ -39,7 +39,7 @@ public class AdvertiserTest {
 
         String description = "this is a business selling interdimensional travels";
         advertiser.setDescription(description);
-        assertTrue(advertiser.getDescription().equals(description));
+        assertTrue(advertiser.getName().equals(description));
 
     }
 

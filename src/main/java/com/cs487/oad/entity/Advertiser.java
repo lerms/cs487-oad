@@ -11,26 +11,27 @@ public class Advertiser {
 
     @Id
     private String id;
-    private String description="";
+    private String name="";
     private String email="";
-    private String phoneNumber="";
-    private String webLink="";
+    private String phone ="";
+    private String website ="";
+    private String description="";
 
     public Advertiser() {}
 
-    public Advertiser(String description, String email) {
-        this.description = description;
+    public Advertiser(String name, String email) {
+        this.name =name;
         this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
 
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
@@ -47,22 +48,22 @@ public class Advertiser {
 
     public String toString() {
         return String.format("Advertiser[\tid=%s\tdescription=%s\tweblink=%s]\n",
-                id, description, email);
+                id, name, email);
     }
 
 
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
 
 
-    public Object getWebLink() {
-        return webLink;
+    public Object getWebsite() {
+        return website;
     }
 
-    public void setWebLink(String link){
-        this.webLink =link;
+    public void setWebsite(String link){
+        this.website =link;
     }
 }

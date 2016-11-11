@@ -94,8 +94,8 @@ public class AdminRestController extends AbstractRestController{
     private Advertiser createAdvertiserFromJsonObject(JsonObject object){
 
         Advertiser ad = new Advertiser(getStringFromJsonObject(object, NAME),getStringFromJsonObject(object, EMAIL));
-        ad.setPhoneNumber(getStringFromJsonObject(object,PHONE));
-        ad.setWebLink(getStringFromJsonObject(object,WEBSITE));
+        ad.setPhone(getStringFromJsonObject(object,PHONE));
+        ad.setWebsite(getStringFromJsonObject(object,WEBSITE));
 
         return ad;
 

@@ -18,8 +18,6 @@ public class AdvertiserController {
     @Autowired
     public AdvertiserRepository advertisers;
 
-
-
     @GetMapping("/")
     public List<Advertiser> getAllAdvertisers() {
         return advertisers.findAll();

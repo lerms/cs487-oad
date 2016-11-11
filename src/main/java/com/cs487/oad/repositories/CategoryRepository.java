@@ -1,19 +1,18 @@
 package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Category;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by alexanderlerma on 10/19/16.
  */
-public interface CategoryRepository extends MongoRepository<Category, String> {
-    List<Category> findByName(String name);
-    List<Category> findBySlug(String slug);
-    Category findById(ObjectId id);
-    Category findByParentId(ObjectId parentId);
-    String deleteBySlug(String slug);
-
+@Repository
+public interface CategoryRepository extends MongoRepository<Category, String>, CategoryRepositoryCustom {
+    Category findByName(String name);
+    Category findById(String id);
+    Category findBySlug(String slug);
+    List<Category> findByParentId(String parentId);
 }

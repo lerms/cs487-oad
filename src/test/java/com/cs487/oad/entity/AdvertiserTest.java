@@ -24,7 +24,7 @@ public class AdvertiserTest {
 
     @Test
     public void testDescriptionIsEmpty() {
-        assertTrue(advertiser.getName().equals(""));
+        assertTrue(advertiser.getDescription().equals(""));
     }
 
 
@@ -34,48 +34,22 @@ public class AdvertiserTest {
 
         String description = "this is a business selling interdimensional travels";
         advertiser.setDescription(description);
-        assertTrue(advertiser.getName().equals(description));
+        assertTrue(advertiser.getDescription().equals(description));
 
     }
 
 
 
     @Test
-    public void testEmailIsEmpty() {
-        assertTrue(advertiser.getEmail().equals(""));
-    }
-
-
-
-    @Test
-    public void testEmailIsSet() {
-        String link = "www.iit.edu";
-        advertiser.setEmail(link);
-        assertTrue(advertiser.getEmail().equals(link));
-
-    }
-
-
-
-    @Test
-    public void testPhoneNumber() {
-        advertiser.setPhone("999-999-9999");
-
-    }
-
-
-
-    @Test
-    public void testWebLinkIsEmpty() {
+    public void testWebSiteIsEmpty() {
         assertTrue(advertiser.getWebsite().equals(""));
-
     }
 
 
 
     @Test
-    public void testWebLinkIsSet() {
-        String link ="www.example.com";
+    public void testWebSiteIsSet() {
+        String link = "www.iit.edu";
         advertiser.setWebsite(link);
         assertTrue(advertiser.getWebsite().equals(link));
 

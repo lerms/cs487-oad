@@ -30,7 +30,7 @@ public class AdvertiserInteractorTest {
 
     @Test
     public void testSizeIsOne() {
-        Advertiser ad = new Advertiser("great description", "example@example.com");
+        Advertiser ad = new Advertiser();
         advertiserInteractor.add(ad);
         assertTrue(advertiserInteractor.getSize()==1);
     }

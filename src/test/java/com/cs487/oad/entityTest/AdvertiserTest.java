@@ -7,6 +7,7 @@ import com.cs487.oad.entity.Advertiser;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 
@@ -29,7 +30,7 @@ public class AdvertiserTest {
 
     @Test
     public void testDescriptionIsEmpty() {
-        assertTrue(advertiser.getDescription().equals(""));
+        assertNull(advertiser.getDescription());
     }
 
 
@@ -47,7 +48,7 @@ public class AdvertiserTest {
 
     @Test
     public void testWebLinkIsEmpty() {
-        assertTrue(advertiser.getWebsite().equals(""));
+        assertNull(advertiser.getWebsite());
     }
 
 

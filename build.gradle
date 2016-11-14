@@ -24,7 +24,7 @@ repositories {
 }
 jar{
     baseName="OAD"
-    version = "0.3.7"
+    version = "0.4.0"
 }
 
 
@@ -38,9 +38,12 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com.cs487.oad.boundaries/RestControllers/**',
-                    'com.cs487.oad.boundaries/**',
-                    'com.cs487.oad.configuration/**'])
+                    exclude: ['com/cs487/oad/boundaries/RestControllers/**',
+                    'com/cs487/oad/boundaries/**',
+                    'com/cs487/oad/configuration/**',
+                    'com/cs487/oad/controllers/**',
+                    'com/cs487/oad/repositories/**',
+                    'com/cs487/oad/services/**'])
         })
     }
 

@@ -2,7 +2,6 @@ package com.cs487.oad.entity;
 
 
 import com.cs487.oad.util.CONSTANTS;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -83,14 +82,6 @@ public class Listing extends OADEntity {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -149,19 +140,8 @@ public class Listing extends OADEntity {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("category", category)
-                .append("name", name)
-                .append("address", address)
-                .append("phone", phone)
-                .append("description", description)
-                .append("website", website)
-                .append("featureType", featureType)
-                .append("city", city)
-                .append("phoneNumber", phoneNumber)
-                .append("price", price)
-                .append("startDate", startDate)
-                .append("endDate", endDate)
-                .toString();
+        return getName()+", "+getDescription()+", " +getPrice()+", "+getAddress()+", "+getPhoneNumber() +", "+", "+getStartDate().toString()+", "+getEndDate().toString()+", "+getWebsite();
     }
+
+
 }

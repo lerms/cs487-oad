@@ -1,6 +1,7 @@
 package com.cs487.oad.controllers;
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Category;
+import com.cs487.oad.entity.CategoryDTO;
 import com.cs487.oad.services.OADService;
 import com.cs487.oad.entity.Listing;
 import com.cs487.oad.util.RepositoryUtils;
@@ -35,7 +36,7 @@ public class AdminRestController extends OADRestController {
     }
 
     @GetMapping("/category/{slug}")
-    public @ResponseBody Category getAllCategories(@PathVariable String slug) {
+    public @ResponseBody Category getCategoryBySlug(@PathVariable String slug) {
         return RepositoryUtils.checkFound(oadService.findCategoryBySlug(slug));
     }
 
@@ -52,10 +53,11 @@ public class AdminRestController extends OADRestController {
     }
 
     @PutMapping("/category")
-    public @ResponseBody String putCategory(@RequestBody Category category) {
-        Preconditions.checkNotNull(category);
-        oadService.saveCategory(category);
-        return "Listing Has Been Created!";
+    public @ResponseBody String putCategory(@RequestBody CategoryDTO categoryDTO) {
+        Preconditions.checkNotNull(categoryDTO);
+        oadService.saveCategory(categoryDTO);
+        return "Category has been created!";
+
     }
 
 

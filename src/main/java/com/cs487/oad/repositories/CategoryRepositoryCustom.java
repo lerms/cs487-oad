@@ -1,6 +1,7 @@
 package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Category;
+import com.cs487.oad.entity.CategoryDTO;
 import org.springframework.data.repository.NoRepositoryBean;
 
 
@@ -11,9 +12,11 @@ import java.util.List;
  */
 @NoRepositoryBean
 interface CategoryRepositoryCustom {
-    void updateName(String name, String newName);
+    void updateName(String slug, String newName);
     void updateSlug(String slug, String newSlug);
-    void updateAncestors(String id, List<Category> newAncestors);
-    void saveCategory(Category category);
-    void deleteCategory(Category category);
+    void updateAncestors(String slug, List<Category> newAncestors);
+    void updateParent(String slug, String parentSlug);
+    Category insertCategory(Category category);
+    void deleteCategory(String slug);
+    void addCategoryAncestor(String slug, String ancestorSlug);
 }

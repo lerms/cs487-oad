@@ -27,7 +27,6 @@ public class Advertiser extends OADEntity {
         this.website = website;
         this.email = email;
         this.description = description;
-
     }
 
     public String getName() {

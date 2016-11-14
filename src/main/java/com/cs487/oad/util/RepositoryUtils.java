@@ -18,8 +18,15 @@ public class RepositoryUtils <T, V> {
         Preconditions.checkNotNull(queryValue);
         if (queryField == QueryField.UNDEFINED)
             throw new QueryFieldUndefinedException("QueryField can not be UNDEFINED!");
-        Query query = Query.query(Criteria.where(QueryField.NAME.toString()).is(queryValue));
-        return query;
+        return Query.query(Criteria.where(queryField.toString()).is(queryValue));
+    }
+
+    public static Query categorySlugQuery(String slug) {
+        return simpleQuery(QueryField.SLUG, slug.toLowerCase());
+    }
+
+    public static Query categoryIdQuery(String id) {
+        return simpleQuery(QueryField.ID, id);
     }
 
     public static <T> T checkFound(final T resource) {
@@ -29,14 +36,14 @@ public class RepositoryUtils <T, V> {
         return resource;
     }
 
-    private static class ResourceNotFoundException extends RuntimeException {
+    public static final class ResourceNotFoundException extends RuntimeException {
 
         private ResourceNotFoundException(String message) {
             super(message);
         }
     }
 
-    private static class QueryFieldUndefinedException extends RuntimeException {
+    public static final class QueryFieldUndefinedException extends RuntimeException {
 
         private QueryFieldUndefinedException(String message) {
             super(message);

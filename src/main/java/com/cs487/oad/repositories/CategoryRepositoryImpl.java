@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by alexanderlerma on 11/8/16.
@@ -30,81 +33,127 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     }
 
     @Override
-    public void updateName(String name, String newName) {
-        Query query = RepositoryUtils.simpleQuery(QueryField.NAME, name);
-        Category toUpdate = operations.findOne(query, Category.class);
-        toUpdate.setName(name);
+    public void updateName(String slug, String newName) {
+        Query query = RepositoryUtils.categorySlugQuery(slug);
+        Category toUpdate = RepositoryUtils.checkFound(operations.findOne(query, Category.class));
+        toUpdate.setName(newName);
         operations.save(toUpdate);
-        buildCategoryAncestorsFull(toUpdate);
+        updateDescendants(toUpdate.getId(), QueryField.NAME, newName);
+    }
+
+    @Override
+    public void updateParent(String slug, String parentSlug) {
+        Query slugQuery = RepositoryUtils.categorySlugQuery(slug);
+        Query parentSlugQuery = RepositoryUtils.categorySlugQuery(parentSlug);
+        Category toUpdate = RepositoryUtils.checkFound(operations.findOne(slugQuery, Category.class));
+        Category parent = RepositoryUtils.checkFound(operations.findOne(parentSlugQuery, Category.class));
+        toUpdate.setParentId(parent.getParentId());
+        operations.save(toUpdate);
+        rebuildDescendants(toUpdate.getId());
     }
 
     @Override
     public void updateSlug(String slug, String newSlug) {
         Query query = RepositoryUtils.simpleQuery(QueryField.SLUG, slug);
-        Category toUpdate = operations.findOne(query, Category.class);
+        Category toUpdate = RepositoryUtils.checkFound(operations.findOne(query, Category.class));
         toUpdate.setSlug(newSlug);
-        operations.save(toUpdate);
-        buildCategoryAncestorsFull(toUpdate);
+        updateDescendants(toUpdate.getId(), QueryField.SLUG, newSlug);
     }
 
     @Override
-    public void updateAncestors(String id, List<Category> newAncestors) {
-        Query query = RepositoryUtils.simpleQuery(QueryField.ID, id);
-        Category toUpdate = operations.findOne(query, Category.class);
-        toUpdate.setAncestors(newAncestors);
-        buildCategoryAncestorsFull(toUpdate);
+    public void addCategoryAncestor(String slug, String ancestorSlug) {
+        Category update = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(slug), Category.class));
+        update.getAncestors().forEach(x -> {
+            if(x.getSlug().equals(ancestorSlug))
+                return;
+        });
+        Category ancestor = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));
+        update.addAncestorCategory(ancestor);
+        updateAncestors(slug, update.getAncestors());
     }
 
+
     @Override
-    public void saveCategory(Category category) {
-        Preconditions.checkNotNull(category);
+    public void updateAncestors(String slug, List<Category> newAncestors) {
+        Preconditions.checkContentsNotNull(Arrays.asList(slug, newAncestors));
+        Query query = RepositoryUtils.categorySlugQuery(slug);
+        Category category = operations.findOne(query, Category.class);
+        category.setAncestors(newAncestors);
         operations.save(category);
-        Query query = RepositoryUtils.simpleQuery(QueryField.NAME, category.getName());
-        category = operations.findOne(query, Category.class);;
-        buildCategoryAncestors(category);
+        rebuildDescendants(category.getId());
     }
+
 
     @Override
-    public void deleteCategory(Category category) {
-
+    public Category insertCategory(Category category) {
+        Preconditions.checkNotNull(category);
+        Preconditions.checkNotNull(category.getSlug());
+        Query slugQuery = RepositoryUtils.categorySlugQuery(category.getSlug());
+        operations.insert(category);
+        category = operations.findOne(slugQuery, Category.class);
+        if (category.getParentId() == null)
+            return category;
+        buildCategoryAncestors(category.getId(), category.getParentId());
+        category = operations.findOne(RepositoryUtils.categorySlugQuery(category.getSlug()), Category.class);
+        return category;
     }
 
-    private void rebuildCategoryHierarchy(Category category) {
+
+    @Override
+    public void deleteCategory(String slug) {
+        Preconditions.checkNotNull(slug);
+        Category category = RepositoryUtils
+                .checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(slug), Category.class));
+        operations.remove(RepositoryUtils.categorySlugQuery(slug), Category.class);
+        rebuildDescendants(category.getId());
+    }
+
+    private void rebuildDescendants(String id) {
         Query query = Query.query(Criteria
-                .where(QueryField.ANCESTORS + "." + QueryField.ID)
-                .is(category.getId()));
-        List<Category> rebuild = operations.find(query, Category.class);
-        rebuild.forEach(this::buildCategoryAncestorsFull);
+                .where(QueryField.ANCESTORS.toString() + "." + QueryField.ID.toString())
+                .is(id)
+                .andOperator(Criteria
+                        .where(QueryField.PARENT_ID.toString())
+                        .exists(true)));
+        List<Category> descendants = RepositoryUtils.checkFound(operations.find(query, Category.class));
+        descendants.forEach(cat -> buildCategoryAncestorsFull(cat.getId(), cat.getParentId()));
     }
 
-    private void buildCategoryAncestors(Category child) {
-        Query childQuery =  RepositoryUtils.simpleQuery(QueryField.ID, child.getId());
-        child = operations.findOne(childQuery, Category.class);
-        Query parentQuery =  RepositoryUtils.simpleQuery(QueryField.ID, child.getParentId());
-        Category parent = operations.findOne(parentQuery, Category.class);
+    private void updateDescendants(String id, QueryField field, String value) {
+        Query query = Query.query(Criteria
+                .where(QueryField.ANCESTORS.toString() + "." + QueryField.ID.toString())
+                .is(id)
+                .andOperator(Criteria
+                        .where(QueryField.PARENT_ID.toString())
+                        .exists(true)));
+        Update update = new Update().set(QueryField.ANCESTORS.toString() + ".$." + field.toString(), value);
+        operations.updateMulti(query, update, Category.class);
+    }
+
+
+    private void buildCategoryAncestors(String id, String parentId) {
+        Query idQuery = RepositoryUtils.categoryIdQuery(id);
+        Category update = RepositoryUtils.checkFound(operations.findOne(idQuery, Category.class));
+        Query parentIdQuery = RepositoryUtils.categoryIdQuery(parentId);
+        Category parent = RepositoryUtils.checkFound(operations.findOne(parentIdQuery, Category.class));
         List<Category> ancestors = new ArrayList<>();
         ancestors.add(parent);
         ancestors.addAll(parent.getAncestors());
-        child.setAncestors(ancestors);
-        operations.save(child);
+        update.setAncestors(ancestors);
+        operations.save(update);
     }
 
-    private void buildCategoryAncestorsFull(Category category) {
-        //a root, no need to add ancestors
-        if (category.getParentId() == null)
-            return;
+    private void buildCategoryAncestorsFull(String id, String parentId) {
         List<Category> ancestors = new ArrayList<>();
-        Query childQuery =  RepositoryUtils.simpleQuery(QueryField.ID, category.getId());
-        category = operations.findOne(childQuery, Category.class);
-        Query parentQuery = RepositoryUtils.simpleQuery(QueryField.ID, category.getParentId());
-        Category parent = operations.findOne(parentQuery, Category.class);
-        while (parent != null) {
+        while (parentId != null) {
+            Category parent = operations.findOne(RepositoryUtils.categoryIdQuery(parentId), Category.class);
+            parentId = parent.getParentId();
             ancestors.add(parent);
-            parentQuery =  RepositoryUtils.simpleQuery(QueryField.ID, parent.getParentId());
-            parent = operations.findOne(parentQuery, Category.class);
         }
-        category.setAncestors(ancestors);
-        operations.save(category);
+        Query idQuery = RepositoryUtils.categoryIdQuery(id);
+        Category toUpdate = operations.findOne(idQuery, Category.class);
+        toUpdate.setAncestors(ancestors);
+        operations.save(toUpdate);
     }
 
 }

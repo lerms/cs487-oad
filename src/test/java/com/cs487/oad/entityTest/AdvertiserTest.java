@@ -62,4 +62,46 @@ public class AdvertiserTest {
     }
 
 
+
+    @Test
+    public void testNameIsSet() {
+        String name = "name";
+        advertiser.setName(name);
+        assertTrue(advertiser.getName().equals(name));
+    }
+
+
+
+    @Test
+    public void testPhoneNumberIsSet() {
+        String PHONE= "1111";
+        advertiser.setPhone(PHONE);
+        assertTrue(advertiser.getPhone().equals(PHONE));
+    }
+
+
+
+    @Test
+    public void testEmailIsSet() {
+        String email = "email@email.com";
+        advertiser.setEmail(email);
+        assertTrue(advertiser.getEmail().equals(email));
+
+    }
+
+
+
+    @Test
+    public void testToString() {
+        String name = "name";
+        String phone ="1111";
+        String website = "website.com";
+        String email = "email@email.com";
+        String description = "description";
+
+        Advertiser ad = new Advertiser(name, phone,website,email,description);
+//        System.out.println("\n"+ad.toString());
+//        assertTrue(ad.toString().equals(name+phone+website+email+description));
+    }
+
 }

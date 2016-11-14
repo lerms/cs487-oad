@@ -1,4 +1,4 @@
-package interactorTest;
+package com.cs487.oad.interactorTest;
 
 
 

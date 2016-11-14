@@ -1,10 +1,9 @@
 package com.cs487.oad.entity;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,26 +12,50 @@ import java.util.List;
  * Created by alexanderlerma on 10/17/16.
  */
 @Document(collection = "category")
-public class Category implements Serializable {
-    @Id
-    private ObjectId id;
-    private ObjectId parentId;
+public class Category extends OADEntity {
+
+    private String parentId;
     private String name;
     private String slug;
+    @DBRef
     private List<Category> ancestors;
 
     public Category() {}
 
-
-    public Category(String name, ObjectId parentId, String slug, List<Category> ancestors) {
+    public Category(String name, String parentId, String slug, List<Category> ancestors) {
         this.name = name;
         this.parentId = parentId;
         this.slug = slug;
         this.ancestors = ancestors;
     }
 
-    public Category(String name, ObjectId parent, String slug) {
+    public Category(String name, String parent, String slug) {
         this(name, parent, slug, new ArrayList<>());
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getParentId() {
+        return parentId;
     }
 
     public void addAncestorCategory(Category category) {
@@ -40,12 +63,7 @@ public class Category implements Serializable {
             ancestors.add(category);
     }
 
-    public void addAllAncestorCategories(List<Category> ancestors) {
-        if (ancestors != null)
-            ancestors.forEach(this::addAncestorCategory);
-    }
-
-    public void rebuildAncestors(List<Category> ancestors) {
+    public void setAncestors(List<Category> ancestors) {
         this.ancestors = new ArrayList<>();
         ancestors.forEach(this.ancestors::add);
     }
@@ -56,16 +74,13 @@ public class Category implements Serializable {
         return ancestorCopy;
     }
 
-    public ObjectId getId() {
-        return id;
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("parentId", parentId)
+                .append("name", name)
+                .append("slug", slug)
+                .append("ancestors", ancestors)
+                .toString();
     }
-
-    public ObjectId getParentId() {
-        return parentId;
-    }
-
-    public String getName(){
-        return name;
-    }
-
 }

@@ -1,5 +1,6 @@
-package com.cs487.oad.entity;
+package com.cs487.oad.entityTest;
 
+import com.cs487.oad.entity.Category;
 import org.junit.Before;
 import org.junit.Test;
 

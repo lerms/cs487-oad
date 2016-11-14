@@ -17,6 +17,9 @@ apply plugin: 'spring-boot'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
 
 }
 jar{
@@ -63,6 +66,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.+'
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile 'org.apache.commons:commons-lang3:3.4'

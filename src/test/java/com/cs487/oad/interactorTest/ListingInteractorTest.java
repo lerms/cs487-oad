@@ -1,6 +1,4 @@
-package interactorTest;
-
-
+package com.cs487.oad.interactorTest;
 
 
 import com.cs487.oad.entity.Listing;
@@ -23,7 +21,7 @@ public class ListingInteractorTest {
 
     @Before
     public void setUp() {
-        listingInteractor =ListingInteractor.getInstance();
+        listingInteractor = ListingInteractor.getInstance();
     }
 
 

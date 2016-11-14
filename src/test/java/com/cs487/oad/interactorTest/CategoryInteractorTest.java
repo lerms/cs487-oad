@@ -1,17 +1,14 @@
-package interactorTest;
+package com.cs487.oad.interactorTest;
 
-
-
-
-import com.cs487.oad.entity.Category;
+import com.cs487.oad.entity.SubCategory;
 import com.cs487.oad.interactors.CategoryInteractor;
-import org.bson.types.ObjectId;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -30,22 +27,18 @@ public class CategoryInteractorTest {
 
 
 
-
-
-
     @Test
-    public void testSizeIsOne() {
-        Category cat = new Category("test", ObjectId.get(), "s");
-        categoryInteractor.add(cat);
-        assertTrue(categoryInteractor.getSize()==1);
+    public void testSizeIsZero() {
+        assertTrue(categoryInteractor.getSize()==0);
 
     }
 
+    @Test
+    public void testSizeIsOne() {
+        List<SubCategory> sub = new ArrayList<>();
+//        categoryInteractor.add(mock(Category.class), sub);
+        assertTrue(categoryInteractor.getSize()==1);
 
-
-    @After
-    public void tearDown() {
-        categoryInteractor = null;
     }
 
 

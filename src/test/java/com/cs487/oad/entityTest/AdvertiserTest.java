@@ -1,4 +1,4 @@
-package entityTest;
+package com.cs487.oad.entityTest;
 
 
 
@@ -29,7 +29,7 @@ public class AdvertiserTest {
 
     @Test
     public void testDescriptionIsEmpty() {
-        assertTrue(advertiser.getName().equals(""));
+        assertTrue(advertiser.getDescription().equals(""));
     }
 
 
@@ -38,8 +38,8 @@ public class AdvertiserTest {
     public void testDescriptionIsSet() {
 
         String description = "this is a business selling interdimensional travels";
-        advertiser.setName(description);
-        assertTrue(advertiser.getName().equals(description));
+        advertiser.setDescription(description);
+        assertTrue(advertiser.getDescription().equals(description));
 
     }
 
@@ -47,7 +47,7 @@ public class AdvertiserTest {
 
     @Test
     public void testWebLinkIsEmpty() {
-        assertTrue(advertiser.getEmail().equals(""));
+        assertTrue(advertiser.getWebsite().equals(""));
     }
 
 
@@ -55,8 +55,8 @@ public class AdvertiserTest {
     @Test
     public void testWebLinkIsSet() {
         String link = "www.iit.edu";
-        advertiser.setEmail(link);
-        assertTrue(advertiser.getEmail().equals(link));
+        advertiser.setWebsite(link);
+        assertTrue(advertiser.getWebsite().equals(link));
 
     }
 

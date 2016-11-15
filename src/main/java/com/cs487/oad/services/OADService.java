@@ -29,6 +29,7 @@ public interface OADService {
     List<Listing> findAllListings();
     List<Category> findAllCategories();
     List<Advertiser> findAllAdvertisers();
+    List<CategoryDTO> findAllCategoriesAsDtos();
     Category findCategoryByName(String name);
     Category findCategoryBySlug(String slug);
     Category findCategoryById(String id);

@@ -27,22 +27,22 @@ public class AdminRestController extends OADRestController {
 
     @GetMapping("/listing")
     public @ResponseBody List<Listing> getAllListings() {
-        return RepositoryUtils.checkFound(oadService.findAllListings());
+        return oadService.findAllListings();
     }
 
     @GetMapping("/category")
-    public @ResponseBody List<Category> getAllCategories() {
-        return RepositoryUtils.checkFound(oadService.findAllCategories());
+    public @ResponseBody List<CategoryDTO> getAllCategories() {
+        return oadService.findAllCategoriesAsDtos();
     }
 
     @GetMapping("/category/{slug}")
     public @ResponseBody Category getCategoryBySlug(@PathVariable String slug) {
-        return RepositoryUtils.checkFound(oadService.findCategoryBySlug(slug));
+        return oadService.findCategoryBySlug(slug);
     }
 
     @GetMapping("/advertiser")
     public List<Advertiser> getAllAdvertisers() {
-        return RepositoryUtils.checkFound(oadService.findAllAdvertisers());
+        return oadService.findAllAdvertisers();
     }
 
     @PutMapping("/listing")

@@ -1,10 +1,10 @@
 package com.cs487.oad.entity;
-
-
-import com.cs487.oad.util.CONSTANTS;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -15,64 +15,70 @@ import java.time.LocalDate;
 public class Listing extends OADEntity {
 
     private final int currencyMultiplier = 100;
-    @DBRef
-    private Category category;
+    private int price;
     private String name;
+    @DBRef
+    private Advertiser advertiser;
+    private String image;
     private String address;
+    private String city;
+    private String area;
     private String phone;
     private String description;
+    @URL
     private String website;
-    private String featureType;
-    private String city;
-    private String phoneNumber;
-    private int price;
-    private LocalDate startDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
-    private LocalDate endDate = LocalDate.from(CONSTANTS.DEFAULT_DATE);
+    private FeatureType featureType;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate startDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate endDate;
+    @DBRef
+    private Category category;
 
-    public Listing() {
-    }
+    public Listing() {}
 
-    public Listing(Category category, String name, String address, String phone,
-                   String description, String website, String featureType, String city, String phoneNumber,
-                   int price, LocalDate startDate, LocalDate endDate) {
-        this.category = category;
+    @PersistenceConstructor
+    public Listing(String name, Advertiser advertiser, String image,
+                   String address, String city, String area, String phone,
+                   String description, String website, FeatureType featureType,
+                   LocalDate startDate, LocalDate endDate, Category category, double price) {
         this.name = name;
+        this.advertiser = advertiser;
+        this.image = image;
         this.address = address;
+        this.city = city;
+        this.area = area;
         this.phone = phone;
         this.description = description;
         this.website = website;
         this.featureType = featureType;
-        this.city = city;
-        this.phoneNumber = phoneNumber;
-        setPrice(price);
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
-    public double getPrice() {
-        return (double) price / currencyMultiplier;
-    }
-
-    public void setPrice(double price) {
-        int intermediate = (int) (price * currencyMultiplier);
-        this.price = intermediate;
-    }
-
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
         this.category = category;
+        setPrice(price);
     }
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Advertiser getAdvertiser() {
+        return advertiser;
+    }
+
+    public void setAdvertiser(Advertiser advertiser) {
+        this.advertiser = advertiser;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getAddress() {
@@ -81,6 +87,22 @@ public class Listing extends OADEntity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 
     public String getPhone() {
@@ -107,28 +129,12 @@ public class Listing extends OADEntity {
         this.website = website;
     }
 
-    public String getFeatureType() {
+    public FeatureType getFeatureType() {
         return featureType;
     }
 
-    public void setFeatureType(String featureType) {
+    public void setFeatureType(FeatureType featureType) {
         this.featureType = featureType;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public LocalDate getStartDate() {
@@ -147,21 +153,40 @@ public class Listing extends OADEntity {
         this.endDate = endDate;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public double getPrice() {
+        return (double) price / currencyMultiplier;
+    }
+
+    public void setPrice(double price) {
+        int intermediate = (int) (price * currencyMultiplier);
+        this.price = intermediate;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("category", category)
+                .append("price", price)
                 .append("name", name)
+                .append("advertiser", advertiser)
+                .append("image", image)
                 .append("address", address)
+                .append("city", city)
+                .append("area", area)
                 .append("phone", phone)
                 .append("description", description)
                 .append("website", website)
                 .append("featureType", featureType)
-                .append("city", city)
-                .append("phoneNumber", phoneNumber)
-                .append("price", price)
                 .append("startDate", startDate)
                 .append("endDate", endDate)
+                .append("category", category)
                 .toString();
     }
 }

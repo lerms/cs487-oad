@@ -1,8 +1,6 @@
 package com.cs487.oad;
 
 import com.cs487.oad.services.OADService;
-import com.cs487.oad.util.FUNCTIONS;
-import com.cs487.oad.util.RepositoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -16,6 +16,7 @@ import java.util.List;
 public class Category extends OADEntity {
 
     private String parentId;
+    @Indexed(unique = true)
     private String name;
     @Indexed(unique = true)
     private String slug;

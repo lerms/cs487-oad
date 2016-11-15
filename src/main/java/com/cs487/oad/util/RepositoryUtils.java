@@ -3,15 +3,24 @@ package com.cs487.oad.util;
 import com.google.common.base.Preconditions;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.util.Pair;
 
-import static org.springframework.data.mongodb.core.query.Criteria.where;
+import java.text.Normalizer;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 /**
  * Created by alexanderlerma on 11/8/16.
  */
 public class RepositoryUtils <T, V> {
+    private static final Pattern NONLATIN = Pattern.compile("[^\\w-]");
+    private static final Pattern WHITESPACE = Pattern.compile("[\\s]");
+
+    public static String toSluggedString(String input) {
+        String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
+        String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
+        String slug = NONLATIN.matcher(normalized).replaceAll("");
+        return slug.toLowerCase(Locale.ENGLISH);
+    }
 
     public static <T> Query simpleQuery(QueryField queryField, T queryValue) {
         Preconditions.checkNotNull(queryField);
@@ -36,18 +45,17 @@ public class RepositoryUtils <T, V> {
         return resource;
     }
 
-    public static final class ResourceNotFoundException extends RuntimeException {
+    private static final class ResourceNotFoundException extends RuntimeException {
 
         private ResourceNotFoundException(String message) {
             super(message);
         }
     }
 
-    public static final class QueryFieldUndefinedException extends RuntimeException {
+    private static final class QueryFieldUndefinedException extends RuntimeException {
 
         private QueryFieldUndefinedException(String message) {
             super(message);
         }
     }
-
 }

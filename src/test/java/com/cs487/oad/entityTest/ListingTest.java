@@ -3,6 +3,7 @@ package com.cs487.oad.entityTest;
 
 
 
+import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
@@ -110,9 +111,9 @@ public class ListingTest {
         listing.setStartDate(startDate);
 
         String fe = "fe";
-        listing.setFeatureType(fe);
+        listing.setFeatureType(FeatureType.NORMAL);
         String phoneNumber = "11-11";
-        listing.setPhoneNumber(phoneNumber);
+        listing.setPhone(phoneNumber);
         double price = 10.55;
         listing.setPrice(price);
         String website = "www.red.com";

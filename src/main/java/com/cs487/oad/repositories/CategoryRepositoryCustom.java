@@ -1,9 +1,7 @@
 package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Category;
-import com.cs487.oad.entity.CategoryDTO;
 import org.springframework.data.repository.NoRepositoryBean;
-
 
 import java.util.List;
 

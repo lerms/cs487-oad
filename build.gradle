@@ -3,6 +3,7 @@ import java.awt.Desktop
 buildscript {
     repositories {
         mavenCentral()
+
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
@@ -16,10 +17,14 @@ apply plugin: 'spring-boot'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
+
 }
 jar{
     baseName="OAD"
-    version = "0.0.2GIT STA"
+    version = "0.4.0"
 }
 
 
@@ -33,9 +38,12 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com.cs487.oad.boundaries/RestControllers/**',
-                    'com.cs487.oad.boundaries/**',
-                    'com.cs487.oad.configuration/**'])
+                    exclude: ['com/cs487/oad/boundaries/RestControllers/**',
+                    'com/cs487/oad/boundaries/**',
+                    'com/cs487/oad/configuration/**',
+                    'com/cs487/oad/controllers/**',
+                    'com/cs487/oad/repositories/**',
+                    'com/cs487/oad/services/**'])
         })
     }
 
@@ -55,15 +63,16 @@ task runTest{
 
 
 dependencies {
+
+    testCompile 'org.mockito:mockito-all:1.+'
     compile group: 'junit', name: 'junit', version: '4.11'
-    compile 'com.google.code.gson:gson:2.+'
+    compile 'com.google.code.gson:gson:2.8.+'
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework:spring-webmvc'
+    compile 'org.springframework.boot:spring-boot-starter-security'
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile 'org.apache.commons:commons-lang3:3.4'
-    testCompile "org.mockito:mockito-core:1.+"
     compile 'org.mod4j.com.google:collect:0.+'
 
 

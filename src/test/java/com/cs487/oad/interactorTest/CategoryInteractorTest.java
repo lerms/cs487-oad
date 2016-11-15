@@ -1,16 +1,10 @@
 package com.cs487.oad.interactorTest;
 
-import com.cs487.oad.entity.Category;
-import com.cs487.oad.entity.SubCategory;
 import com.cs487.oad.interactors.CategoryInteractor;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 
 
 /**
@@ -24,7 +18,7 @@ public class CategoryInteractorTest {
 
     @Before
     public void setUp() {
-        categoryInteractor = new CategoryInteractor();
+        categoryInteractor = CategoryInteractor.getInstance();
     }
 
 
@@ -35,13 +29,7 @@ public class CategoryInteractorTest {
 
     }
 
-    @Test
-    public void testSizeIsOne() {
-        List<SubCategory> sub = new ArrayList<>();
-        categoryInteractor.add(mock(Category.class), sub);
-        assertTrue(categoryInteractor.getSize()==1);
 
-    }
 
 
 }

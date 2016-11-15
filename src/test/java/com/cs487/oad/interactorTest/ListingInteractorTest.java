@@ -21,7 +21,7 @@ public class ListingInteractorTest {
 
     @Before
     public void setUp() {
-        listingInteractor = new ListingInteractor();
+        listingInteractor = ListingInteractor.getInstance();
     }
 
 

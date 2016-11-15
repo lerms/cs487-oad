@@ -121,7 +121,7 @@ public class ListingTest {
 
 
 
-        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+fe+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
+        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
     }
 
 

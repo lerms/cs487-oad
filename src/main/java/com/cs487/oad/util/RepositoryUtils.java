@@ -31,7 +31,7 @@ public class RepositoryUtils <T, V> {
     }
 
     public static Query categorySlugQuery(String slug) {
-        return simpleQuery(QueryField.SLUG, slug.toLowerCase());
+        return simpleQuery(QueryField.SLUG, toSluggedString(slug));
     }
 
     public static Query categoryIdQuery(String id) {

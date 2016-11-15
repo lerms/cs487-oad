@@ -2,8 +2,6 @@
 .idea/
 .metadata/
 build/
-.idea/
-.metadata/
 
 # Ignore Gradle GUI config
 gradle-app.setting

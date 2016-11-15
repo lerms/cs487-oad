@@ -26,18 +26,10 @@ public class Application implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        ApplicationContext ctx =
-                SpringApplication.run(Application.class, args);
-
-        String[] beanNames = ctx.getBeanDefinitionNames();
-        Arrays.sort(beanNames);
-        for(String name: beanNames)System.out.println(name);
-
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... args) {
-//        service.emptyCollectionsForTesting();
-//        FUNCTIONS.printToDebug("Emptied MongoDB Repositories for testing.");
     }
 }

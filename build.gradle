@@ -17,11 +17,14 @@ apply plugin: 'spring-boot'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.spring.io/libs-snapshot'
+    }
 
 }
 jar{
     baseName="OAD"
-    version = "0.3.5"
+    version = "0.4.0"
 }
 
 
@@ -35,9 +38,12 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com.cs487.oad.boundaries/RestControllers/**',
-                    'com.cs487.oad.boundaries/**',
-                    'com.cs487.oad.configuration/**'])
+                    exclude: ['com/cs487/oad/boundaries/RestControllers/**',
+                    'com/cs487/oad/boundaries/**',
+                    'com/cs487/oad/configuration/**',
+                    'com/cs487/oad/controllers/**',
+                    'com/cs487/oad/repositories/**',
+                    'com/cs487/oad/services/**'])
         })
     }
 
@@ -63,6 +69,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.+'
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
     compile("org.thymeleaf:thymeleaf-spring4")
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile 'org.apache.commons:commons-lang3:3.4'

@@ -1,7 +1,8 @@
-package com.cs487.oad.boundaries.RestControllers;
+package com.cs487.oad.controllers;
 
 
 
+import com.cs487.oad.boundaries.RestControllers.AbstractRestController;
 import com.cs487.oad.entity.Advertiser;
 import com.cs487.oad.entity.Category;
 import com.cs487.oad.entity.Listing;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,8 +43,8 @@ public class testController extends AbstractRestController{
 
     @GetMapping(value = "/listing", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public @ResponseBody String getListings(){
-        Category c = new Category("Restaurant", ObjectId.get(),"E");
-        Advertiser ad = new Advertiser("This is a great advertiser", "www.tallycap.com");
+        Category c = new Category("Restaurant", ObjectId.get().toHexString(),"E", new ArrayList<Category>());
+//        Advertiser ad = new Advertiser("This is a great advertiser", "www.tallycap.com");
         return gson.toJson(c);
 
     }

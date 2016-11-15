@@ -1,12 +1,13 @@
-package entityTest;
+package com.cs487.oad.entityTest;
 
 
 
 
 import com.cs487.oad.entity.Listing;
-import com.cs487.oad.util.CONSTANTS;
 import org.junit.Before;
 import org.junit.Test;
+import com.cs487.oad.util.CONSTANTS;
+import com.cs487.oad.util.FUNCTIONS;
 
 import java.time.LocalDate;
 
@@ -83,14 +84,23 @@ public class ListingTest {
 
 
 
+    @Test
+    public void testToString() {
+        listing = new Listing();
+        String s= decorateListing();
+        FUNCTIONS.printToDebug(String.format("\n%s\n%s",s,listing.toString()));
+        assertTrue(listing.toString().equals(s));
 
+
+    }
 
     private String decorateListing(){
         String name = "NAME";
         listing.setName(name);
         String address = "123 state street, chicago Il";
         listing.setAddress(address);
-        String category = "Restaurant";
+        // just for now, need to edit how we initialize categories
+//        String category = "Restaurant";
 //        listing.setCategory(category);
         String description = "This is a great restaurant";
         listing.setDescription(description);
@@ -110,8 +120,7 @@ public class ListingTest {
 
 
 
-        return name+", "+description+", " +price+", "+address+", "+phoneNumber+", "+
-                category+", "+fe+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
+        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
     }
 
 

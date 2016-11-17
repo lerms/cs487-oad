@@ -1,1 +1,1 @@
-web: java -jar build/libçs/OAD-0.4.0.jar
+web: java -jar build/libs/OAD-0.4.0.jar

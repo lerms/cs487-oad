@@ -98,9 +98,7 @@ public class ListingTest {
         listing.setName(name);
         String address = "123 state street, chicago Il";
         listing.setAddress(address);
-        // just for now, need to edit how we initialize categories
-//        String category = "Restaurant";
-//        listing.setCategory(category);
+
         String description = "This is a great restaurant";
         listing.setDescription(description);
         LocalDate startDate = LocalDate.of(2016,11,06);

@@ -1,0 +1,1 @@
+web: java -jar build/librs/OAD-0.4.0.jar

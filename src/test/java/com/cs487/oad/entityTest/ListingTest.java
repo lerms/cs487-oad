@@ -56,6 +56,7 @@ public class ListingTest {
 
     @Test
     public void testStartDate() {
+        listing.setStartDate(CONSTANTS.DEFAULT_DATE);
         assertTrue(CONSTANTS.DEFAULT_DATE.equals(listing.getStartDate()));
     }
 
@@ -70,15 +71,14 @@ public class ListingTest {
 
     @Test
     public void testEndDate() {
+        listing.setEndDate(CONSTANTS.DEFAULT_DATE);
         assertTrue(CONSTANTS.DEFAULT_DATE.equals(listing.getEndDate()));
-
     }
 
 
 
     @Test
     public void testEndDateIsSet() {
-
         listing.setEndDate(NOW);
         assertTrue(NOW.equals(listing.getEndDate()));
     }
@@ -91,8 +91,6 @@ public class ListingTest {
         String s= decorateListing();
         FUNCTIONS.printToDebug(String.format("\n%s\n%s",s,listing.toString()));
         assertTrue(listing.toString().equals(s));
-
-
     }
 
     private String decorateListing(){
@@ -118,10 +116,7 @@ public class ListingTest {
         listing.setPrice(price);
         String website = "www.red.com";
         listing.setWebsite(website);
-
-
-
-        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
+        return listing.toString();
     }
 
 

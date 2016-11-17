@@ -2,6 +2,7 @@ package com.cs487.oad.configuration;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
@@ -18,7 +19,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient("mongodb://heroku_6hj7vqg5:k0kalp52vee3jq4m2knm7v91q7@ds145295.mlab.com:45295/");
+        return new MongoClient(new MongoClientURI("mongodb://heroku_6hj7vqg5:k0kalp52vee3jq4m2knm7v91q7@ds145295.mlab.com:45295/"));
     }
 
     @Override

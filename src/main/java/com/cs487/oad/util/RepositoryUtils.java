@@ -16,6 +16,7 @@ public class RepositoryUtils <T, V> {
     private static final Pattern WHITESPACE = Pattern.compile("[\\s]");
 
     public static String toSluggedString(String input) {
+        Preconditions.checkNotNull(input);
         String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
         String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
         String slug = NONLATIN.matcher(normalized).replaceAll("");

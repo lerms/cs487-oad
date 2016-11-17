@@ -38,8 +38,7 @@ jacocoTestReport {
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect{
             fileTree(dir: it,
-                    exclude: ['com/cs487/oad/boundaries/RestControllers/**',
-                    'com/cs487/oad/boundaries/**',
+                    exclude: [
                     'com/cs487/oad/configuration/**',
                     'com/cs487/oad/controllers/**',
                     'com/cs487/oad/repositories/**',
@@ -74,7 +73,4 @@ dependencies {
     compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.mod4j.com.google:collect:0.+'
-
-
-
 }

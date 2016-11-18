@@ -12,18 +12,20 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
 
+    private static final String DATABASE_NAME = "heroku_6hj7vqg5";
+
     @Override
     protected String getDatabaseName() {
-        return "heroku_6hj7vqg5";
+        return DATABASE_NAME;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient(new MongoClientURI("mongodb://heroku_6hj7vqg5:k0kalp52vee3jq4m2knm7v91q7@ds145295.mlab.com:45295/"));
+        return new MongoClient(new MongoClientURI("mongodb://alex:dbpass@ds145295.mlab.com:45295/" + DATABASE_NAME));
     }
 
     @Override
     protected String getMappingBasePackage() {
         return "com.cs487.oad";
     }
-}
+}s

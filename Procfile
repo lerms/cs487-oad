@@ -1,1 +1,1 @@
-web java -jar build/libs/OAD-0.4.0.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/OAD-0.4.0.jar

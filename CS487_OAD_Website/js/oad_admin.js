@@ -1,4 +1,5 @@
-
+var url = "http://localhost:8090";
+//var url = "50.179.64.156:8090";
 
 //TEST LISTING OBJECT
 function testListingObject(){
@@ -53,9 +54,25 @@ function testCategoryArray(){
 
 //TEST ADVERTISER OBJECT
 function testAdvertisersObject(){
-	var advertisers	= {
-			
+	var advertisers	= 
+	[{	"name" : "Morton's",
+		"email" : "example@example.com",
+		"phone" : "18005555555",
+		"website" : "example.com"		
+	},
+	{	"name" : "Bob's",
+		"email" : "example@example.com",
+		"phone" : "18005555555",
+		"website" : "example.com"
+	},
+	{	"name" : "Yen's",
+		"email" : "example@example.com",
+		"phone" : "18005555555",
+		"website" : "example.com"
 	}
+	];
+	
+	return advertisers;
 }
 
 //CREATE LISTING OBJECT
@@ -111,13 +128,14 @@ function createAdvertiserSubmit(){
 	
 	var advertiserObject = createAdvertiserObject(name, phone, website, email);
 	
-	console.log(JSON.stringify(advertiserObject));
-	
 	$.ajax({
     	type: "PUT",
-    	url:"http://localhost:8090/admin/advertiser",
+    	url: url + "/admin/advertiser",
     	contentType: "application/json",
-    	data: JSON.stringify(advertiserObject)
+    	data: JSON.stringify(advertiserObject),
+		success: function(response){
+			console.log(response);	
+		}
 	});
 }
 
@@ -135,9 +153,12 @@ function createCategorySubmit(){
 	
 	$.ajax({
     	type: "PUT",
-    	url:"http://localhost:8090/admin/categories",
+    	url: url + "/admin/categories",
     	contentType: "application/json",
-    	data: JSON.stringify(categoryObject)
+    	data: JSON.stringify(categoryObject),
+		success: function(response){
+			console.log(response);	
+		}
 	});
 	
 	subcategories = [];
@@ -154,8 +175,8 @@ function createListingSubmit(){
 	var phone = document.getElementById("listing_phone").value;
 	var description = document.getElementById("listing_description").value;
 	var website = document.getElementById("listing_website").value;
-	var startDate = document.getElementById("listing_start_date");
-	var endDate = document.getElementById("listing_end_date");
+	var startDate = document.getElementById("listing_start_date").value;
+	var endDate = document.getElementById("listing_end_date").value;
 	var featureType = $("input[name='featured_type']:checked").val();
 	var category = $("input[name='listing_category']:checked").val();
 	var subcategories = [];
@@ -163,13 +184,17 @@ function createListingSubmit(){
 		subcategories.push($(this).val());
 	});
 	
+	console.log(startDate);
 	var listingObject = createListingObject(name, advertiser, image, address, city, area, phone, description, website, startDate, endDate, featureType, category, subcategories);
 	
 	$.ajax({
     	type: "PUT",
-    	url:"http://localhost:8090/listings",
+    	url: url + "/listings",
     	contentType: "application/json",
-    	data: JSON.stringify(listingObject)
+    	data: JSON.stringify(listingObject),
+		success: function(response){
+			console.log(response);	
+		}
 	});
 }
 
@@ -219,6 +244,18 @@ function populateListingSubcategories(){
 	}
 }
 
+var advertisers;
+//POPULATE LISTING ADVERTISERS
+function populateListingAdvertisers(){
+	var advertiserDropdown = document.getElementById("listing_advertiser");
+	for (var i = 0; i < advertisers.length; i++){
+		var option = document.createElement("option");
+		option.value = advertisers[i].name;
+		option.textContent = advertisers[i].name;	
+		advertiserDropdown.appendChild(option);
+	}
+}
+
 //ON LOAD
 function onLoad(){
 	$(function() {
@@ -236,12 +273,15 @@ function onLoad(){
 	
 	categoryArray = testCategoryArray();
 	populateListingCategories();
-	
+	advertisers = testAdvertisersObject();
+	populateListingAdvertisers();
+	/*
 	//TEST CODE, REMOVE FOR FINAL
-	$.get("http://localhost:8090/admin/advertisers", function(data, status){
-        //createHTML(data);
+	$.get(url + "/admin/advertisers", function(data, status){
+        advertisers = data;
 		console.log(JSON.stringify(data));
     });
+	*/
 
 	document.getElementById("admin_wrapper").style.display="block";
 }

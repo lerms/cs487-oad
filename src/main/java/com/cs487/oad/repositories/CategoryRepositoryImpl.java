@@ -60,12 +60,18 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 
     @Override
     public void addCategoryAncestor(String slug, String ancestorSlug) {
-        Category update = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(slug), Category.class));
-        update.getAncestors().forEach(x -> {
-            if (x.getSlug().equals(ancestorSlug))
-                return;
-        });
-        Category ancestor = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));
+        Category update = RepositoryUtils.checkFound(operations
+                .findOne(RepositoryUtils.categorySlugQuery(slug), Category.class));
+
+        //no need to add an ancestor if it already exists, lets check
+        Preconditions.checkArgument(!update
+                .getAncestors()
+                .stream()
+                .anyMatch(ancestor -> ancestor.getSlug().equals(ancestorSlug)));
+
+        Category ancestor = RepositoryUtils.checkFound(operations
+                .findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));
+
         update.addAncestorCategory(ancestor);
         updateAncestors(slug, update.getAncestors());
     }
@@ -86,6 +92,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     public Category insertCategory(Category category) {
         Preconditions.checkNotNull(category);
         Preconditions.checkNotNull(category.getSlug());
+
         Query slugQuery = RepositoryUtils.categorySlugQuery(category.getSlug());
         operations.insert(category);
         category = operations.findOne(slugQuery, Category.class);

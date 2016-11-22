@@ -12,15 +12,19 @@ import java.util.List;
  */
 @Repository
 public interface ListingRepository extends MongoRepository<Listing, String> {
-
     List<Listing> findByName(String name);
+
     List<Listing> findByCity(String city);
+
     List<Listing> findByArea(String area);
+
     List<Listing> findByPhone(String phone);
+
     List<Listing> findByFeatureType(FeatureType featureType);
+
     List<Listing> findByCategory(String slug);
+
     Listing findById(String id);
+
     Listing deleteById(String id);
-
-
 }

@@ -23,7 +23,8 @@ public class Category extends OADEntity {
     @DBRef
     private List<Category> ancestors;
 
-    public Category() {}
+    public Category() {
+    }
 
     public Category(String name, String parentId, String slug, List<Category> ancestors) {
         this.name = name;
@@ -59,6 +60,7 @@ public class Category extends OADEntity {
     public void setParentId(String parentId) {
         this.parentId = parentId;
     }
+
     public String getParentId() {
         return parentId;
     }

@@ -15,6 +15,7 @@ apply plugin: 'idea'
 apply plugin: 'jacoco'
 apply plugin: 'spring-boot'
 
+
 repositories {
     mavenCentral()
     maven {
@@ -49,6 +50,9 @@ jacocoTestReport {
 
 }
 
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
 
 task runTest{
     dependsOn test, jacocoTestReport
@@ -66,11 +70,12 @@ dependencies {
     testCompile 'org.mockito:mockito-all:1.+'
     compile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.code.gson:gson:2.8.+'
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-security'
-    compile("org.thymeleaf:thymeleaf-spring4")
-    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile 'org.thymeleaf:thymeleaf-spring4'
+    compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.mod4j.com.google:collect:0.+'
+    compile("org.springframework.boot:spring-boot-devtools")
 }

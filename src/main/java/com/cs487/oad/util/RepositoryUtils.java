@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 /**
  * Created by alexanderlerma on 11/8/16.
  */
-public class RepositoryUtils <T, V> {
+public final class RepositoryUtils <T> {
     private static final Pattern NONLATIN = Pattern.compile("[^\\w-]");
     private static final Pattern WHITESPACE = Pattern.compile("[\\s]");
 

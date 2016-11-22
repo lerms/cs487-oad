@@ -1,4 +1,5 @@
 package com.cs487.oad.entity;
+
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.EnumUtils;
 
@@ -22,7 +23,7 @@ public enum FeatureType {
     }
 
     public static FeatureType fromString(String type) {
-        for(FeatureType featureType: FeatureType.values()) {
+        for (FeatureType featureType : FeatureType.values()) {
             if (featureType.featureType.equals(type))
                 return featureType;
         }

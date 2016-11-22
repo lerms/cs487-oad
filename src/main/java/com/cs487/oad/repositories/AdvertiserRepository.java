@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
  * Created by alexanderlerma on 10/16/16.
  */
 @Repository
-public interface AdvertiserRepository extends MongoRepository<Advertiser, String> , QueryByExampleExecutor<Advertiser> {
+public interface AdvertiserRepository extends MongoRepository<Advertiser, String>, QueryByExampleExecutor<Advertiser> {
 
     Advertiser findByEmail(String email);
+
     Advertiser findByName(String name);
+
     Advertiser findBySlug(String slug);
 
 }

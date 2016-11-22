@@ -62,7 +62,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     public void addCategoryAncestor(String slug, String ancestorSlug) {
         Category update = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(slug), Category.class));
         update.getAncestors().forEach(x -> {
-            if(x.getSlug().equals(ancestorSlug))
+            if (x.getSlug().equals(ancestorSlug))
                 return;
         });
         Category ancestor = RepositoryUtils.checkFound(operations.findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
-@Document(collection="advertiser")
+@Document(collection = "advertiser")
 public class Advertiser extends OADEntity {
 
     @Email
@@ -20,7 +20,8 @@ public class Advertiser extends OADEntity {
     private String website;
     private String slug;
 
-    public Advertiser() {}
+    public Advertiser() {
+    }
 
     public Advertiser(String name, String phone, String website, String email, String slug) {
         this.name = name;

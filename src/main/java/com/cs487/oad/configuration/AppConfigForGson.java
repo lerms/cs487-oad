@@ -1,6 +1,5 @@
 package com.cs487.oad.configuration;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.context.annotation.Configuration;

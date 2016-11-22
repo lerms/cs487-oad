@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
 
 repositories {
@@ -50,10 +50,6 @@ jacocoTestReport {
 
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-
-
 task runTest{
     dependsOn test, jacocoTestReport
 
@@ -69,6 +65,7 @@ dependencies {
     testCompile 'org.mockito:mockito-all:1.+'
     compile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.code.gson:gson:2.8.+'
+    compile 'org.mongodb:mongodb-driver:3.3.0'
     compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-security'

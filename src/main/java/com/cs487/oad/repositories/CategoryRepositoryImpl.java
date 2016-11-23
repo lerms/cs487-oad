@@ -69,8 +69,10 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
                 .stream()
                 .anyMatch(ancestor -> ancestor.getSlug().equals(ancestorSlug)));
 
-        Category ancestor = RepositoryUtils.checkFound(operations
-                .findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));
+        Category ancestor =
+                RepositoryUtils.checkFound(
+                        operations
+                                .findOne(RepositoryUtils.categorySlugQuery(ancestorSlug), Category.class));
 
         update.addAncestorCategory(ancestor);
         updateAncestors(slug, update.getAncestors());

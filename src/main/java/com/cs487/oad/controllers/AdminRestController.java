@@ -3,7 +3,9 @@ package com.cs487.oad.controllers;
 import com.cs487.oad.entity.*;
 import com.cs487.oad.services.OADService;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.Location;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,11 +58,17 @@ public class AdminRestController extends OADRestController {
 
     }
 
-
     @PutMapping("/advertiser")
     public @ResponseBody String putAdvertiser(@RequestBody AdvertiserDTO advertiserDto) {
         Preconditions.checkNotNull(advertiserDto);
         oadService.saveAdvertiser(advertiserDto);
         return "Advertiser Has Been Created";
     }
+
+    @GetMapping("/locations")
+    public @ResponseBody List<LocationDTO> getLocations() {
+        return Lists.newArrayList();
+    }
+
+
 }

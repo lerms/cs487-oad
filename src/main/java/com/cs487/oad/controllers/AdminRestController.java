@@ -23,6 +23,11 @@ public class AdminRestController extends OADRestController {
         super(oadService);
     }
 
+    @GetMapping("/")
+    public String adminHome() {
+        return "admin.html";
+    }
+
     @GetMapping("/listing")
     public @ResponseBody List<Listing> getAllListings() {
         return oadService.findAllListings();

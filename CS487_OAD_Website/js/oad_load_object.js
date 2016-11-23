@@ -1,3 +1,4 @@
+var url = "";
 
 //TEST OBJECT
 function testObject(){
@@ -388,12 +389,11 @@ function createFeaturedListing(object){
 	return listing;
 }
 
-/*
 $(document).ready(function(){
-	$.get("http://localhost:8090/listing", function(data, status){
-        //createHTML(data);
-		console.log(JSON.stringify(data));
+	$.get(url+"/listing", function(data, status){
+        createHTML(data);
+		//console.log(JSON.stringify(data));
     });
 });
-*/
-window.onload = createHTML2(testObject2());
+
+//window.onload = createHTML2(testObject2());

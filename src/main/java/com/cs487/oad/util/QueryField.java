@@ -36,7 +36,7 @@ public enum QueryField {
     }
 
     public static QueryField fromString(String field) {
-        for(QueryField queryField : QueryField.values()) {
+        for (QueryField queryField : QueryField.values()) {
             if (queryField.field.equals(field))
                 return queryField;
         }

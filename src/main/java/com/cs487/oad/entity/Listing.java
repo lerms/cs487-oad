@@ -1,4 +1,5 @@
 package com.cs487.oad.entity;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -35,7 +36,8 @@ public class Listing extends OADEntity {
     @DBRef
     private Category category;
 
-    public Listing() {}
+    public Listing() {
+    }
 
     @PersistenceConstructor
     public Listing(String name, Advertiser advertiser, String image,
@@ -61,6 +63,7 @@ public class Listing extends OADEntity {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

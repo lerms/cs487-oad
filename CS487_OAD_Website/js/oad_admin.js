@@ -1,4 +1,4 @@
-var url = "http://localhost:8090";
+var url = "";
 //var url = "50.179.64.156:8090";
 
 //TEST LISTING OBJECT
@@ -153,7 +153,7 @@ function createCategorySubmit(){
 	
 	$.ajax({
     	type: "PUT",
-    	url: url + "/admin/categories",
+    	url: url + "/admin/category",
     	contentType: "application/json",
     	data: JSON.stringify(categoryObject),
 		success: function(response){
@@ -189,7 +189,7 @@ function createListingSubmit(){
 	
 	$.ajax({
     	type: "PUT",
-    	url: url + "/listings",
+    	url: url + "/listing",
     	contentType: "application/json",
     	data: JSON.stringify(listingObject),
 		success: function(response){
@@ -271,17 +271,17 @@ function onLoad(){
 		$( "#account" ).tabs(); 
 	});
 	
-	categoryArray = testCategoryArray();
-	populateListingCategories();
-	advertisers = testAdvertisersObject();
-	populateListingAdvertisers();
-	/*
-	//TEST CODE, REMOVE FOR FINAL
-	$.get(url + "/admin/advertisers", function(data, status){
-        advertisers = data;
-		console.log(JSON.stringify(data));
+	//categoryArray = testCategoryArray();
+	$.get(url+"/admin/category", function(data, status){
+        categoryArry = data;
     });
-	*/
+	populateListingCategories();
+	
+	//advertisers = testAdvertisersObject();
+	$.get(url+"/admin/advertiser", function(data, status){
+        categoryArry = data;
+    });
+	populateListingAdvertisers();
 
 	document.getElementById("admin_wrapper").style.display="block";
 }

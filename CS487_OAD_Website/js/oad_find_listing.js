@@ -69,6 +69,9 @@ function findListings(){
 	}
 	
 	//TODO ADD FIND LISTING GET REQUEST
+	$.get(url+"/listings?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
+		//TODO CLEAR AND POPULATE LISTINGS
+	});
 	
 }
 
@@ -76,7 +79,10 @@ function findListings(){
 
 //PAGE LOAD
 function pageLoad(){
-	setFindObject(testFindGetObject());
+	$.get(url+"/location", function(data, status){
+        	setFindObject(data);
+    });
+
 	populateFindCityList();
 	
 	document.getElementById("search_button").addEventListener("click", findListings);

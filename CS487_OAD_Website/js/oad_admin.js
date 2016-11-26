@@ -100,8 +100,8 @@ function createListingObject(name, advertiser, image, address, city, area, phone
 //CREATE CATEGORY OBJECT
 function createCategoryObject(name, subcats){
 	var categoryObject = {
-	"name" : name,
-	"subcategories" : subcats,	
+		"name" : name,
+		"subcategories" : subcats
 	}
 	
 	return categoryObject;

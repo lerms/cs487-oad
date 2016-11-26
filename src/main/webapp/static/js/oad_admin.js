@@ -54,8 +54,8 @@ function testCategoryArray(){
 
 //TEST ADVERTISER OBJECT
 function testAdvertisersObject(){
-	var advertisers	=
-		{"advertisers":[{	"name" : "Morton's",
+	var advertisers	= 
+	[{	"name" : "Morton's",
 		"email" : "example@example.com",
 		"phone" : "18005555555",
 		"website" : "example.com"		
@@ -70,7 +70,7 @@ function testAdvertisersObject(){
 		"phone" : "18005555555",
 		"website" : "example.com"
 	}
-	]}
+	];
 	
 	return advertisers;
 }
@@ -215,10 +215,9 @@ function changePasswordSubmit(){
 	
 }
 
-var categoryArray;
 
 //POPULATE LISTING CATEGORY LIST
-function populateListingCategories(){
+function populateListingCategories(categoryArray){
 	var catDiv = document.getElementById("listing_category_list");
 	
 	for (var i = 0; i < categoryArray.categories.length; i++){
@@ -256,23 +255,19 @@ function populateListingSubcategories(){
 	}
 }
 
-var advertisers;
-
 //POPULATE LISTING ADVERTISERS
-function populateListingAdvertisers(){
+function populateListingAdvertisers(advertisers){
 	var advertiserDropdown = document.getElementById("listing_advertiser");
-	alert(advertisers.advertisers.length);
-	for (var i = 0; i < advertisers.advertisers.length; i++){
+	for (var i = 0; i < advertisers.length; i++){
 		var option = document.createElement("option");
-		option.value = advertisers.advertisers[i].name;
-		option.textContent = advertisers.advertisers[i].name;
+		option.value = advertisers[i].name;
+		option.textContent = advertisers[i].name;	
 		advertiserDropdown.appendChild(option);
 	}
 }
 
 //ON LOAD
 function onLoad(){
-
 	$(function() {
 		$( "#admin_functions" ).tabs(); 
 	});
@@ -286,21 +281,17 @@ function onLoad(){
 		$( "#account" ).tabs(); 
 	});
 	
-	// categoryArray = testCategoryArray();
+	//categoryArray = testCategoryArray();
 	$.get(url+"/admin/category", function(data, status){
-        categoryArray = data;
+        populateListingCategories(data);
     });
-	alert(categoryArray.length);
-    populateListingCategories();
+
 	
-	// advertisers = testAdvertisersObject();
-	// $.get(url+"/admin/advertiser", function(data, status){
-	// 	advertisers = data;
-     //    // console.log(JSON.stringify(data));
-     //    // alert(advertisers.length);
-    // });
-    //
-    // populateListingAdvertisers();
+	//advertisers = testAdvertisersObject();
+	$.get(url+"/admin/advertiser", function(data, status){
+        populateListingAdvertisers(data);
+    });
+
 
 	document.getElementById("admin_wrapper").style.display="block";
 }

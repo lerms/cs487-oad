@@ -121,6 +121,7 @@ function createAdvertiserObject(name, phone, website, email){
 
 //CREATE ADVERTISER SUBMIT
 function createAdvertiserSubmit(){
+	console.log("Creating Advertiser...");
 	var name = document.getElementById("business_name_input").value;
 	var phone = document.getElementById("business_phone_input").value;
 	var website = document.getElementById("business_website_input").value;
@@ -138,6 +139,7 @@ function createAdvertiserSubmit(){
     	//contentType: "application/json",
     	data: JSON.stringify(advertiserObject),
 		success: function(response){
+			alert("Advertiser Created");
 			console.log(response);	
 		}
 	});
@@ -152,6 +154,7 @@ function addSubcategory(){
 }
 //CREATE CATEGORY SUBMIT
 function createCategorySubmit(){
+	console.log("Creating category...");
 	var name = document.getElementById("category_name_input").value;
 	var categoryObject = createCategoryObject(name, subcategories);
 	
@@ -165,6 +168,7 @@ function createCategorySubmit(){
     	//contentType: "application/json",
     	data: JSON.stringify(categoryObject),
 		success: function(response){
+			alert("Category Created");
 			console.log(response);	
 		}
 	});
@@ -174,6 +178,7 @@ function createCategorySubmit(){
 
 //CREATE LISTING SUBMIT
 function createListingSubmit(){
+	console.log("Creating Lising...");
 	var name = document.getElementById("listing_name").value;
 	var advertiser = document.getElementById("listing_advertiser").value;
 	var image = document.getElementById("listing_image").value;
@@ -192,7 +197,6 @@ function createListingSubmit(){
 		subcategories.push($(this).val());
 	});
 	
-	console.log(startDate);
 	var listingObject = createListingObject(name, advertiser, image, address, city, area, phone, description, website, startDate, endDate, featureType, category, subcategories);
 	
 	$.ajax({
@@ -205,6 +209,7 @@ function createListingSubmit(){
     	//contentType: "application/json",
     	data: JSON.stringify(listingObject),
 		success: function(response){
+			alert("Listing Created");
 			console.log(response);	
 		}
 	});
@@ -284,7 +289,7 @@ function onLoad(){
 	
 	//categoryArray = testCategoryArray();
 	$.get(url+"/admin/category", function(data, status){
-        if (data != []){
+        if (data.length > 0){
 			populateListingCategories(data);
 		}
     });
@@ -292,7 +297,7 @@ function onLoad(){
 	
 	//advertisers = testAdvertisersObject();
 	$.get(url+"/admin/advertiser", function(data, status){
-        if (data != []){
+        if (data.length > 0){
 			populateListingAdvertisers(data);
 		}
     });

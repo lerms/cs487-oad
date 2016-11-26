@@ -1,4 +1,4 @@
-var url = "${pageContext.request.contextPath}";
+var url = "";
 //var url = "50.179.64.156:8090";
 
 //TEST LISTING OBJECT
@@ -215,10 +215,9 @@ function changePasswordSubmit(){
 	
 }
 
-var categoryArray;
 
 //POPULATE LISTING CATEGORY LIST
-function populateListingCategories(){
+function populateListingCategories(categoryArray){
 	var catDiv = document.getElementById("listing_category_list");
 	
 	for (var i = 0; i < categoryArray.categories.length; i++){
@@ -256,9 +255,8 @@ function populateListingSubcategories(){
 	}
 }
 
-var advertisers;
 //POPULATE LISTING ADVERTISERS
-function populateListingAdvertisers(){
+function populateListingAdvertisers(advertisers){
 	var advertiserDropdown = document.getElementById("listing_advertiser");
 	for (var i = 0; i < advertisers.length; i++){
 		var option = document.createElement("option");
@@ -285,15 +283,15 @@ function onLoad(){
 	
 	//categoryArray = testCategoryArray();
 	$.get(url+"/admin/category", function(data, status){
-        categoryArry = data;
+        populateListingCategories(data);
     });
-	populateListingCategories();
+	
 	
 	//advertisers = testAdvertisersObject();
 	$.get(url+"/admin/advertiser", function(data, status){
-        categoryArry = data;
+        populateListingAdvertisers(data);
     });
-	populateListingAdvertisers();
+	
 
 	document.getElementById("admin_wrapper").style.display="block";
 }

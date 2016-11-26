@@ -220,6 +220,7 @@ function changePasswordSubmit(){
 function populateListingCategories(categoryArray){
 	var catDiv = document.getElementById("listing_category_list");
 	
+	
 	for (var i = 0; i < categoryArray.categories.length; i++){
 		var label = document.createElement("label");
 		var radio = document.createElement("input");
@@ -283,13 +284,17 @@ function onLoad(){
 	
 	//categoryArray = testCategoryArray();
 	$.get(url+"/admin/category", function(data, status){
-        populateListingCategories(data);
+        if (data != []){
+			populateListingCategories(data);
+		}
     });
 	
 	
 	//advertisers = testAdvertisersObject();
 	$.get(url+"/admin/advertiser", function(data, status){
-        populateListingAdvertisers(data);
+        if (data != []){
+			populateListingAdvertisers(data);
+		}
     });
 	
 

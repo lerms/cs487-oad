@@ -100,8 +100,8 @@ function createListingObject(name, advertiser, image, address, city, area, phone
 //CREATE CATEGORY OBJECT
 function createCategoryObject(name, subcats){
 	var categoryObject = {
-	"name" : name,
-	"subcategories" : subcats,	
+		"name" : name,
+		"subcategories" : subcats
 	}
 	
 	return categoryObject;
@@ -226,7 +226,7 @@ function populateListingCategories(categoryArray){
 	var catDiv = document.getElementById("listing_category_list");
 	
 	
-	for (var i = 0; i < categoryArray.categories.length; i++){
+	for (var i = 0; i < categoryArray.length; i++){
 		var label = document.createElement("label");
 		var radio = document.createElement("input");
 		radio.type = "radio";
@@ -234,7 +234,7 @@ function populateListingCategories(categoryArray){
 		radio.onclick = function(){populateListingSubcategories()};
 		radio.value = i;
 		radio.required = true;
-		label.innerHTML = categoryArray.categories[i].name;
+		label.innerHTML = categoryArray[i].name;
 		catDiv.appendChild(radio);
 		catDiv.appendChild(label);
 		catDiv.appendChild(document.createElement("br"));

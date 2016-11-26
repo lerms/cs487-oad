@@ -27,25 +27,6 @@ public class AdvertiserTest {
     }
 
 
-
-    @Test
-    public void testDescriptionIsEmpty() {
-        assertNull(advertiser.getDescription());
-    }
-
-
-
-    @Test
-    public void testDescriptionIsSet() {
-
-        String description = "this is a business selling interdimensional travels";
-        advertiser.setDescription(description);
-        assertTrue(advertiser.getDescription().equals(description));
-
-    }
-
-
-
     @Test
     public void testWebLinkIsEmpty() {
         assertNull(advertiser.getWebsite());

@@ -1,13 +1,11 @@
 package com.cs487.oad.controllers;
-import com.cs487.oad.entity.Advertiser;
-import com.cs487.oad.entity.Category;
+
+import com.cs487.oad.entity.*;
 import com.cs487.oad.services.OADService;
-import com.cs487.oad.entity.Listing;
-import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -24,45 +22,57 @@ public class AdminRestController extends OADRestController {
         super(oadService);
     }
 
+    @GetMapping("/")
+    public String adminHome() {
+        return "admin.html";
+    }
+
     @GetMapping("/listing")
     public @ResponseBody List<Listing> getAllListings() {
-        return RepositoryUtils.checkFound(oadService.findAllListings());
+        return oadService.findAllListings();
     }
 
     @GetMapping("/category")
-    public @ResponseBody List<Category> getAllCategories() {
-        return RepositoryUtils.checkFound(oadService.findAllCategories());
+    public @ResponseBody List<CategoryDTO> getAllCategories() {
+        return oadService.findAllCategoriesAsDtos();
     }
 
     @GetMapping("/category/{slug}")
-    public @ResponseBody Category getAllCategories(@PathVariable String slug) {
-        return RepositoryUtils.checkFound(oadService.findCategoryBySlug(slug));
+    public @ResponseBody CategoryDTO getCategoryBySlug(@PathVariable String slug) {
+        return oadService.findCategoryBySlug(slug);
     }
 
     @GetMapping("/advertiser")
     public List<Advertiser> getAllAdvertisers() {
-        return RepositoryUtils.checkFound(oadService.findAllAdvertisers());
+        return oadService.findAllAdvertisers();
     }
 
     @PutMapping("/listing")
-    public @ResponseBody String putListing(@RequestBody Listing listing) {
-        Preconditions.checkNotNull(listing);
-        oadService.saveListing(listing);
+    public @ResponseBody String putListing(@RequestBody ListingDTO listingDto) {
+        Preconditions.checkNotNull(listingDto);
+        oadService.saveListing(listingDto);
         return "Listing Has Been Created!";
     }
 
     @PutMapping("/category")
-    public @ResponseBody String putCategory(@RequestBody Category category) {
-        Preconditions.checkNotNull(category);
-        oadService.saveCategory(category);
-        return "Listing Has Been Created!";
-    }
+    public @ResponseBody String putCategory(@RequestBody CategoryDTO categoryDto) {
+        Preconditions.checkNotNull(categoryDto);
+        oadService.saveCategory(categoryDto);
+        return "Category has been created!";
 
+    }
 
     @PutMapping("/advertiser")
-    public @ResponseBody String putAdvertiser(@RequestBody Advertiser advertiser) {
-        Preconditions.checkNotNull(advertiser);
-        oadService.saveAdvertiser(advertiser);
+    public @ResponseBody String putAdvertiser(@RequestBody AdvertiserDTO advertiserDto) {
+        Preconditions.checkNotNull(advertiserDto);
+        oadService.saveAdvertiser(advertiserDto);
         return "Advertiser Has Been Created";
     }
+
+    @GetMapping("/locations")
+    public @ResponseBody List<LocationDTO> getLocations() {
+        return Lists.newArrayList();
+    }
+
+
 }

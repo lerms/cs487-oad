@@ -3,6 +3,7 @@ package com.cs487.oad.entityTest;
 
 
 
+import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,6 +56,7 @@ public class ListingTest {
 
     @Test
     public void testStartDate() {
+        listing.setStartDate(CONSTANTS.DEFAULT_DATE);
         assertTrue(CONSTANTS.DEFAULT_DATE.equals(listing.getStartDate()));
     }
 
@@ -69,15 +71,14 @@ public class ListingTest {
 
     @Test
     public void testEndDate() {
+        listing.setEndDate(CONSTANTS.DEFAULT_DATE);
         assertTrue(CONSTANTS.DEFAULT_DATE.equals(listing.getEndDate()));
-
     }
 
 
 
     @Test
     public void testEndDateIsSet() {
-
         listing.setEndDate(NOW);
         assertTrue(NOW.equals(listing.getEndDate()));
     }
@@ -90,8 +91,6 @@ public class ListingTest {
         String s= decorateListing();
         FUNCTIONS.printToDebug(String.format("\n%s\n%s",s,listing.toString()));
         assertTrue(listing.toString().equals(s));
-
-
     }
 
     private String decorateListing(){
@@ -99,9 +98,7 @@ public class ListingTest {
         listing.setName(name);
         String address = "123 state street, chicago Il";
         listing.setAddress(address);
-        // just for now, need to edit how we initialize categories
-//        String category = "Restaurant";
-//        listing.setCategory(category);
+
         String description = "This is a great restaurant";
         listing.setDescription(description);
         LocalDate startDate = LocalDate.of(2016,11,06);
@@ -110,17 +107,14 @@ public class ListingTest {
         listing.setStartDate(startDate);
 
         String fe = "fe";
-        listing.setFeatureType(fe);
+        listing.setFeatureType(FeatureType.NORMAL);
         String phoneNumber = "11-11";
-        listing.setPhoneNumber(phoneNumber);
+        listing.setPhone(phoneNumber);
         double price = 10.55;
         listing.setPrice(price);
         String website = "www.red.com";
         listing.setWebsite(website);
-
-
-
-        return name+", "+description+", " +price+", "+address+", "+phoneNumber +", "+", "+startDate.toString()+", "+ endDate.toString()+", "+website;
+        return listing.toString();
     }
 
 

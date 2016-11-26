@@ -21,6 +21,7 @@ public enum QueryField {
     CITY("city"),
     START_DATE("startDate"),
     END_DATE("endDate"),
+    PARENT_ID("parentId"),
     UNDEFINED("undefined");
 
     private final String field;
@@ -35,7 +36,7 @@ public enum QueryField {
     }
 
     public static QueryField fromString(String field) {
-        for(QueryField queryField : QueryField.values()) {
+        for (QueryField queryField : QueryField.values()) {
             if (queryField.field.equals(field))
                 return queryField;
         }

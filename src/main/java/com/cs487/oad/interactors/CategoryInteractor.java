@@ -1,12 +1,10 @@
 package com.cs487.oad.interactors;
 
 
-
 import com.cs487.oad.entity.Category;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 /**
@@ -18,25 +16,24 @@ public class CategoryInteractor {
     private Map<String, Category> map = new HashMap<>();
 
 
-
     //Initialization-on-Demand Holder Idiom
     //see wikipedia: https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom
     //and this blog post for explanation http://blog.crazybob.org/2007/01/lazy-loading-singletons.html
-    private static class CategoryHolder{
+    private static class CategoryHolder {
         public static CategoryInteractor INSTANCE = new CategoryInteractor();
     }
 
-    public static CategoryInteractor getInstance(){
+    public static CategoryInteractor getInstance() {
         return CategoryHolder.INSTANCE;
     }
 
 
-    private CategoryInteractor(){
+    private CategoryInteractor() {
 
     }
 //***end of IODH
 
-    public int getSize(){
+    public int getSize() {
         return map.size();
     }
 
@@ -52,11 +49,11 @@ public class CategoryInteractor {
 //
 //    }
 
-    public void add(Category category){
+    public void add(Category category) {
         map.put(category.getName(), category);
     }
 
-    public Category getCategory(String name){
+    public Category getCategory(String name) {
         return map.get(name);
     }
 

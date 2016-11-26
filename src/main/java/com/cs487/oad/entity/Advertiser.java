@@ -8,26 +8,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Jlarrieux on 9/19/2016.
  */
-@Document(collection="advertiser")
+@Document(collection = "advertiser")
 public class Advertiser extends OADEntity {
 
     @Email
     @Indexed(unique = true)
     private String email;
+    @Indexed(unique = true)
     private String name;
     private String phone;
     private String website;
-    private String description;
+    private String slug;
 
-    public Advertiser() {}
+    public Advertiser() {
+    }
 
-    public Advertiser(String name, String phone, String website, String email, String description) {
+    public Advertiser(String name, String phone, String website, String email, String slug) {
         this.name = name;
         this.phone = phone;
         this.website = website;
         this.email = email;
-        this.description = description;
-
+        this.slug = slug;
     }
 
     public String getName() {
@@ -62,12 +63,12 @@ public class Advertiser extends OADEntity {
         this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSlug() {
+        return slug;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     @Override
@@ -77,7 +78,7 @@ public class Advertiser extends OADEntity {
                 .append("phone", phone)
                 .append("website", website)
                 .append("email", email)
-                .append("description", description)
+                .append("slug", slug)
                 .toString();
     }
 }

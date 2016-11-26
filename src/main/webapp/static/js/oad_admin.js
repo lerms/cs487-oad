@@ -131,7 +131,11 @@ function createAdvertiserSubmit(){
 	$.ajax({
     	type: "PUT",
     	url: url + "/admin/advertiser",
-    	contentType: "application/json",
+		beforeSend: function(xhr){
+			xhr.setRequestHeader("Accept", "application/json");
+			xhr.setRequestHeader("Content-Type", "application/json");
+		},
+    	//contentType: "application/json",
     	data: JSON.stringify(advertiserObject),
 		success: function(response){
 			console.log(response);	
@@ -154,7 +158,11 @@ function createCategorySubmit(){
 	$.ajax({
     	type: "PUT",
     	url: url + "/admin/category",
-    	contentType: "application/json",
+		beforeSend: function(xhr){
+			xhr.setRequestHeader("Accept", "application/json");
+			xhr.setRequestHeader("Content-Type", "application/json");
+		},
+    	//contentType: "application/json",
     	data: JSON.stringify(categoryObject),
 		success: function(response){
 			console.log(response);	
@@ -190,7 +198,11 @@ function createListingSubmit(){
 	$.ajax({
     	type: "PUT",
     	url: url + "/listing",
-    	contentType: "application/json",
+		beforeSend: function(xhr){
+			xhr.setRequestHeader("Accept", "application/json");
+			xhr.setRequestHeader("Content-Type", "application/json");
+		},
+    	//contentType: "application/json",
     	data: JSON.stringify(listingObject),
 		success: function(response){
 			console.log(response);	

@@ -70,8 +70,6 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.boot:spring-boot-devtools'
-    compile 'org.thymeleaf:thymeleaf-spring4'
-    compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     compile 'org.apache.commons:commons-lang3:3.4'
     compile 'org.mod4j.com.google:collect:0.+'
 }

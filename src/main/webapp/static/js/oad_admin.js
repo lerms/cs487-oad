@@ -284,7 +284,7 @@ function onLoad(){
 	
 	//categoryArray = testCategoryArray();
 	$.get(url+"/admin/category", function(data, status){
-        if (data != []){
+        if (data.length > 0){
 			populateListingCategories(data);
 		}
     });
@@ -292,7 +292,7 @@ function onLoad(){
 	
 	//advertisers = testAdvertisersObject();
 	$.get(url+"/admin/advertiser", function(data, status){
-        if (data != []){
+        if (data.length > 0){
 			populateListingAdvertisers(data);
 		}
     });

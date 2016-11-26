@@ -288,7 +288,7 @@ function onLoad(){
 			populateListingCategories(data);
 		}
     });
-	
+
 	
 	//advertisers = testAdvertisersObject();
 	$.get(url+"/admin/advertiser", function(data, status){
@@ -296,7 +296,7 @@ function onLoad(){
 			populateListingAdvertisers(data);
 		}
     });
-	
+
 
 	document.getElementById("admin_wrapper").style.display="block";
 }

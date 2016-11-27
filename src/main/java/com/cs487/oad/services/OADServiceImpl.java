@@ -234,10 +234,11 @@ public class OADServiceImpl implements OADService {
      */
     private ListingDTO popRandomListing(List<Listing> homepageListings) {
         Preconditions.checkArgument(homepageListings != null && homepageListings.size() > 0);
+
         int randomIdx = new Random()
                 .ints(0, homepageListings.size())
-                .findFirst()
-                .getAsInt();
+                .findFirst().orElse(0);
+
         Listing randomListing = homepageListings.remove(randomIdx);
         return listingToDTO(randomListing);
     }

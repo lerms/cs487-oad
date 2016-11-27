@@ -26,12 +26,4 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/**").addResourceLocations("/static/");
     }
 
-
-    @Bean
-    public indexController indexController(){
-        return new indexController();
-    }
-
-
-
 }

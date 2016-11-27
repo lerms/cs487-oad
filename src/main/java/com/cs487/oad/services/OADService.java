@@ -35,7 +35,7 @@ public interface OADService {
 
     void updateAdvertiserName(String name, String newName);
 
-    List<LocationDTO> findAllLocations();
+    Map<String, List<LocationDTO>> findAllLocations();
 
     Map<String, Object> findAllListings();
 

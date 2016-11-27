@@ -22,6 +22,7 @@ public enum QueryField {
     START_DATE("startDate"),
     END_DATE("endDate"),
     PARENT_ID("parentId"),
+    LOCATIONS("locations"),
     UNDEFINED("undefined");
 
     private final String field;

@@ -5,8 +5,10 @@ import com.cs487.oad.repositories.AdvertiserRepository;
 import com.cs487.oad.repositories.CategoryRepository;
 import com.cs487.oad.repositories.ListingRepository;
 import com.cs487.oad.repositories.LocationRepository;
+import com.cs487.oad.util.QueryField;
 import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,11 +88,10 @@ public class OADServiceImpl implements OADService {
     }
 
     @Override
-    public List<LocationDTO> findAllLocations() {
+    public Map<String, List<LocationDTO>> findAllLocations() {
         List<Location> locations = RepositoryUtils.checkFound(locationRepository.findAll());
-        return locationsToDtos(locations);
+        return Collections.singletonMap(QueryField.LOCATIONS.toString(), locationsToDtos(locations));
     }
-
     @Override
     public List<CategoryDTO> findAllCategories() {
         List<Category> categories = RepositoryUtils.checkFound(categoryRepository.findAll());
@@ -250,7 +251,7 @@ public class OADServiceImpl implements OADService {
         groupedByCity.forEach((city, locationList) -> {
             Set<String> uniqueNeighborhoods = new HashSet<>();
             locationList.forEach(loc -> uniqueNeighborhoods.add(loc.getNeighborhood()));
-            locationDtos.add(new LocationDTO(city, uniqueNeighborhoods));
+            locationDtos.add(new LocationDTO(city, Lists.sortedCopy(uniqueNeighborhoods)));
         });
 
         return locationDtos;
@@ -328,14 +329,23 @@ public class OADServiceImpl implements OADService {
         Category category = RepositoryUtils.checkFound(categoryRepository.findByName(listingDto.getCategory()));
         Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByName(listingDto.getAdvertiser()));
 
-        Location location = locationRepository.findByCityAndNeighborhood(listingDto.getCity(), listingDto.getNeighborhood());
-
+        List<Location> cityNeighborhoods = locationRepository.findByCity(listingDto.getCity());
+        Location location = new Location(listingDto.getCity(), listingDto.getNeighborhood());
         //add the location to our repository
-        if (location == null)
-            location = new Location(listingDto.getCity(), listingDto.getNeighborhood());
-            locationRepository.save(location);
+        if (cityNeighborhoods == null) {
+            location = locationRepository.save(location);
+        } else {
+            // if the location exists, we'll use that, else add it to the repository
+            location = cityNeighborhoods
+                    .stream()
+                    .filter(x -> x.getNeighborhood().equalsIgnoreCase(listingDto.getNeighborhood()))
+                    .findFirst()
+                    .orElse(locationRepository.save(location));
+        }
+
 
         Listing listing = new Listing();
+
         listing.setCategory(category);
         listing.setAdvertiser(advertiser);
         listing.setLocation(location);

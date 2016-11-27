@@ -77,7 +77,7 @@ public class AdminRestController extends OADRestController {
     }
 
     @GetMapping("/locations")
-    public @ResponseBody List<LocationDTO> getLocations() {
+    public @ResponseBody Map<String, List<LocationDTO>> getLocations() {
         return oadService.findAllLocations();
     }
 

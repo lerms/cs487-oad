@@ -3,6 +3,7 @@ package com.cs487.oad.services;
 import com.cs487.oad.entity.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by alexanderlerma on 11/3/16.
@@ -34,21 +35,23 @@ public interface OADService {
 
     void updateAdvertiserName(String name, String newName);
 
-    List<Listing> findAllListings();
+    List<LocationDTO> findAllLocations();
 
-    List<ListingDTO> findAllListingsAsDtos();
+    Map<String, Object> findAllListings();
 
-    List<Category> findAllCategories();
+    Map<String, Object> searchListings(ListingSearchRequest searchRequest);
 
-    List<Advertiser> findAllAdvertisers();
+    List<CategoryDTO> findAllCategories();
 
-    List<CategoryDTO> findAllCategoriesAsDtos();
+    List<AdvertiserDTO> findAllAdvertisers();
+
+    List<CategoryDTO> findAllRootCategories();
 
     Category findCategoryByName(String name);
 
     CategoryDTO findCategoryBySlug(String slug);
 
-    Category findCategoryById(String id);
-
     void emptyCollectionsForTesting();
+
+    Map<String, Object> listingsForHomepage();
 }

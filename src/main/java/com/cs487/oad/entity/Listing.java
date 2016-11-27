@@ -22,8 +22,8 @@ public class Listing extends OADEntity {
     private Advertiser advertiser;
     private String image;
     private String address;
-    private String city;
-    private String area;
+    @DBRef
+    private Location location;
     private String phone;
     private String description;
     @URL
@@ -41,15 +41,14 @@ public class Listing extends OADEntity {
 
     @PersistenceConstructor
     public Listing(String name, Advertiser advertiser, String image,
-                   String address, String city, String area, String phone,
+                   String address, Location location, String phone,
                    String description, String website, FeatureType featureType,
                    LocalDate startDate, LocalDate endDate, Category category, double price) {
         this.name = name;
         this.advertiser = advertiser;
         this.image = image;
         this.address = address;
-        this.city = city;
-        this.area = area;
+        this.location = location;
         this.phone = phone;
         this.description = description;
         this.website = website;
@@ -92,20 +91,12 @@ public class Listing extends OADEntity {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
+    public Location getLocation() {
+        return this.location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getPhone() {
@@ -181,8 +172,7 @@ public class Listing extends OADEntity {
                 .append("advertiser", advertiser)
                 .append("image", image)
                 .append("address", address)
-                .append("city", city)
-                .append("area", area)
+                .append("location", location)
                 .append("phone", phone)
                 .append("description", description)
                 .append("website", website)

@@ -16,9 +16,7 @@ import java.util.List;
  */
 
 @Configuration
-@EnableWebMvc
 public class AppConfigForGson extends WebMvcConfigurerAdapter {
-
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

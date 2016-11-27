@@ -1,5 +1,6 @@
 package com.cs487.oad.repositories;
 
+import com.cs487.oad.entity.Category;
 import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -11,18 +12,11 @@ import java.util.List;
  * Created by alexanderlerma on 10/4/16.
  */
 @Repository
-public interface ListingRepository extends MongoRepository<Listing, String> {
-    List<Listing> findByName(String name);
-
-    List<Listing> findByCity(String city);
-
-    List<Listing> findByArea(String area);
-
-    List<Listing> findByPhone(String phone);
+public interface ListingRepository extends MongoRepository<Listing, String> , ListingRepositoryCustom {
 
     List<Listing> findByFeatureType(FeatureType featureType);
 
-    List<Listing> findByCategory(String slug);
+    List<Listing> findByCategory(Category category);
 
     Listing findById(String id);
 

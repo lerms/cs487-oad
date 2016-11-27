@@ -4,16 +4,15 @@ import com.cs487.oad.entity.*;
 import com.cs487.oad.repositories.AdvertiserRepository;
 import com.cs487.oad.repositories.CategoryRepository;
 import com.cs487.oad.repositories.ListingRepository;
+import com.cs487.oad.repositories.LocationRepository;
 import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -23,25 +22,19 @@ import java.util.stream.Collectors;
 public class OADServiceImpl implements OADService {
     private final CategoryRepository categoryRepository;
     private final AdvertiserRepository advertiserRepository;
+    private final LocationRepository locationRepository;
     private final ListingRepository listingRepository;
 
     @Autowired
     public OADServiceImpl(CategoryRepository categoryRepository, AdvertiserRepository advertiserRepository,
-                          ListingRepository listingRepository) {
-        Assert.notNull(categoryRepository);
-        Assert.notNull(advertiserRepository);
-        Assert.notNull(listingRepository);
+                          LocationRepository locationRepository, ListingRepository listingRepository) {
+        Preconditions.checkContentsNotNull(Arrays.asList(categoryRepository, advertiserRepository, locationRepository, listingRepository));
         this.categoryRepository = categoryRepository;
         this.advertiserRepository = advertiserRepository;
+        this.locationRepository = locationRepository;
         this.listingRepository = listingRepository;
     }
 
-
-    @Override
-    public void saveListing(ListingDTO listingDto) {
-        Listing listing = dtoToListing(listingDto);
-        listingRepository.save(listing);
-    }
 
     @Override
     public void saveCategory(CategoryDTO categoryDto) {
@@ -65,12 +58,6 @@ public class OADServiceImpl implements OADService {
         advertiserRepository.save(adv);
     }
 
-
-    @Override
-    public void deleteListing(Listing listing) {
-        listingRepository.delete(listing);
-    }
-
     @Override
     public void deleteCategory(CategoryDTO categoryDto) {
         categoryRepository.deleteCategory(categoryDto.getName().toLowerCase());
@@ -79,13 +66,6 @@ public class OADServiceImpl implements OADService {
     @Override
     public void deleteAdvertiser(Advertiser advertiser) {
         advertiserRepository.delete(advertiser);
-    }
-
-
-    public void updateListingName(String id, String newName) {
-        Listing listing = RepositoryUtils.checkFound(listingRepository.findById(id));
-        listing.setName(newName);
-        listingRepository.save(listing);
     }
 
     @Override
@@ -106,34 +86,35 @@ public class OADServiceImpl implements OADService {
     }
 
     @Override
-    public List<Listing> findAllListings() {
-        return RepositoryUtils.checkFound(listingRepository.findAll());
+    public List<LocationDTO> findAllLocations() {
+        List<Location> locations = RepositoryUtils.checkFound(locationRepository.findAll());
+        return locationsToDtos(locations);
     }
 
     @Override
-    public List<ListingDTO> findAllListingsAsDtos() {
-        List<Listing> listings = findAllListings();
-//        return listings.stream().map(this::listingToDto).collect(Collectors.toList());
-        return null;
-    }
-
-    @Override
-    public List<Category> findAllCategories() {
+    public List<CategoryDTO> findAllCategories() {
         List<Category> categories = RepositoryUtils.checkFound(categoryRepository.findAll());
-        return categories;
-    }
-
-    public List<CategoryDTO> findAllCategoriesAsDtos() {
-        List<Category> categories = findAllCategories();
-        List<CategoryDTO> categoryDtos = categories.stream()
+        return categories
+                .stream()
                 .map(this::categoryToDTO)
                 .collect(Collectors.toList());
-        return categoryDtos;
     }
 
     @Override
-    public List<Advertiser> findAllAdvertisers() {
-        return RepositoryUtils.checkFound(advertiserRepository.findAll());
+    public List<CategoryDTO> findAllRootCategories() {
+        List<Category> categories = RepositoryUtils.checkFound(categoryRepository.findAll());
+        return categories.stream()
+                .filter(cat -> cat.getParentId() == null)
+                .map(this::categoryToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AdvertiserDTO> findAllAdvertisers() {
+        return RepositoryUtils.checkFound(advertiserRepository.findAll())
+                .stream()
+                .map(this::advertiserToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -147,22 +128,167 @@ public class OADServiceImpl implements OADService {
         return categoryToDTO(category);
     }
 
-    public Category findCategoryById(String id) {
-        return RepositoryUtils.checkFound(categoryRepository.findById(id));
-    }
-
+    @Override
     public void emptyCollectionsForTesting() {
         advertiserRepository.deleteAll();
         categoryRepository.deleteAll();
         listingRepository.deleteAll();
+        locationRepository.deleteAll();
     }
-//
-//    private ListingDTO listingToDTO(Listing listing) {
-//        ListingDTO dto = new ListingDTO(listing.getName())
-//    }
+
+    @Override
+    public Map<String, Object> findAllListings() {
+        List<Listing> allListings = RepositoryUtils.checkFound(listingRepository.findAll());
+
+        Map<FeatureType, List<Listing>> groupedByFeatureType = allListings
+                .stream()
+                .collect(Collectors.groupingBy(Listing::getFeatureType));
+
+        ListingDTO featured = popRandomListing(Preconditions.checkNotNull(groupedByFeatureType.get(FeatureType.HOMEPAGE)));
+        List<ListingDTO> listingDtos = listingsToDtos(allListings);
+
+        Map<String, Object> listingModel = new HashMap<>();
+        listingModel.put("featured", featured);
+        listingModel.put("listings", listingDtos);
+        return listingModel;
+
+    }
+
+    @Override
+    public void saveListing(ListingDTO listingDTO) {
+        Listing listing = dtoToListing(listingDTO);
+        listingRepository.save(listing);
+    }
+
+    public Map<String, Object> listingsForHomepage() {
+        List<Listing> homepageListings = RepositoryUtils
+                .checkFound(listingRepository.findByFeatureType(FeatureType.HOMEPAGE));
+        return buildHomepageResponse(homepageListings);
+    }
+
+    @Override
+    public Map<String, Object> searchListings(ListingSearchRequest listingSearchRequest) {
+        List<Listing> searchListings = listingRepository.search(listingSearchRequest);
+        List<ListingDTO> listingDTOs = listingsToDtos(searchListings);
+        ListingDTO randomHomepageListing = popRandomListing(RepositoryUtils.checkFound(
+                listingRepository.findByFeatureType(FeatureType.HOMEPAGE)));
+
+        Map<String, Object> searchMap = new HashMap<>();
+        searchMap.put("featured", randomHomepageListing);
+        searchMap.put("listings", listingDTOs);
+        return searchMap;
+    }
+
+
+    @Override
+    public void updateListingName(String id, String newName) {
+        Listing listing = RepositoryUtils.checkFound(listingRepository.findById(id));
+        listing.setName(newName);
+        listingRepository.save(listing);
+    }
+
+    public void deleteListing(Listing listing) {
+        listingRepository.delete(listing);
+    }
+
+
+    private Map<String, Object> buildHomepageResponse(List<Listing> allListings) {
+        //get a random homepage listing
+        Map<FeatureType, List<Listing>> featureTypeListingMap =
+                allListings
+                        .stream()
+                        .collect(Collectors.groupingBy(Listing::getFeatureType));
+
+        List<Listing> homepageListings = featureTypeListingMap.get(FeatureType.HOMEPAGE);
+        List<Listing> categoryListings = featureTypeListingMap.get(FeatureType.CATEGORY);
+        List<Listing> normalListings = featureTypeListingMap.get(FeatureType.NORMAL);
+
+        Collections.shuffle(homepageListings);
+        Collections.shuffle(categoryListings);
+        Collections.shuffle(normalListings);
+
+        ListingDTO randomHomepageListing = popRandomListing(homepageListings);
+        ListingDTO randomCategoryListing = popRandomListing(categoryListings);
+
+        List<Listing> remainingListingsMerged = new ArrayList<>(allListings.size());
+        remainingListingsMerged.addAll(homepageListings);
+        remainingListingsMerged.addAll(categoryListings);
+        remainingListingsMerged.addAll(normalListings);
+
+        List<ListingDTO> remainingListingDtos = listingsToDtos(remainingListingsMerged);
+
+
+        Map<String, Object> homepageMap = new HashMap<>();
+        homepageMap.put(FeatureType.HOMEPAGE.toString(), randomHomepageListing);
+        homepageMap.put(FeatureType.CATEGORY.toString(), randomCategoryListing);
+        homepageMap.put(FeatureType.NORMAL.toString(), remainingListingDtos);
+
+        return homepageMap;
+    }
+
+    /**
+     * Removes a random listing from a given list of listings
+     * @param homepageListings
+     * @return
+     */
+    private ListingDTO popRandomListing(List<Listing> homepageListings) {
+        Preconditions.checkArgument(homepageListings != null && homepageListings.size() > 0);
+        int randomIdx = new Random()
+                .ints(0, homepageListings.size())
+                .findFirst()
+                .getAsInt();
+        Listing randomListing = homepageListings.remove(randomIdx);
+        return listingToDTO(randomListing);
+    }
+
+    private List<LocationDTO> locationsToDtos(List<Location> locations) {
+        Map<String, List<Location>> groupedByCity = locations
+                .stream()
+                .collect(Collectors.groupingBy(Location::getCity));
+
+        List<LocationDTO> locationDtos = new ArrayList<>();
+        groupedByCity.forEach((city, locationList) -> {
+            Set<String> uniqueNeighborhoods = new HashSet<>();
+            locationList.forEach(loc -> uniqueNeighborhoods.add(loc.getNeighborhood()));
+            locationDtos.add(new LocationDTO(city, uniqueNeighborhoods));
+        });
+
+        return locationDtos;
+    }
+
+    private AdvertiserDTO advertiserToDTO(Advertiser advertiser) {
+        return new AdvertiserDTO(advertiser.getEmail(), advertiser.getName(), advertiser.getPhone(), advertiser.getWebsite());
+    }
+
+    private List<ListingDTO> listingsToDtos(List<Listing> listings) {
+        return listings
+                .stream()
+                .map(this::listingToDTO)
+                .collect(Collectors.toList());
+    }
+
+
+    private ListingDTO listingToDTO(Listing listing) {
+        return new ListingDTO(
+                listing.getName(),
+                listing.getAdvertiser().getName(),
+                listing.getImage(),
+                listing.getAddress(),
+                listing.getLocation().getCity(),
+                listing.getLocation().getNeighborhood(),
+                listing.getPhone(),
+                listing.getDescription(),
+                listing.getWebsite(),
+                listing.getFeatureType(),
+                listing.getStartDate().toString(),
+                listing.getEndDate().toString(),
+                listing.getCategory().getName());
+    }
+
 
     private CategoryDTO categoryToDTO(Category category) {
         List<Category> subcategories = categoryRepository.findByParentId(category.getId());
+
         if (subcategories == null || subcategories.size() == 0) {
             return new CategoryDTO(category.getName(), new ArrayList<>());
         }
@@ -198,12 +324,22 @@ public class OADServiceImpl implements OADService {
     private Listing dtoToListing(ListingDTO listingDto) {
         Preconditions.checkNotNull(listingDto);
         Preconditions.checkNotNull(listingDto.getCategory());
-        Category category = RepositoryUtils.checkFound(categoryRepository
-                .findBySlugIgnoreCase(RepositoryUtils.toSluggedString(listingDto.getCategory())));
-        Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByName(listingDto.getAdvertiser()));
+
+        Category category = RepositoryUtils.checkFound(categoryRepository.findByNameIgnoreCase(listingDto.getCategory()));
+        Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByEmail(listingDto.getAdvertiser()));
+
+        Location location = locationRepository.findByCityAndNeighborhood(listingDto.getCity(), listingDto.getNeighborhood());
+
+        //add the location to our repository
+        if (location == null)
+            location = new Location(listingDto.getCity(), listingDto.getNeighborhood());
+            locationRepository.save(location);
+
         Listing listing = new Listing();
         listing.setCategory(category);
         listing.setAdvertiser(advertiser);
+        listing.setLocation(location);
+
         listing.setImage(listingDto.getImage());
         listing.setStartDate(LocalDate.parse(listingDto.getStartDate(), DateTimeFormatter.ISO_DATE));
         listing.setEndDate(LocalDate.parse(listingDto.getEndDate(), DateTimeFormatter.ISO_DATE));
@@ -214,7 +350,6 @@ public class OADServiceImpl implements OADService {
         listing.setDescription(listingDto.getDescription());
         listing.setWebsite(listingDto.getWebsite());
         listing.setPhone(listingDto.getPhone());
-        listing.setCity(listingDto.getCity());
         return listing;
     }
 
@@ -227,18 +362,17 @@ public class OADServiceImpl implements OADService {
             main = categoryRepository.insertCategory(main);
         }
         final String parentId = main.getId();
-        //create Category objects from the names
-        List<Category> children = categoryDto.getSubcategories().stream()
-                .map(name -> new Category(name, parentId, RepositoryUtils.toSluggedString(name)))
-                .collect(Collectors.toList());
-        //replace the newly created category with an existing version if available
-        children = children.stream()
-                .map(child -> {
-                    Category found = categoryRepository.findBySlugIgnoreCase(child.getSlug());
-                    if (found == null)
-                        return categoryRepository.insertCategory(child);
-                    categoryRepository.addCategoryAncestor(found.getSlug(), slug);
-                    return categoryRepository.findBySlugIgnoreCase(found.getSlug());
+        List<Category> children = categoryDto.getSubcategories()
+                .stream()
+                .map(childName -> {
+                    final String childSlug = RepositoryUtils.toSluggedString(childName);
+                    Category childCategory = categoryRepository.findBySlugIgnoreCase(childSlug);
+                    if (childCategory == null) {
+                        Category newCategory = new Category(childName, parentId, childSlug);
+                        return categoryRepository.insertCategory(newCategory);
+                    }
+                    categoryRepository.addCategoryAncestor(childCategory.getSlug(), slug);
+                    return categoryRepository.findById(childCategory.getId());
                 })
                 .collect(Collectors.toList());
         return main;

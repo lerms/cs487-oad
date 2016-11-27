@@ -1,6 +1,7 @@
 package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Category;
+import com.cs487.oad.entity.Listing;
 import com.cs487.oad.util.QueryField;
 import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;
@@ -28,6 +29,11 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     public CategoryRepositoryImpl(MongoOperations operations) {
         Assert.notNull(operations, "MongoOperations must not be null!");
         this.operations = operations;
+    }
+
+    @Override
+    public List<Category> getSubcategories(String slug) {
+        return operations.find(Query.query(Criteria.where("parent.slug").is(slug)), Category.class);
     }
 
     @Override

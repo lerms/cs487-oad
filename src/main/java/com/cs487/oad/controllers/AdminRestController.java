@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 
 /**
@@ -22,19 +24,24 @@ public class AdminRestController extends OADRestController {
         super(oadService);
     }
 
-    @GetMapping("/")
-    public String adminHome() {
-        return "admin.html";
+    @GetMapping("/listing")
+    public @ResponseBody Map<String, Object> getListings(
+            @RequestParam(value="category", required = false) String category,
+            @RequestParam(value="subcategory", required = false) String subcategory,
+            @RequestParam(value="business", required = false) String business) {
+
+        if (Stream.of(category, subcategory, business).allMatch(param -> param == null)) {
+            return oadService.findAllListings();
+        }
+
+        ListingSearchRequest searchRequest = new ListingSearchRequest(category, subcategory, business);
+        return oadService.searchListings(searchRequest);
     }
 
-    @GetMapping("/listing")
-    public @ResponseBody List<Listing> getAllListings() {
-        return oadService.findAllListings();
-    }
 
     @GetMapping("/category")
     public @ResponseBody List<CategoryDTO> getAllCategories() {
-        return oadService.findAllCategoriesAsDtos();
+        return oadService.findAllRootCategories();
     }
 
     @GetMapping("/category/{slug}")
@@ -43,7 +50,7 @@ public class AdminRestController extends OADRestController {
     }
 
     @GetMapping("/advertiser")
-    public List<Advertiser> getAllAdvertisers() {
+    public List<AdvertiserDTO> getAllAdvertisers() {
         return oadService.findAllAdvertisers();
     }
 
@@ -71,7 +78,7 @@ public class AdminRestController extends OADRestController {
 
     @GetMapping("/locations")
     public @ResponseBody List<LocationDTO> getLocations() {
-        return Lists.newArrayList();
+        return oadService.findAllLocations();
     }
 
 

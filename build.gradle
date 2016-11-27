@@ -60,7 +60,6 @@ task runTest{
 }
 
 
-
 dependencies {
     testCompile 'org.mockito:mockito-all:1.+'
     compile group: 'junit', name: 'junit', version: '4.11'

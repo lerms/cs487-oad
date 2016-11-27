@@ -229,8 +229,8 @@ function populateListingCategories(categoryArray){
 		var radio = document.createElement("input");
 		radio.type = "radio";
 		radio.name = "listing_category";
+		radio.value = categoryArray[i].name;
 		radio.onclick = function(){populateListingSubcategories(categoryArray)};
-		radio.value = i;
 		radio.required = true;
 		label.innerHTML = categoryArray[i].name;
 		catDiv.appendChild(radio);
@@ -241,18 +241,24 @@ function populateListingCategories(categoryArray){
 
 //POPULATE LISTING SUBCATEGORY LIST
 function populateListingSubcategories(categoryArray){
-	var selection = $("input[name='listing_category']:checked").val();
+	var selectionName = $("input[name='listing_category']:checked").val();
+	var selectionCategory;
+	for(var j = 0; j < categoryArray.length; j++) {
+		if(categoryArray[j].name === selectionName) {
+			selectionCategory = categoryArray[j];
+		}
+	}
 	var subcatDiv = document.getElementById("listing_subcategory_list");
 	$(subcatDiv).empty();
 	
-	for (var i = 0; i < categoryArray[selection].subcategories.length; i++){
+	for (var i = 0; i < selectionCategory.subcategories.length; i++){
 		var label = document.createElement("label");
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
 		checkbox.name = "listing_subcategory";
-		checkbox.value = categoryArray[selection].subcategories[i];
+		checkbox.value = selectionCategory.subcategories[i];
 		checkbox.required = true;
-		label.innerHTML = categoryArray[selection].subcategories[i];
+		label.innerHTML = selectionCategory.subcategories[i];
 		subcatDiv.appendChild(checkbox);
 		subcatDiv.appendChild(label);
 		subcatDiv.appendChild(document.createElement("br"));

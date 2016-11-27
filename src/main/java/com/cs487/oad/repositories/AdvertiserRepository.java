@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface AdvertiserRepository extends MongoRepository<Advertiser, String> {
 
     Advertiser findByEmail(String email);
+    Advertiser findByEmailIgnoreCase(String email);
     Advertiser findByName(String name);
     Advertiser findByNameIgnoreCase(String name);
     Advertiser findBySlug(String slug);

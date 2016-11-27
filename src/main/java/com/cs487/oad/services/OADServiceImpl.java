@@ -325,8 +325,8 @@ public class OADServiceImpl implements OADService {
         Preconditions.checkNotNull(listingDto);
         Preconditions.checkNotNull(listingDto.getCategory());
 
-        Category category = RepositoryUtils.checkFound(categoryRepository.findByNameIgnoreCase(listingDto.getCategory()));
-        Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByEmail(listingDto.getAdvertiser()));
+        Category category = RepositoryUtils.checkFound(categoryRepository.findByName(listingDto.getCategory()));
+        Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByName(listingDto.getAdvertiser()));
 
         Location location = locationRepository.findByCityAndNeighborhood(listingDto.getCity(), listingDto.getNeighborhood());
 

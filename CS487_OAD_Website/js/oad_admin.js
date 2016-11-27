@@ -247,14 +247,14 @@ function populateListingSubcategories(categoryArray){
 	var subcatDiv = document.getElementById("listing_subcategory_list");
 	$(subcatDiv).empty();
 	
-	for (var i = 0; i < categoryArray.categories[selection].subcategories.length; i++){
+	for (var i = 0; i < categoryArray[selection].subcategories.length; i++){
 		var label = document.createElement("label");
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
 		checkbox.name = "listing_subcategory";
-		checkbox.value = categoryArray.categories[selection].subcategories[i];
+		checkbox.value = categoryArray[selection].subcategories[i];
 		checkbox.required = true;
-		label.innerHTML = categoryArray.categories[selection].subcategories[i];
+		label.innerHTML = categoryArray[selection].subcategories[i];
 		subcatDiv.appendChild(checkbox);
 		subcatDiv.appendChild(label);
 		subcatDiv.appendChild(document.createElement("br"));

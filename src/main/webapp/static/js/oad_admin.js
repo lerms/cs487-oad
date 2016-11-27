@@ -201,7 +201,7 @@ function createListingSubmit(){
 	
 	$.ajax({
     	type: "PUT",
-    	url: url + "/listing",
+    	url: url + "/admin/listing",
 		beforeSend: function(xhr){
 			xhr.setRequestHeader("Accept", "application/json");
 			xhr.setRequestHeader("Content-Type", "application/json");
@@ -220,11 +220,9 @@ function changePasswordSubmit(){
 	
 }
 
-
 //POPULATE LISTING CATEGORY LIST
 function populateListingCategories(categoryArray){
 	var catDiv = document.getElementById("listing_category_list");
-	
 	
 	for (var i = 0; i < categoryArray.length; i++){
 		var label = document.createElement("label");

@@ -231,7 +231,7 @@ function populateListingCategories(categoryArray){
 		var radio = document.createElement("input");
 		radio.type = "radio";
 		radio.name = "listing_category";
-		radio.onclick = function(){populateListingSubcategories()};
+		radio.onclick = function(){populateListingSubcategories(categoryArray)};
 		radio.value = i;
 		radio.required = true;
 		label.innerHTML = categoryArray[i].name;
@@ -242,7 +242,7 @@ function populateListingCategories(categoryArray){
 }
 
 //POPULATE LISTING SUBCATEGORY LIST
-function populateListingSubcategories(){
+function populateListingSubcategories(categoryArray){
 	var selection = $("input[name='listing_category']:checked").val();
 	var subcatDiv = document.getElementById("listing_subcategory_list");
 	$(subcatDiv).empty();

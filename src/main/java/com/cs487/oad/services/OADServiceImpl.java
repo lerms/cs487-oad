@@ -330,15 +330,15 @@ public class OADServiceImpl implements OADService {
         Advertiser advertiser = RepositoryUtils.checkFound(advertiserRepository.findByName(listingDto.getAdvertiser()));
 
         List<Location> cityNeighborhoods = locationRepository.findByCity(listingDto.getCity());
-        Location location = new Location(listingDto.getCity(), listingDto.getNeighborhood());
+        Location location = new Location(listingDto.getCity(), listingDto.getArea());
         //add the location to our repository
-        if (cityNeighborhoods == null) {
+        if (cityNeighborhoods == null || cityNeighborhoods.size() == 0) {
             location = locationRepository.save(location);
         } else {
             // if the location exists, we'll use that, else add it to the repository
             location = cityNeighborhoods
                     .stream()
-                    .filter(x -> x.getNeighborhood().equalsIgnoreCase(listingDto.getNeighborhood()))
+                    .filter(x -> x.getNeighborhood().equalsIgnoreCase(listingDto.getArea()))
                     .findFirst()
                     .orElse(locationRepository.save(location));
         }

@@ -1,4 +1,4 @@
-var url = "${pageContext.request.contextPath}";
+var url = "";
 
 //TEST OBJECT
 function testObject(){

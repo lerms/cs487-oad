@@ -229,8 +229,8 @@ function populateListingCategories(categoryArray){
 		var radio = document.createElement("input");
 		radio.type = "radio";
 		radio.name = "listing_category";
-		radio.value = categoryArray[i].name;
 		radio.onclick = function(){populateListingSubcategories(categoryArray)};
+		radio.value = categoryArray[i].name;
 		radio.required = true;
 		label.innerHTML = categoryArray[i].name;
 		catDiv.appendChild(radio);
@@ -250,7 +250,7 @@ function populateListingSubcategories(categoryArray){
 	}
 	var subcatDiv = document.getElementById("listing_subcategory_list");
 	$(subcatDiv).empty();
-	
+
 	for (var i = 0; i < selectionCategory.subcategories.length; i++){
 		var label = document.createElement("label");
 		var checkbox = document.createElement("input");
@@ -264,7 +264,6 @@ function populateListingSubcategories(categoryArray){
 		subcatDiv.appendChild(document.createElement("br"));
 	}
 }
-
 //POPULATE LISTING ADVERTISERS
 function populateListingAdvertisers(advertisers){
 	var advertiserDropdown = document.getElementById("listing_advertiser");

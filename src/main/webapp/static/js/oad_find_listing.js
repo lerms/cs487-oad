@@ -1,3 +1,4 @@
+var url = "";
 var findObject;
 
 //SET FIND OBJECT
@@ -69,7 +70,7 @@ function findListings(){
 	}
 	
 	//TODO ADD FIND LISTING GET REQUEST
-	$.get(url+"/listings?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
+	$.get(url+"/listing?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
 		//TODO CLEAR AND POPULATE LISTINGS
 	});
 	

@@ -178,21 +178,26 @@ function createHTML(object){
 //DOM INJECTION WITH FEATURED ITEM INJECTION
 function createHTML2(object){
 	
-	var homeFeaturedListing = createFeaturedListing(object.homeFeaturedListing);
-	document.getElementById("home_featured_listing").appendChild(homeFeaturedListing);	
+	if (object.hasOwnProperty('homeFeaturedListing')){
+		var homeFeaturedListing = createFeaturedListing(object.homeFeaturedListing);
+		document.getElementById("home_featured_listing").appendChild(homeFeaturedListing);	
+	}
 	
 	for (var i = 0; i < object.categories.length; i++){
 		var category = createCategory(object.categories[i]);
-		var categoryFeaturedListing = createFeaturedListing(object.categories[i].categoryFeaturedListing);
-		categoryFeaturedListing.className = "category_featured_listing";
-		var leftCategoryFeaturedListing = createFeaturedListing(object.categories[i].categoryFeaturedListing);
-		leftCategoryFeaturedListing.className = "left_category_featured_listing";
 		
-		var left_category = document.createElement("div");
-		left_category.className = "left_category";
-		left_category.innerHTML = "Featured " + object.categories[i].name;
-		document.getElementById("featured_list").appendChild(left_category);
-		document.getElementById("featured_list").appendChild(leftCategoryFeaturedListing);
+		if (object.categories[i].hasOwnProperty('categoryFeaturedListing')){
+			var categoryFeaturedListing = createFeaturedListing(object.categories[i].categoryFeaturedListing);
+			categoryFeaturedListing.className = "category_featured_listing";
+			var leftCategoryFeaturedListing = createFeaturedListing(object.categories[i].categoryFeaturedListing);
+			leftCategoryFeaturedListing.className = "left_category_featured_listing";
+			
+			var left_category = document.createElement("div");
+			left_category.className = "left_category";
+			left_category.innerHTML = "Featured " + object.categories[i].name;
+			document.getElementById("featured_list").appendChild(left_category);
+			document.getElementById("featured_list").appendChild(leftCategoryFeaturedListing);
+		}
 		
 		var category_subcategories = document.createElement("div");
 		category_subcategories.className = "category_subcategories";
@@ -215,9 +220,11 @@ function createHTML2(object){
 			var listings = document.createElement("div");
 			listings.className = "listings";
 			
-			var subcategory_featured_listing = createFeaturedListing(object.categories[i].subcategories[j].subcategoryFeaturedListing);
-			subcategory_featured_listing.className = "subcategory_featured_listing";
-			listings.appendChild(subcategory_featured_listing);
+			if (object.categories[i].subcategories[j].hasOwnProperty("subcategoryFeaturedListing")){
+				var subcategory_featured_listing = createFeaturedListing(object.categories[i].subcategories[j].subcategoryFeaturedListing);
+				subcategory_featured_listing.className = "subcategory_featured_listing";
+				listings.appendChild(subcategory_featured_listing);
+			}
 			
 			var count = 1;
 			for (var k = 0; k < object.categories[i].subcategories[j].listings.length; k++){

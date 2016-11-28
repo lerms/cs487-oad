@@ -18,7 +18,9 @@ $(document).ready(function(){
 
 //SUBCATEGORY TOGGLE
 $(document).ready(function(){
+
 	$(".category_show_button").click(function(){
+
 		if($(this).parent().next(".category_subcategories").css("display") === ("none")){
 			$(this).parent().next(".category_subcategories").show();
 			$(this).attr("src", "images/minus_button.png");

@@ -48,5 +48,8 @@ public class CategoryInteractor {
         return map.get(name);
     }
 
+    public Map getMap(){
+        return map;
+    }
 
 }

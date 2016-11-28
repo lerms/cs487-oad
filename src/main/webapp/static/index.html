@@ -29,7 +29,7 @@
             <div id="find_wrapper">
                 <input type="search" placeholder="Type in your search..." class="find_search" id="listing_search">
                 <p class="find_text">in</p>
-                <select name="city" class="find_drop" id="city_drop_list"><option selected disabled>Select your location...</option></select>
+                <select name="city" class="find_drop" id="city_drop_list" onchange="populateFindNeighborhoodList(this.selectedIndex-1)"><option selected disabled>Select your location...</option></select>
                 <p class="find_text">near</p>
                 <select name="neighborhood" class="find_drop" id="neighborhood_drop_list"><option selected disabled>Select neighborhood...</option></select>
                 <br>

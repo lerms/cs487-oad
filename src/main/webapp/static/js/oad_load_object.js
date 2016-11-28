@@ -155,7 +155,7 @@ function createHTML(object){
 						
 			var count = 0;
 			for (var k = 0; k < object.categories[i].subcategories[j].listings.length; k++){
-				count++
+				count++;
 				var listing = createListing(object.categories[i].subcategories[j].listings[k]);
 				listings.appendChild(listing);
 			}			
@@ -232,7 +232,7 @@ function createHTML2(object){
 			
 			var count = 1;
 			for (var k = 0; k < object.categories[i].subcategories[j].listings.length; k++){
-				count++
+				count++;
 				var listing = createListing(object.categories[i].subcategories[j].listings[k]);
 				listings.appendChild(listing);
 			}			

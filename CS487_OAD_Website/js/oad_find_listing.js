@@ -73,6 +73,7 @@ function findListings(){
 	//TODO ADD FIND LISTING GET REQUEST
 	$.get(url+"/listing?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
 		//TODO CLEAR AND POPULATE LISTINGS
+		createHTML2(data);
 	});
 	
 }

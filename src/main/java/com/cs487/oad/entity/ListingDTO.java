@@ -15,7 +15,7 @@ public class ListingDTO {
     private final String image;
     private final String address;
     private final String city;
-    private final String area;
+    private final String neighborhood;
     private final String phone;
     private final String description;
     private final String website;
@@ -28,14 +28,14 @@ public class ListingDTO {
     private final List<String> subcategories;
 
     public ListingDTO(String name, String advertiser, String image, String address, String city,
-                      String area, String phone, String description, String website, FeatureType featureType,
+                      String neighborhood, String phone, String description, String website, FeatureType featureType,
                       String startDate, String endDate, String category, List<String> subcategories) {
         this.name = name;
         this.advertiser = advertiser;
         this.image = image;
         this.address = address;
         this.city = city;
-        this.area = area;
+        this.neighborhood = neighborhood;
         this.phone = phone;
         this.description = description;
         this.website = website;
@@ -66,8 +66,8 @@ public class ListingDTO {
         return city;
     }
 
-    public String getArea() {
-        return area;
+    public String getNeighborhood() {
+        return neighborhood;
     }
 
     public String getPhone() {
@@ -110,7 +110,7 @@ public class ListingDTO {
                 .append("image", image)
                 .append("address", address)
                 .append("city", city)
-                .append("area", area)
+                .append("neighborhood", neighborhood)
                 .append("phone", phone)
                 .append("description", description)
                 .append("website", website)

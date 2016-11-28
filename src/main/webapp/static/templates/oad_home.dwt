@@ -31,7 +31,7 @@
                 <p class="find_text">in</p>
                 <select name="city" class="find_drop"><option selected disabled>Select your location...</option></select>
                 <p class="find_text">near</p>
-                <select name="area" class="find_drop"><option selected disabled>Select area...</option></select>
+                <select name="neighborhood" class="find_drop"><option selected disabled>Select neighborhood...</option></select>
                 <br>
                 <input type="submit" value="SEARCH" id="search_button">
             </div>

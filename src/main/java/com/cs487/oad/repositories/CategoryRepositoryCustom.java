@@ -10,6 +10,8 @@ import java.util.List;
  */
 @NoRepositoryBean
 interface CategoryRepositoryCustom {
+    List<Category> getSubcategories(String slug);
+
     void updateName(String slug, String newName);
 
     void updateSlug(String slug, String newSlug);

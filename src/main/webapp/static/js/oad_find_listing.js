@@ -1,4 +1,4 @@
-var findObject;
+var url = "";
 
 //SET FIND OBJECT
 function setFindObject(object){
@@ -22,8 +22,10 @@ function testFindGetObject(){
 	return testObject;
 }
 
+var findObject;
 //POPULATE FIND CITY LIST
-function populateFindCityList(){
+function populateFindCityList(data){
+		findObject = data;
 		
 		var cityList = document.getElementById("city_drop_list");
 		
@@ -60,17 +62,23 @@ function populateFindNeighborhoodList(value){
 
 //FIND LISTINGS
 function findListings(){
+	
+	
+	
 	var listing = document.getElementById("listing_search").value;
 	var city = document.getElementById("city_drop_list").value;
 	var neighborhood = document.getElementById("neighborhood_drop_list").value;
 	
 	if (listing === ""){
 		document.getElementById("listing_search").style.border = "5px solid #FF0000";
-	}
+		return;
+	}	
 	
 	//TODO ADD FIND LISTING GET REQUEST
-	$.get(url+"/listings?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
+	$.get(url+"/listing?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
 		//TODO CLEAR AND POPULATE LISTINGS
+		$(categories).empty();
+		createHTML2(data);
 	});
 	
 }
@@ -80,10 +88,10 @@ function findListings(){
 //PAGE LOAD
 function pageLoad(){
 	$.get(url+"/location", function(data, status){
-        	setFindObject(data);
+        	populateFindCityList(data);
     });
 
-	populateFindCityList();
+	
 	
 	document.getElementById("search_button").addEventListener("click", findListings);
 }

@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.query.Query;
 
 import java.text.Normalizer;
 import java.util.Locale;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
@@ -21,6 +22,12 @@ public final class RepositoryUtils <T> {
         String normalized = Normalizer.normalize(nowhitespace, Normalizer.Form.NFD);
         String slug = NONLATIN.matcher(normalized).replaceAll("");
         return slug.toLowerCase(Locale.ENGLISH);
+    }
+
+    public static int randomListIndex(int start, int endExclusive) {
+        return new Random()
+                .ints(0, endExclusive)
+                .findFirst().orElse(0);
     }
 
     public static <T> Query simpleQuery(QueryField queryField, T queryValue) {

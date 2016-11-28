@@ -1,7 +1,10 @@
 package com.cs487.oad.entity;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.List;
 
 /**
  * Created by alexanderlerma on 11/14/16.
@@ -12,7 +15,7 @@ public class ListingDTO {
     private final String image;
     private final String address;
     private final String city;
-    private final String area;
+    private final String neighborhood;
     private final String phone;
     private final String description;
     private final String website;
@@ -22,16 +25,17 @@ public class ListingDTO {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private final String endDate;
     private final String category;
+    private final List<String> subcategories;
 
     public ListingDTO(String name, String advertiser, String image, String address, String city,
-                      String area, String phone, String description, String website, FeatureType featureType,
-                      String startDate, String endDate, String category) {
+                      String neighborhood, String phone, String description, String website, FeatureType featureType,
+                      String startDate, String endDate, String category, List<String> subcategories) {
         this.name = name;
         this.advertiser = advertiser;
         this.image = image;
         this.address = address;
         this.city = city;
-        this.area = area;
+        this.neighborhood = neighborhood;
         this.phone = phone;
         this.description = description;
         this.website = website;
@@ -39,6 +43,7 @@ public class ListingDTO {
         this.startDate = startDate;
         this.endDate = endDate;
         this.category = category;
+        this.subcategories = subcategories;
     }
 
     public String getName() {
@@ -61,8 +66,8 @@ public class ListingDTO {
         return city;
     }
 
-    public String getArea() {
-        return area;
+    public String getNeighborhood() {
+        return neighborhood;
     }
 
     public String getPhone() {
@@ -93,6 +98,10 @@ public class ListingDTO {
         return category;
     }
 
+    public List<String> getSubcategories() {
+        return Lists.newArrayList(subcategories);
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -101,7 +110,7 @@ public class ListingDTO {
                 .append("image", image)
                 .append("address", address)
                 .append("city", city)
-                .append("area", area)
+                .append("neighborhood", neighborhood)
                 .append("phone", phone)
                 .append("description", description)
                 .append("website", website)

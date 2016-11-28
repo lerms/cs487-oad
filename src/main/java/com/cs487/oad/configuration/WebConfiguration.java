@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.cs487.oad")
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 
@@ -25,13 +24,5 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/static/");
     }
-
-
-    @Bean
-    public indexController indexController(){
-        return new indexController();
-    }
-
-
 
 }

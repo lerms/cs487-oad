@@ -13,6 +13,8 @@ import java.util.List;
 public interface CategoryRepository extends MongoRepository<Category, String>, CategoryRepositoryCustom {
     Category findByName(String name);
 
+    Category findByNameIgnoreCase(String name);
+
     Category findById(String id);
 
     Category findBySlugIgnoreCase(String slug);

@@ -400,12 +400,11 @@ function createFeaturedListing(object){
 	return listing;
 }
 
-$(document).ready(function(){
-    $.get(url+"/listing", function(data, status){
+$(window).load(function(){
+	$.get(url+"/listing", function(data, status){
         createHTML2(data);
-		console.log(JSON.stringify(data));
+		//console.log(JSON.stringify(data));
     });
-    // createHTML2(testObject2());
 });
 
-// window.onload = createHTML2(testObject2());
+//window.onload = createHTML2(testObject2());

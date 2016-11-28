@@ -1,6 +1,8 @@
 package com.cs487.oad.interactorTest;
 
+import com.cs487.oad.entity.Category;
 import com.cs487.oad.interactors.CategoryInteractor;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +32,19 @@ public class CategoryInteractorTest {
     }
 
 
+
+    @Test
+    public void testCategory() {
+        Category cat = new Category();
+        cat.setName("red");
+        categoryInteractor.add(cat);
+        assertTrue(categoryInteractor.getCategory(cat.getName()).equals(cat));
+    }
+
+    @After
+    public void tearDown() {
+        categoryInteractor.getMap().clear();
+    }
 
 
 }

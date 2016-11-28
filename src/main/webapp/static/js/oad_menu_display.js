@@ -58,6 +58,7 @@ $(document).ready(function(){
 
 function listeners(){
 //FIND TOGGLE
+	alert("listen");
 $(window).on('load',function(){
 	var find_wrapper_toggle = 1;
 	$("#arrow").click(function(){

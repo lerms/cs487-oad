@@ -1,5 +1,4 @@
 var url = "";
-var findObject;
 
 //SET FIND OBJECT
 function setFindObject(object){
@@ -23,8 +22,10 @@ function testFindGetObject(){
 	return testObject;
 }
 
+var findObject;
 //POPULATE FIND CITY LIST
-function populateFindCityList(){
+function populateFindCityList(data){
+		findObject = data;
 		
 		var cityList = document.getElementById("city_drop_list");
 		
@@ -81,10 +82,10 @@ function findListings(){
 //PAGE LOAD
 function pageLoad(){
 	$.get(url+"/location", function(data, status){
-        	setFindObject(data);
+        	populateFindCityList(data);
     });
 
-	populateFindCityList();
+	
 	
 	document.getElementById("search_button").addEventListener("click", findListings);
 }

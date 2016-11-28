@@ -391,7 +391,7 @@ function createFeaturedListing(object){
 
 $(document).ready(function(){
 	$.get(url+"/listing", function(data, status){
-        createHTML(data);
+        createHTML2(data);
 		//console.log(JSON.stringify(data));
     });
 });

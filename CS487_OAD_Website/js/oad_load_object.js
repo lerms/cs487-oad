@@ -218,6 +218,7 @@ function createHTML2(object){
 			var subcat_button = document.createElement("img");
 			subcat_button.className = "subcategory_show_button";
 			subcat_button.src="images/plus_button.png";
+			subcat_button.addEventListener("click", function(){listingToggle()});
 			subcategory_wrapper.appendChild(subcat_button);
 			subcategory.appendChild(subcategory_wrapper);
 			
@@ -250,7 +251,6 @@ function createHTML2(object){
 		category.appendChild(category_subcategories);
 		document.getElementById("categories").appendChild(category);
 	}
-	listeners();
 }
 
 //CREATE CATEGORY
@@ -267,6 +267,7 @@ function createCategory(object){
 	var cat_button = document.createElement("img");
 	cat_button.className = "category_show_button";
 	cat_button.src="images/plus_button.png";
+	cat_button.addEventListener("click", function(){subcategoryToggle()});
 	category_wrapper.appendChild(cat_button);
 	category.appendChild(category_wrapper);
 	
@@ -308,6 +309,7 @@ function createListing(object){
 	var listing_button = document.createElement("img");
 	listing_button.className = "listing_show_button";
 	listing_button.src = "images/plus_button.png";
+	listing_button.addEventListener("click", function(){descriptionToggle()});
 	listing_top_wrapper.appendChild(listing_button);
 	listing.appendChild(listing_top_wrapper);
 	
@@ -374,6 +376,7 @@ function createFeaturedListing(object){
 	var listing_button = document.createElement("img");
 	listing_button.className = "listing_show_button";
 	listing_button.src = "images/plus_button.png";
+	listing_button.addEventListener("click", function(){descriptionToggle()});
 	listing_top_wrapper.appendChild(listing_button);
 	listing.appendChild(listing_top_wrapper);
 	

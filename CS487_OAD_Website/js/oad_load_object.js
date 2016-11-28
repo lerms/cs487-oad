@@ -201,7 +201,11 @@ function createHTML2(object){
 		
 		var category_subcategories = document.createElement("div");
 		category_subcategories.className = "category_subcategories";
-		category_subcategories.appendChild(categoryFeaturedListing);
+		
+		if (object.categories[i].hasOwnProperty('categoryFeaturedListing')){
+			category_subcategories.appendChild(categoryFeaturedListing);
+		}
+		
 		for (var j = 0; j < object.categories[i].subcategories.length; j++){
 			var subcategory = document.createElement("div");
 			subcategory.className = "subcategory";			

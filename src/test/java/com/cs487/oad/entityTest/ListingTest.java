@@ -5,14 +5,13 @@ package com.cs487.oad.entityTest;
 
 import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
-import org.junit.Before;
-import org.junit.Test;
 import com.cs487.oad.util.CONSTANTS;
 import com.cs487.oad.util.FUNCTIONS;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -35,22 +34,22 @@ public class ListingTest {
 
 
 
-    @Test
-    public void testListingPriceIsZero() {
-
-        assertTrue(listing.getPrice()==0);
-
-    }
-
-
-
-    @Test
-    public void testListingPriceAfterItIsSet() {
-        double price= 15.55;
-        listing.setPrice(price);
-        assertEquals(price, listing.getPrice(), 0.0001);
-
-    }
+//    @Test
+//    public void testListingPriceIsZero() {
+//
+//        assertTrue(listing.getPrice()==0);
+//
+//    }
+//
+//
+//
+//    @Test
+//    public void testListingPriceAfterItIsSet() {
+//        double price= 15.55;
+//        listing.setPrice(price);
+//        assertEquals(price, listing.getPrice(), 0.0001);
+//
+//    }
 
 
 
@@ -111,7 +110,7 @@ public class ListingTest {
         String phoneNumber = "11-11";
         listing.setPhone(phoneNumber);
         double price = 10.55;
-        listing.setPrice(price);
+//        listing.setPrice(price);
         String website = "www.red.com";
         listing.setWebsite(website);
         return listing.toString();

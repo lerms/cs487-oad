@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 
 //FIND TOGGLE
-$(window).load(function(){
+$(window).on('load',function(){
 	var find_wrapper_toggle = 1;
 	$("#arrow").click(function(){
 		if($("#find_wrapper").css("display") === ("none")){
@@ -74,7 +74,7 @@ $(window).load(function(){
 });
 
 //SUBCATEGORY TOGGLE
-$(window).load(function(){
+$(window).on('load',function(){
 	$(".category_show_button").click(function(){
 		if($(this).parent().next(".category_subcategories").css("display") === ("none")){
 			$(this).parent().next(".category_subcategories").show();
@@ -87,7 +87,7 @@ $(window).load(function(){
 });
 
 //LISTING TOGGLE
-$(window).load(function(){
+$(window).on('load',function(){
 	$(".subcategory_show_button").click(function(){
 		if($(this).parent().next(".listings").css("display") === ("none")){
 			$(this).parent().next(".listings").show();
@@ -100,7 +100,7 @@ $(window).load(function(){
 });
 
 //LISTING DESCRIPTION TOGGLE
-$(window).load(function(){
+$(window).on('load',function(){
 	$(".listing_show_button").click(function(){
 		if($(this).parent().next(".listing_bottom_wrapper").css("display") === ("none")){
 			$(this).parent().next(".listing_bottom_wrapper").show();

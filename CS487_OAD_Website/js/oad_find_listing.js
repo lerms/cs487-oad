@@ -62,17 +62,22 @@ function populateFindNeighborhoodList(value){
 
 //FIND LISTINGS
 function findListings(){
+	
+	
+	
 	var listing = document.getElementById("listing_search").value;
 	var city = document.getElementById("city_drop_list").value;
 	var neighborhood = document.getElementById("neighborhood_drop_list").value;
 	
 	if (listing === ""){
 		document.getElementById("listing_search").style.border = "5px solid #FF0000";
-	}
+		return;
+	}	
 	
 	//TODO ADD FIND LISTING GET REQUEST
 	$.get(url+"/listing?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
 		//TODO CLEAR AND POPULATE LISTINGS
+		$(categories).empty();
 		createHTML2(data);
 	});
 	

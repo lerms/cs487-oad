@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 function listeners(){
 //FIND TOGGLE
-$(window).on('load',function(){
+//$(window).on('load',function(){
 	var find_wrapper_toggle = 1;
 	$("#arrow").click(function(){
 		if($("#find_wrapper").css("display") === ("none")){
@@ -71,10 +71,10 @@ $(window).on('load',function(){
 			find_wrapper_toggle = 1;
 		}
 	});
-});
+//});
 
 //SUBCATEGORY TOGGLE
-$(window).on('load',function(){
+//$(window).on('load',function(){
 	$(".category_show_button").click(function(){
 		if($(this).parent().next(".category_subcategories").css("display") === ("none")){
 			$(this).parent().next(".category_subcategories").show();
@@ -84,10 +84,10 @@ $(window).on('load',function(){
 			$(this).attr("src", "images/plus_button.png");
 		}
 	});
-});
+//});
 
 //LISTING TOGGLE
-$(window).on('load',function(){
+//$(window).on('load',function(){
 	$(".subcategory_show_button").click(function(){
 		if($(this).parent().next(".listings").css("display") === ("none")){
 			$(this).parent().next(".listings").show();
@@ -97,10 +97,10 @@ $(window).on('load',function(){
 			$(this).attr("src", "images/plus_button.png");
 		}
 	});
-});
+//});
 
 //LISTING DESCRIPTION TOGGLE
-$(window).on('load',function(){
+//$(window).on('load',function(){
 	$(".listing_show_button").click(function(){
 		if($(this).parent().next(".listing_bottom_wrapper").css("display") === ("none")){
 			$(this).parent().next(".listing_bottom_wrapper").show();
@@ -110,5 +110,5 @@ $(window).on('load',function(){
 			$(this).attr("src", "images/plus_button.png");
 		}
 	});
-});
+//});
 }

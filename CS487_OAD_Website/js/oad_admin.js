@@ -83,7 +83,7 @@ function createListingObject(name, advertiser, image, address, city, area, phone
 	"image" : image,
 	"address" : address,
 	"city" : city,
-	"area" : area,
+	"neighborhood" : area,
 	"phone" : phone,
 	"description" : description,
 	"website" : website,

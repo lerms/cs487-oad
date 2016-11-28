@@ -292,8 +292,7 @@ public class OADServiceImpl implements OADService {
 
 
     private ListingDTO listingToDTO(Listing listing) {
-        final String parentCategoryId = listing.getSubcategories().get(0).getParentId();
-        Category parentCategory = categoryRepository.findById(parentCategoryId);
+
 
         List<String> subcats = listing.getSubcategories()
                 .stream()
@@ -313,7 +312,7 @@ public class OADServiceImpl implements OADService {
                 listing.getFeatureType(),
                 listing.getStartDate().toString(),
                 listing.getEndDate().toString(),
-                parentCategory.getName(),
+                listing.getCategory().getName(),
                 subcats);
     }
 

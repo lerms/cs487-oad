@@ -33,12 +33,13 @@ public class UserController extends OADRestController {
 
     @RequestMapping(value = "/listing/search", method = RequestMethod.GET)
     public @ResponseBody Map<String, Object> listingSearch(@RequestParam  Map<String, String> requestParams) {
+        final String query = requestParams.get("query");
         final String city = requestParams.get("city");
         final String neighborhood = requestParams.get("neighborhood");
         final String category = requestParams.get("category");
         final String subcategory = requestParams.get("subcategory");
 
-        ListingSearchRequest searchRequest = new ListingSearchRequest(city, neighborhood, category, subcategory);
+        ListingSearchRequest searchRequest = new ListingSearchRequest(query, city, neighborhood, category, subcategory);
         return oadService.searchListings(searchRequest);
     }
 

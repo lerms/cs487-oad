@@ -1,20 +1,15 @@
 package com.cs487.oad.repositories;
 
-import com.cs487.oad.entity.Category;
-import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
 import com.cs487.oad.entity.ListingSearchRequest;
-import com.cs487.oad.util.QueryField;
 import com.cs487.oad.util.RepositoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by alexanderlerma on 11/25/16.
@@ -32,19 +27,25 @@ public class ListingRepositoryImpl implements ListingRepositoryCustom {
     @Override
     public List<Listing> search(ListingSearchRequest listingSearchRequest) {
         List<Listing> searchListings = mongoOperations.findAll(Listing.class);
-        Query query = new Query();
 
-        if (listingSearchRequest.getBusiness() != null) {
+        if (listingSearchRequest.getCity() != null) {
             searchListings = searchListings
                     .stream()
                     .filter(listing ->
-                            listing.getAdvertiser().getName().equalsIgnoreCase(listingSearchRequest.getBusiness()))
+                            listing.getLocation().getCity().equalsIgnoreCase(listingSearchRequest.getCity()))
+                    .collect(Collectors.toList());
+
+        }
+
+        if (listingSearchRequest.getNeighborhood() != null) {
+            searchListings = searchListings
+                    .stream()
+                    .filter(listing ->
+                            listing.getLocation().getNeighborhood().equalsIgnoreCase(listingSearchRequest.getNeighborhood()))
                     .collect(Collectors.toList());
         }
 
         if (listingSearchRequest.getCategory() != null) {
-            final String sluggedCategory = RepositoryUtils.toSluggedString(listingSearchRequest.getCategory());
-
             searchListings = searchListings
                     .stream()
                     .filter(listing -> listing.getCategory().getName()

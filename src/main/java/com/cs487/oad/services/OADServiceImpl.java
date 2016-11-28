@@ -153,20 +153,19 @@ public class OADServiceImpl implements OADService {
 
     public Map<String, Object> listingsForHomepage() {
         List<Listing> allListings = RepositoryUtils.checkFound(listingRepository.findAll());
-        return buildFormattedListingModel(allListings);
+        List<Category> allCategories = RepositoryUtils.checkFound(categoryRepository.findAll());
+        return buildFormattedListingModel(allListings, allCategories);
     }
 
     @Override
     public Map<String, Object> searchListings(ListingSearchRequest listingSearchRequest) {
         List<Listing> searchListings = listingRepository.search(listingSearchRequest);
-        List<ListingDTO> listingDTOs = listingsToDtos(searchListings);
-        ListingDTO randomHomepageListing = popRandomListing(RepositoryUtils.checkFound(
-                listingRepository.findByFeatureType(FeatureType.HOMEPAGE)));
-
-        Map<String, Object> searchMap = new HashMap<>();
-        searchMap.put("featured", randomHomepageListing);
-        searchMap.put("listings", listingDTOs);
-        return searchMap;
+        List<Category> searchCategories = searchListings
+                .stream()
+                .map(Listing::getCategory)
+                .distinct()
+                .collect(Collectors.toList());
+        return buildFormattedListingModel(searchListings, searchCategories);
     }
 
 
@@ -181,24 +180,29 @@ public class OADServiceImpl implements OADService {
         listingRepository.delete(listing);
     }
 
-    private Map<String, Object> buildFormattedListingModel(List<Listing> listings) {
+    private Map<String, Object> buildFormattedListingModel(List<Listing> listings, List<Category> categories) {
         Map<FeatureType, List<Listing>> groupedByFeatureType = listingsGroupedByFeatureType(listings);
         Map<String, Object> listingModel = new HashMap<>();
         listingModel.put("homeFeaturedListing", popRandomListing(groupedByFeatureType.get(FeatureType.HOMEPAGE)));
 
-        List<Category> allCategories = categoryRepository.findAll();
 
         //now they're in name, subcategory format
-        List<CategoryDTO> categoryRoots = allCategories
+        List<CategoryDTO> categoryRoots = categories
                 .stream()
                 .filter(cat -> cat.getParentId() == null)
                 .map(this::categoryToDTO)
                 .collect(Collectors.toList());
 
 
-        List<CategoryListingDTO> modelCategories = categoryRoots.stream().map(root -> {
+        List<CategoryListingDTO> modelCategories = categoryRoots
+                .stream()
+                .map(root -> {
 
-            List<Listing> categoryListings = listingRepository.findByCategory(root.getName());
+            List<Listing> categoryListings = listings
+                    .stream()
+                    .filter(lst -> lst.getCategory().getName().equalsIgnoreCase(root.getName()))
+                    .collect(Collectors.toList());
+
             Map<FeatureType, List<Listing>> groupedByFeature = listingsGroupedByFeatureType(categoryListings);
             ListingDTO randomCategoryFeatured = popRandomListing(groupedByFeature.get(FeatureType.CATEGORY));
 

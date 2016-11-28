@@ -25,13 +25,8 @@ public class AdminRestController extends OADRestController {
     }
 
     @GetMapping("/listing")
-    public @ResponseBody Map<String, Object> getListings(
-            @RequestParam(value="category", required = false) String category,
-            @RequestParam(value="subcategory", required = false) String subcategory,
-            @RequestParam(value="business", required = false) String business) {
-
-        ListingSearchRequest searchRequest = new ListingSearchRequest(category, subcategory, business);
-        return oadService.searchListings(searchRequest);
+    public @ResponseBody Map<FeatureType, List<ListingDTO>> findAllListings() {
+        return oadService.findAllListings();
     }
 
 

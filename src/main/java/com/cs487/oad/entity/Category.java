@@ -13,7 +13,7 @@ import java.util.List;
  * Created by alexanderlerma on 10/17/16.
  */
 @Document(collection = "category")
-public class Category extends OADEntity {
+public class Category extends OADEntity implements Comparable<Category> {
 
     private String parentId;
     @Indexed(unique = true)
@@ -89,5 +89,14 @@ public class Category extends OADEntity {
                 .append("slug", slug)
                 .append("ancestors", ancestors)
                 .toString();
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        if(o.getSlug().equals(slug))
+            return 0;
+        if (o.getSlug().compareTo(slug) < 0)
+            return -1;
+        return 1;
     }
 }

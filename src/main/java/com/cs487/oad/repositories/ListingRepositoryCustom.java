@@ -1,6 +1,5 @@
 package com.cs487.oad.repositories;
 
-import com.cs487.oad.entity.FeatureType;
 import com.cs487.oad.entity.Listing;
 import com.cs487.oad.entity.ListingSearchRequest;
 import org.springframework.data.repository.NoRepositoryBean;

@@ -401,10 +401,11 @@ function createFeaturedListing(object){
 }
 
 $(document).ready(function(){
-	$.get(url+"/listing", function(data, status){
-        createHTML2(data);
-		//console.log(JSON.stringify(data));
+    $.get(url+"/listing", function(data, status){
+        createHTML2(testObject2());
+		console.log(JSON.stringify(data));
     });
+    // createHTML2(testObject2());
 });
 
-//window.onload = createHTML2(testObject2());
+// window.onload = createHTML2(testObject2());

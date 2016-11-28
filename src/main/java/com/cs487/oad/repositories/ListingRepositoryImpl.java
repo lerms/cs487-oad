@@ -81,7 +81,7 @@ public class ListingRepositoryImpl implements ListingRepositoryCustom {
 
         List<Listing> filtered = listings.stream()
                 .filter(listing -> {
-                    boolean containsAdvertiserName = listing.getAdvertiser().getName().toLowerCase().contains(queryLowercase);
+                    boolean containsListingName = listing.getName().toLowerCase().contains(queryLowercase);
 
                     boolean containsCategory = listing.getCategory().getName().toLowerCase().contains(queryLowercase);
 
@@ -91,7 +91,7 @@ public class ListingRepositoryImpl implements ListingRepositoryCustom {
                             .map(String::toLowerCase)
                             .anyMatch(name -> name.contains(queryLowercase));
 
-                    return containsAdvertiserName|| containsCategory || containsSubcategory;
+                    return containsListingName || containsCategory || containsSubcategory;
 
                 })
                 .collect(Collectors.toList());

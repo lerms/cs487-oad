@@ -1,6 +1,7 @@
 package com.cs487.oad.entityTest;
 
 import com.cs487.oad.entity.Category;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,11 +19,16 @@ public class CategoryTest {
 
     private Category category;
     private Category category2;
+    ArrayList<Category> ancestors = new ArrayList<>();
+    String parentId = "red";
+    String name = "name";
+    String slug = "slug";
 
     @Before
     public void setUp() {
         category = mock(Category.class);
         category2 = new Category();
+
     }
 
     @Test
@@ -67,5 +73,41 @@ public class CategoryTest {
         Category cat = new Category("",test,"", null);
 
         assertTrue(cat.getParentId().equals(test));
+    }
+
+
+
+    @Test
+    public void testCompareTo() {
+        assertTrue(category.compareTo(category2)>0);
+    }
+
+
+
+    @Test
+    public void testAncestors() {
+
+        category.setAncestors(ancestors);
+        assertTrue(category.getAncestors().equals(ancestors));
+
+    }
+
+
+
+    @Test
+    public void testToString() {
+
+        category2.setAncestors(ancestors);
+        category2.setParentId(parentId);
+        category2.setName(name);
+        category2.setSlug(slug);
+        String result = new ToStringBuilder(category2)
+                .append("parentId", parentId)
+                .append("name", name)
+                .append("slug", slug)
+                .append("ancestors", ancestors)
+                .toString();
+
+        assertTrue(category2.toString().equals(result));
     }
 }

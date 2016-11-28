@@ -3,10 +3,12 @@ package com.cs487.oad.entityTest;
 
 
 import com.cs487.oad.entity.Location;
+import com.cs487.oad.util.RepositoryUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -67,6 +69,14 @@ public class LocationTest {
                 .append("neighborhood", nei)
                 .toString();
         assertTrue(location.toString().equals(result));
+
+    }
+
+
+
+    @Test
+    public void testRandomNotEqual() {
+        assertFalse(RepositoryUtils.randomListIndex(10,100)==1);
 
     }
 

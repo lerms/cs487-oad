@@ -37,7 +37,7 @@ public interface OADService {
 
     Map<String, List<LocationDTO>> findAllLocations();
 
-    Map<String, Object> findAllListings();
+    Map<FeatureType, List<ListingDTO>> findAllListings();
 
     Map<String, Object> searchListings(ListingSearchRequest searchRequest);
 

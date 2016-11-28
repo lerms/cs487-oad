@@ -25,4 +25,9 @@ public class UserController extends OADRestController {
     public @ResponseBody Map<String, List<LocationDTO>> getLocations() {
         return oadService.findAllLocations();
     }
+
+    @GetMapping("/listing")
+    public @ResponseBody Map<String, Object> getListingsFormatted() {
+        return oadService.listingsForHomepage();
+    }
 }

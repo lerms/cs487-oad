@@ -14,5 +14,6 @@ import java.util.List;
 public interface ListingRepositoryCustom {
 
     List<Listing> search(ListingSearchRequest listingSearchRequest);
-    List<Listing> findByCategoryAndFeatureType(String categorySlug, FeatureType featureType);
+    List<Listing> findBySubCategory(String subcategoryName);
+    List<Listing> findByCategory(String subcategoryName);
 }

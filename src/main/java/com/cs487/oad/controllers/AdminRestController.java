@@ -30,10 +30,6 @@ public class AdminRestController extends OADRestController {
             @RequestParam(value="subcategory", required = false) String subcategory,
             @RequestParam(value="business", required = false) String business) {
 
-        if (Stream.of(category, subcategory, business).allMatch(param -> param == null)) {
-            return oadService.findAllListings();
-        }
-
         ListingSearchRequest searchRequest = new ListingSearchRequest(category, subcategory, business);
         return oadService.searchListings(searchRequest);
     }

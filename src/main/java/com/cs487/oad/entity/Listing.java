@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by Jlarrieux on 9/19/2016.
@@ -15,8 +16,6 @@ import java.time.LocalDate;
 @Document(collection = "listing")
 public class Listing extends OADEntity {
 
-    private final int currencyMultiplier = 100;
-    private int price;
     private String name;
     @DBRef
     private Advertiser advertiser;
@@ -35,6 +34,8 @@ public class Listing extends OADEntity {
     private LocalDate endDate;
     @DBRef
     private Category category;
+    @DBRef
+    private List<Category> subcategories; //we'll still know the parent category
 
     public Listing() {
     }
@@ -43,7 +44,7 @@ public class Listing extends OADEntity {
     public Listing(String name, Advertiser advertiser, String image,
                    String address, Location location, String phone,
                    String description, String website, FeatureType featureType,
-                   LocalDate startDate, LocalDate endDate, Category category, double price) {
+                   LocalDate startDate, LocalDate endDate, Category category, List<Category> subcategories) {
         this.name = name;
         this.advertiser = advertiser;
         this.image = image;
@@ -56,7 +57,15 @@ public class Listing extends OADEntity {
         this.startDate = startDate;
         this.endDate = endDate;
         this.category = category;
-        setPrice(price);
+        this.subcategories = subcategories;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getName() {
@@ -147,27 +156,17 @@ public class Listing extends OADEntity {
         this.endDate = endDate;
     }
 
-    public Category getCategory() {
-        return category;
+    public List<Category> getSubcategories() {
+        return subcategories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public double getPrice() {
-        return (double) price / currencyMultiplier;
-    }
-
-    public void setPrice(double price) {
-        int intermediate = (int) (price * currencyMultiplier);
-        this.price = intermediate;
+    public void setSubcategories(List<Category> subcategories) {
+        this.subcategories = subcategories;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("price", price)
                 .append("name", name)
                 .append("advertiser", advertiser)
                 .append("image", image)
@@ -179,7 +178,7 @@ public class Listing extends OADEntity {
                 .append("featureType", featureType)
                 .append("startDate", startDate)
                 .append("endDate", endDate)
-                .append("category", category)
+                .append("subcategories", subcategories)
                 .toString();
     }
 }

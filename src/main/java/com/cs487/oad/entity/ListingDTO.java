@@ -1,7 +1,10 @@
 package com.cs487.oad.entity;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.List;
 
 /**
  * Created by alexanderlerma on 11/14/16.
@@ -22,10 +25,11 @@ public class ListingDTO {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private final String endDate;
     private final String category;
+    private final List<String> subcategories;
 
     public ListingDTO(String name, String advertiser, String image, String address, String city,
                       String area, String phone, String description, String website, FeatureType featureType,
-                      String startDate, String endDate, String category) {
+                      String startDate, String endDate, String category, List<String> subcategories) {
         this.name = name;
         this.advertiser = advertiser;
         this.image = image;
@@ -39,6 +43,7 @@ public class ListingDTO {
         this.startDate = startDate;
         this.endDate = endDate;
         this.category = category;
+        this.subcategories = subcategories;
     }
 
     public String getName() {
@@ -91,6 +96,10 @@ public class ListingDTO {
 
     public String getCategory() {
         return category;
+    }
+
+    public List<String> getSubcategories() {
+        return Lists.newArrayList(subcategories);
     }
 
     @Override

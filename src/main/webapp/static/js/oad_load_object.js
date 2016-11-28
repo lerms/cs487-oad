@@ -402,7 +402,7 @@ function createFeaturedListing(object){
 
 $(document).ready(function(){
     $.get(url+"/listing", function(data, status){
-        createHTML2(testObject2());
+        createHTML2(data);
 		console.log(JSON.stringify(data));
     });
     // createHTML2(testObject2());

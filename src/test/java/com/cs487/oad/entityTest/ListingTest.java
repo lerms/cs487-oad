@@ -34,24 +34,6 @@ public class ListingTest {
 
 
 
-//    @Test
-//    public void testListingPriceIsZero() {
-//
-//        assertTrue(listing.getPrice()==0);
-//
-//    }
-//
-//
-//
-//    @Test
-//    public void testListingPriceAfterItIsSet() {
-//        double price= 15.55;
-//        listing.setPrice(price);
-//        assertEquals(price, listing.getPrice(), 0.0001);
-//
-//    }
-
-
 
     @Test
     public void testStartDate() {

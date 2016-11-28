@@ -43,7 +43,9 @@ jacocoTestReport {
                     'com/cs487/oad/configuration/**',
                     'com/cs487/oad/controllers/**',
                     'com/cs487/oad/repositories/**',
-                    'com/cs487/oad/services/**'])
+                    'com/cs487/oad/services/**',
+                    'com/cs487/oad/Application**',
+                    'com/cs487/oad/entity/**DTO**'])
         })
     }
 

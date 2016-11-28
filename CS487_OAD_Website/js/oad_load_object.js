@@ -250,6 +250,7 @@ function createHTML2(object){
 		category.appendChild(category_subcategories);
 		document.getElementById("categories").appendChild(category);
 	}
+	listeners();
 }
 
 //CREATE CATEGORY

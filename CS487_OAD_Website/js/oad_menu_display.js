@@ -56,7 +56,7 @@ $(document).ready(function(){
 	});
 });*/
 
-
+function listeners(){
 //FIND TOGGLE
 $(window).on('load',function(){
 	var find_wrapper_toggle = 1;
@@ -111,3 +111,4 @@ $(window).on('load',function(){
 		}
 	});
 });
+}

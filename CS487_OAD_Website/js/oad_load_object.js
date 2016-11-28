@@ -436,12 +436,11 @@ function createFeaturedListing(object){
 	return listing;
 }
 
-/*
+
 $(document).ready(function(){
 	$.get(url+"/listing", function(data, status){
         createHTML2(data);
 		//console.log(JSON.stringify(data));
     });
 });
-*/
-window.onload = createHTML2(testObject2());
+//window.onload = createHTML2(testObject2());

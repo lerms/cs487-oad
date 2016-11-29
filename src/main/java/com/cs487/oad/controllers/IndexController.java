@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
  * Created by Jeannius on 11/26/2016.
  */
 @Controller
-public class indexController {
+public class IndexController {
 
 
     @RequestMapping( "/"  )

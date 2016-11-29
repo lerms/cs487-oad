@@ -55,11 +55,14 @@ public class ListingSearchRequestTest {
 
     @Test
     public void testToString() {
-        String result =new ToStringBuilder(listingSearchRequest)
-                            .append("city", city)
-                            .append("neighborhood", neighborhood)
-                            .append("category", category)
-                            .toString();
+        String result = new ToStringBuilder(listingSearchRequest)
+                .append("query", query)
+                .append("city", city)
+                .append("neighborhood", neighborhood)
+                .append("category", category)
+                .append("subcategory", subcategory)
+                .toString();
+
 //        System.out.println(String.format("tostring:\t%s\n\n\nmine:%s\t", listingSearchRequest.toString(),result));
         assertTrue(listingSearchRequest.toString().equals(result));
 

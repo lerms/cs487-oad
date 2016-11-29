@@ -41,9 +41,11 @@ public class ListingSearchRequest {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
+                .append("query", query)
                 .append("city", city)
                 .append("neighborhood", neighborhood)
                 .append("category", category)
+                .append("subcategory", subcategory)
                 .toString();
     }
 }

@@ -17,6 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class ListingSearchRequestTest {
 
     ListingSearchRequest listingSearchRequest;
+    String query = "pizza";
     String city = "Chicago";
     String neighborhood = "Loop";
     String category = "Restaurant";
@@ -25,7 +26,7 @@ public class ListingSearchRequestTest {
 
     @Before
     public void setUp() {
-        listingSearchRequest = new ListingSearchRequest(city,neighborhood,category,subcategory);
+        listingSearchRequest = new ListingSearchRequest(query,city,neighborhood,category,subcategory);
     }
 
 

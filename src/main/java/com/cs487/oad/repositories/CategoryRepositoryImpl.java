@@ -1,7 +1,6 @@
 package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Category;
-import com.cs487.oad.entity.Listing;
 import com.cs487.oad.util.QueryField;
 import com.cs487.oad.util.RepositoryUtils;
 import com.google.common.base.Preconditions;

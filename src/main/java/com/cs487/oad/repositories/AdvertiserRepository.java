@@ -2,7 +2,6 @@ package com.cs487.oad.repositories;
 
 import com.cs487.oad.entity.Advertiser;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
 /**

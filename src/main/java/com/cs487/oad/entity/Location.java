@@ -1,7 +1,6 @@
 package com.cs487.oad.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 

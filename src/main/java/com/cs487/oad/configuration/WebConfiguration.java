@@ -1,10 +1,6 @@
 package com.cs487.oad.configuration;
 
 
-
-import com.cs487.oad.controllers.indexController;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

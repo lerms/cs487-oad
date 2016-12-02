@@ -75,9 +75,11 @@ function findListings(){
 	}	
 	
 	//TODO ADD FIND LISTING GET REQUEST
-	$.get(url+"/listing?search=" + listing + ",city=" + city + ",neighborhood=" + neighborhood, function(data, status){
+	$.get(url+"/listing?search?query=" + listing + "&city=" + city + "&neighborhood=" + neighborhood, function(data, status){
 		//TODO CLEAR AND POPULATE LISTINGS
 		$(categories).empty();
+		$(home_featured_listing).empty();
+		$(featured_list).empty();
 		createHTML2(data);
 	});
 	

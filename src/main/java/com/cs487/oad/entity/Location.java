@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "location")
 public class Location extends OADEntity {
 
+
     private String city;
     private String neighborhood;
 

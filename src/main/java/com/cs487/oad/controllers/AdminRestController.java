@@ -3,13 +3,11 @@ package com.cs487.oad.controllers;
 import com.cs487.oad.entity.*;
 import com.cs487.oad.services.OADService;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 
 /**
@@ -25,13 +23,8 @@ public class AdminRestController extends OADRestController {
     }
 
     @GetMapping("/listing")
-    public @ResponseBody Map<String, Object> getListings(
-            @RequestParam(value="category", required = false) String category,
-            @RequestParam(value="subcategory", required = false) String subcategory,
-            @RequestParam(value="business", required = false) String business) {
-
-        ListingSearchRequest searchRequest = new ListingSearchRequest(category, subcategory, business);
-        return oadService.searchListings(searchRequest);
+    public @ResponseBody Map<FeatureType, List<ListingDTO>> findAllListings() {
+        return oadService.findAllListings();
     }
 
 

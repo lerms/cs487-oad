@@ -38,16 +38,7 @@ public class CategoryInteractor {
     }
 
 
-//    public void add(Category category, String name) {
-////        List<SubCategory> current;
-////        if(map.containsKey(category)) current = map.get(category);
-////        else current =new ArrayList<>();
-////
-////        current.addAll(sub);
-////        map.put(category, current);
-//        map.put(name, category);
-//
-//    }
+
 
     public void add(Category category) {
         map.put(category.getName(), category);
@@ -57,5 +48,8 @@ public class CategoryInteractor {
         return map.get(name);
     }
 
+    public Map getMap(){
+        return map;
+    }
 
 }

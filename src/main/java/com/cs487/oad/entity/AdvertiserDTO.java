@@ -10,6 +10,7 @@ public class AdvertiserDTO {
 
     @Email
     private final String email;
+
     private final String name;
     private final String phone;
     @URL

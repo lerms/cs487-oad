@@ -1,7 +1,7 @@
 ********************************************
 CONFIGURATION INSTRUCTION
 ********************************************
-
+UBUNTU 16.04 LTS is needed for the init file to run
 All configuration handle by build script.
 
 

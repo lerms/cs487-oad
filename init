@@ -1,4 +1,40 @@
 #!/bin/bash
-printf "\n\n\nAbout to install application OAD, this may take a few minutes"
-sleep 3
-sudo apt-get update
+printf "\n\n\nAbout to install application OAD, this may take a few minutes\n"
+
+MONGO="Mongo DB"
+JAV="JAVA"
+DIRECTORY="/data/db"
+
+if [ ! -f /usr/bin/mongod ]; then
+	echo "No $MONGO installation found, installing..."
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+	echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mondogb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+	sudo apt-get -y update
+	sudo apt-get install -y mongodb
+else echo "$MONGO already installed. SKipping..."
+fi
+
+if [ ! -d $DIRECTORY  ]; then
+	echo "$DIRECTORY doesn't exist. Attempt to create it..."
+	sudo mkdir -p /data/db
+	sudo chown -R mongodb /data/db
+fi
+
+
+
+
+if type -p java; then
+    echo found $JAV executable in PATH
+    _java=java
+elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+    echo found $JAVA executable2 in JAVA_HOME
+    _java="$JAVA_HOME/bin/java"
+else
+    echo "no $JAV. About to install $JAVA..."
+    sudo apt-get --assume-yes install default-jdk
+fi
+
+export MONGOURI=mongodb://localhost:27017/test?authSource=test
+
+sudo bash ./gradlew cleanIdea IDEA runTest build
+java -jar build/libs/OAD-0.5.0.war

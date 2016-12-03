@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'jacoco'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
 
 
 repositories {
@@ -23,13 +24,18 @@ repositories {
     }
 
 }
-jar{
+
+war{
     baseName="OAD"
-    version = "0.4.0"
+    version"0.5.0"
 }
 
 bootRun {
     systemProperties System.properties
+}
+
+task pm{
+    println System.getenv('MONGOURI')
 }
 
 jacocoTestReport {

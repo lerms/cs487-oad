@@ -1,0 +1,4 @@
+#!/bin/bash
+printf "\n\n\nAbout to install application OAD, this may take a few minutes"
+sleep 3
+sudo apt-get update

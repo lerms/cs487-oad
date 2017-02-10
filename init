@@ -36,5 +36,5 @@ fi
 
 export MONGOURI=mongodb://localhost:27017/test?authSource=test
 
-#sudo bash ./gradlew cleanIdea IDEA runTest build
+sudo bash ./gradlew cleanIdea IDEA build
 java -jar build/libs/OAD-0.5.0.war
